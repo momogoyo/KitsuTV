@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="495" id="KGk-i7-Jjw" customClass="HomeRecommendContainerCell" customModule="KTV" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="495"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="495"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hkT-Ce-3oH">
+                        <rect key="frame" x="16" y="0.0" width="288" height="479"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="추천" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPk-Gg-aIM">
+                                <rect key="frame" x="14" y="24" width="274" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="textColor" name="main-wh"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Qz9-hy-zhq">
+                                <rect key="frame" x="26" y="84" width="236" height="355"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="355" id="xG2-NP-7qN"/>
+                                </constraints>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qqC-Q8-qXK">
+                                <rect key="frame" x="0.0" y="431.33333333333331" width="288" height="27.666666666666686"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="unfold"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" name="more-bk"/>
+                        <constraints>
+                            <constraint firstItem="Qz9-hy-zhq" firstAttribute="leading" secondItem="hkT-Ce-3oH" secondAttribute="leading" constant="26" id="0Af-fp-KUD"/>
+                            <constraint firstItem="qqC-Q8-qXK" firstAttribute="leading" secondItem="hkT-Ce-3oH" secondAttribute="leading" id="3LU-Q0-n6j"/>
+                            <constraint firstAttribute="trailing" secondItem="nPk-Gg-aIM" secondAttribute="trailing" id="8Si-et-WiD"/>
+                            <constraint firstItem="Qz9-hy-zhq" firstAttribute="top" secondItem="nPk-Gg-aIM" secondAttribute="bottom" constant="39" id="Fl4-Tf-mYm"/>
+                            <constraint firstItem="nPk-Gg-aIM" firstAttribute="leading" secondItem="hkT-Ce-3oH" secondAttribute="leading" constant="14" id="QZp-v2-mp1"/>
+                            <constraint firstAttribute="bottom" secondItem="qqC-Q8-qXK" secondAttribute="bottom" constant="20" id="XhZ-EG-lK5"/>
+                            <constraint firstItem="nPk-Gg-aIM" firstAttribute="top" secondItem="hkT-Ce-3oH" secondAttribute="top" constant="24" id="cuE-31-jRj"/>
+                            <constraint firstAttribute="trailing" secondItem="Qz9-hy-zhq" secondAttribute="trailing" constant="26" id="lbY-uX-qDb"/>
+                            <constraint firstAttribute="trailing" secondItem="qqC-Q8-qXK" secondAttribute="trailing" id="taY-6X-RcE"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" name="bg"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="hkT-Ce-3oH" secondAttribute="trailing" constant="16" id="Ywd-QU-6WP"/>
+                    <constraint firstItem="hkT-Ce-3oH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="cei-AG-3VP"/>
+                    <constraint firstItem="hkT-Ce-3oH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="cjN-l3-d70"/>
+                    <constraint firstAttribute="bottom" secondItem="hkT-Ce-3oH" secondAttribute="bottom" constant="16" id="nDh-xJ-46v"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="containerView" destination="hkT-Ce-3oH" id="YOn-Nz-rmT"/>
+                <outlet property="foldButton" destination="qqC-Q8-qXK" id="WWS-Sg-2tU"/>
+                <outlet property="tableView" destination="Qz9-hy-zhq" id="bce-g2-rUA"/>
+            </connections>
+            <point key="canvasLocation" x="192.36641221374046" y="58.098591549295776"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="unfold" width="24" height="13.666666984558105"/>
+        <namedColor name="bg">
+            <color red="0.10588235294117647" green="0.10588235294117647" blue="0.10588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="main-wh">
+            <color red="0.99607843137254903" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="more-bk">
+            <color red="0.078431372549019607" green="0.078431372549019607" blue="0.078431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
