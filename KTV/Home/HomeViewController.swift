@@ -9,6 +9,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
   
+  let homeViewModel = HomeViewModel()
   @IBOutlet weak var tableView: UITableView!
   
   override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
@@ -17,6 +18,9 @@ class HomeViewController: UIViewController {
     super.viewDidLoad()
     
     setupTableView()
+    bindViewModel()
+    
+    self.homeViewModel.requestData()
   }
   
   private func setupTableView() {
@@ -52,6 +56,16 @@ class HomeViewController: UIViewController {
     self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "empty")
     self.tableView.delegate = self
     self.tableView.dataSource = self
+  }
+  
+  private func bindViewModel() {
+    // TableView 동작 방식
+    // 1. dataSource에게 몇개의 셀이 있는지 물어봄
+    // 2. 각 셀에 뭘 보여줄까?라고 물어봄
+    // 3. reloadData를 호출해야 다시 물어볼 수 있음
+    self.homeViewModel.dataChanged = { [weak self] in
+      self?.tableView.reloadData()
+    }
   }
 }
 

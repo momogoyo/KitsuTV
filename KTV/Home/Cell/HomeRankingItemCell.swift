@@ -20,6 +20,7 @@ class HomeRankingItemCell: UICollectionViewCell {
     self.layer.cornerRadius = 10
   }
   
+  // 셀이 재사용 되기 전에 초기화 해주는 역할
   override func prepareForReuse() {
     super.prepareForReuse()
     
