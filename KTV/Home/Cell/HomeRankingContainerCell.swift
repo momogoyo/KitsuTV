@@ -8,7 +8,7 @@
 import UIKit
 
 protocol HomeRankingContainerCellDelegate: AnyObject {
-    func homeRankingContainerCell(_ cell: HomeRankingContainerCell, didSelectItemAt index: Int)
+  func homeRankingContainerCell(_ cell: HomeRankingContainerCell, didSelectItemAt index: Int)
 }
 
 class HomeRankingContainerCell: UITableViewCell {
