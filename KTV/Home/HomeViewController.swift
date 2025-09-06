@@ -82,7 +82,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     case .header:
       return 1
     case .video:
-      return 2
+      return self.homeViewModel.home?.videos.count ?? 0
     case .ranking:
       return 1
     case .recentWatch:
@@ -123,7 +123,18 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     case .header:
       return tableView.dequeueReusableCell(withIdentifier: HomeHeaderCell.identifier, for: indexPath)
     case .video:
-      return tableView.dequeueReusableCell(withIdentifier: HomeVideoCell.identifier, for: indexPath)
+      let cell = tableView.dequeueReusableCell(
+        withIdentifier: HomeVideoCell.identifier,
+        for: indexPath
+      )
+      
+      if
+        let cell = cell as? HomeVideoCell,
+        let data = self.homeViewModel.home?.videos[indexPath.row] {
+        cell.setData(data)
+      }
+      
+      return cell
     case .ranking:
       let cell = tableView.dequeueReusableCell(withIdentifier: HomeRankingContainerCell.identifier, for: indexPath)
       

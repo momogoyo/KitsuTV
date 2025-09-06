@@ -38,4 +38,12 @@ class HomeVideoCell: UITableViewCell {
   override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
   }
+  
+  func setData(_ data: Home.Video) {
+    self.titleLabel.text = data.title
+    self.subtitleLabel.text = data.subtitle
+    self.channelTitleLabel.text = data.channel
+    self.channelSubtitleLabel.text = data.channelDescription
+    self.hotImageView.isHidden = !data.isHot
+  }
 }

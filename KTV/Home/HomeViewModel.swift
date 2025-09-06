@@ -13,7 +13,7 @@ import Foundation
 // 3. View와 Model 연결: ViewController가 직접 데이터를 처리하지 않고 ViewModel을 통해 처리
 
 class HomeViewModel {
-  private var home: Home?
+  private(set) var home: Home?
   // 데이터가 변경되면 실행할 함수 → Observer 패턴
   var dataChanged: (() -> Void)?
   
