@@ -11,7 +11,7 @@ struct Home: Decodable {
   let videos: [Video]
   let rankings: [Ranking]
   let recents: [Recent]
-  let recommends: [Recommand]
+  let recommends: [Recommend]
 }
 
 extension Home {
@@ -28,19 +28,32 @@ extension Home {
   
   struct Ranking: Decodable {
     let videoId: Int
-    let imageUrl: URL
+    let thumbnailImage: URL
+    
+    enum CodingKeys: String, CodingKey {
+      case videoId
+      case thumbnailImage = "imageUrl"
+    }
   }
   
   struct Recent: Decodable {
     let timeStamp: Double
     let title: String
-    let imageUrl: URL
+    let thumbnailImage: URL
     let videoId: Int
     let channel: String
+    
+    enum CodingKeys: String, CodingKey {
+      case timeStamp
+      case title
+      case thumbnailImage = "imageUrl"
+      case videoId
+      case channel
+    }
   }
   
-  struct Recommand: Decodable {
-    let playtime: Int
+  struct Recommend: Decodable {
+    let playtime: Double
     let title: String
     let imageUrl: URL
     let videoId: Int

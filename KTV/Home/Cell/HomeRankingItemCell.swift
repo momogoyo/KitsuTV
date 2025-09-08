@@ -14,6 +14,8 @@ class HomeRankingItemCell: UICollectionViewCell {
   @IBOutlet weak var thumbnailImageView: UIImageView!
   @IBOutlet weak var numberLabel: UILabel!
   
+  private var thumbnailImageViewTask: Task<Void, Never>?
+  
   override func awakeFromNib() {
     super.awakeFromNib()
     
@@ -26,8 +28,9 @@ class HomeRankingItemCell: UICollectionViewCell {
     
     self.numberLabel.text = nil
   }
-    
-  func setRank(_ rank: Int) {
+  
+  func setData(_ data: Home.Ranking, rank: Int) {
     self.numberLabel.text = "\(rank)"
+    self.thumbnailImageViewTask = self.thumbnailImageView.loadImage(url: data.thumbnailImage)
   }
 }

@@ -22,10 +22,14 @@ class HomeRecommendItemCell: UITableViewCell {
   @IBOutlet weak var playTimeBGView: UIView!
   @IBOutlet weak var playTimeLabel: UILabel!
   
+  private var imageTask: Task<Void, Never>?
+  
+  // xid로 만들어진 UI가 해당 class에 정상적으로 연동을 마쳤을 때 불려지는 함수
   override func awakeFromNib() {
     super.awakeFromNib()
     
-    self.thumbnailContainerView.layer.cornerRadius = 5
+    self.thumbnailImageView.layer.cornerRadius = 5
+    self.thumbnailImageView.clipsToBounds = true
     self.rankLabel.layer.cornerRadius = 5
     self.rankLabel.clipsToBounds = true
     self.playTimeBGView.layer.cornerRadius = 3
@@ -35,4 +39,14 @@ class HomeRecommendItemCell: UITableViewCell {
     super.setSelected(selected, animated: animated)
   }
   
+  func setData(_ data: Home.Recommend, rank: Int?) {
+    self.rankLabel.isHidden = rank == nil
+    if let rank {
+      self.rankLabel.text = "\(rank)"
+    }
+    self.titleLabel.text = data.title
+    self.descriptionLabel.text = data.channel
+    self.imageTask = self.thumbnailImageView.loadImage(url: data.imageUrl)
+    self.playTimeLabel.text = data.playtime.timeFormatter
+  }
 }

@@ -24,6 +24,9 @@ class HomeVideoCell: UITableViewCell {
   @IBOutlet weak var channelTitleLabel: UILabel!
   @IBOutlet weak var channelSubtitleLabel: UILabel!
   
+  private var thumbnailImageViewTask: Task<Void, Never>?
+  private var channelImageViewTask: Task<Void, Never>?
+  
   // Storyboard에서 뷰가 로드된 직후 호출되는 메서드
   // @IBOutlet이 모두 연결된 상태에서 호출
   // 따라서 UI관련 초기화는 여기서 처리하는게 안전하다.
@@ -31,8 +34,9 @@ class HomeVideoCell: UITableViewCell {
     super.awakeFromNib()
     
     self.containerView.layer.cornerRadius = 10
-    self.containerView.layer.borderColor = UIColor(named: "stroke-light")?.cgColor
+    self.containerView.clipsToBounds = true
     self.containerView.layer.borderWidth = 1
+    self.containerView.layer.borderColor = UIColor(named: "stroke-light")?.cgColor
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {
@@ -45,5 +49,7 @@ class HomeVideoCell: UITableViewCell {
     self.channelTitleLabel.text = data.channel
     self.channelSubtitleLabel.text = data.channelDescription
     self.hotImageView.isHidden = !data.isHot
+    self.thumbnailImageViewTask = self.thumbnailImageView.loadImage(url: data.imageUrl)
+    self.channelImageViewTask = self.channelImageView.loadImage(url: data.channelThumbnailURL)
   }
 }

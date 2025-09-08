@@ -128,29 +128,49 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         for: indexPath
       )
       
-      if
-        let cell = cell as? HomeVideoCell,
-        let data = self.homeViewModel.home?.videos[indexPath.row] {
+      if let cell = cell as? HomeVideoCell,
+         let data = self.homeViewModel.home?.videos[indexPath.row] {
         cell.setData(data)
       }
       
       return cell
     case .ranking:
-      let cell = tableView.dequeueReusableCell(withIdentifier: HomeRankingContainerCell.identifier, for: indexPath)
+      let cell = tableView.dequeueReusableCell(
+        withIdentifier: HomeRankingContainerCell.identifier,
+        for: indexPath
+      )
       
-      (cell as? HomeRankingContainerCell)?.delegate = self
+      if let cell = cell as? HomeRankingContainerCell,
+         let data = self.homeViewModel.home?.rankings {
+        cell.delegate = self
+        cell.setData(data)
+      }
       
       return cell
     case .recentWatch:
-      let cell = tableView.dequeueReusableCell(withIdentifier: HomeRecentWatchContainerCell.identifier, for: indexPath)
+      let cell = tableView.dequeueReusableCell(
+        withIdentifier: HomeRecentWatchContainerCell.identifier,
+        for: indexPath
+      )
       
-      (cell as? HomeRecentWatchContainerCell)?.delegate = self
+      if let cell = cell as? HomeRecentWatchContainerCell,
+         let data = self.homeViewModel.home?.recents {
+        cell.delegate = self
+        cell.setData(data)
+      }
       
       return cell
     case .recommend:
-      let cell = tableView.dequeueReusableCell(withIdentifier: HomeRecommendContainerCell.identifier, for: indexPath)
+      let cell = tableView.dequeueReusableCell(
+        withIdentifier: HomeRecommendContainerCell.identifier,
+        for: indexPath
+      )
       
-      (cell as? HomeRecommendContainerCell)?.delegate = self
+      if let cell = cell as? HomeRecommendContainerCell,
+         let data = self.homeViewModel.home?.recommends {
+        cell.delegate = self
+        cell.setData(data)
+      }
       
       return cell
     case .footer:

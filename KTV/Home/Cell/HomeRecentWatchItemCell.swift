@@ -16,6 +16,8 @@ class HomeRecentWatchItemCell: UICollectionViewCell {
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var subtitleLabel: UILabel!
   
+  private var thumbnailImageViewTask: Task<Void, Never>?
+  
   override func awakeFromNib() {
     super.awakeFromNib()
     
@@ -24,4 +26,10 @@ class HomeRecentWatchItemCell: UICollectionViewCell {
     self.thumbnailImageView.layer.borderColor = UIColor(named: "stroke-light")?.cgColor
   }
   
+  func setData(_ data: Home.Recent) {
+    self.dateLabel.text = data.timeStamp.formattedTime
+    self.titleLabel.text = data.title
+    self.subtitleLabel.text = data.channel
+    self.thumbnailImageViewTask = self.thumbnailImageView.loadImage(url: data.thumbnailImage)
+  }
 }

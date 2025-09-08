@@ -27,6 +27,8 @@ class HomeRecommendContainerCell: UITableViewCell {
   @IBOutlet weak var foldButton: UIButton!
   weak var delegate: HomeRecommendContainerCellDelegate?
   
+  private var recommends: [Home.Recommend]?
+  
   override func awakeFromNib() {
     super.awakeFromNib()
     
@@ -46,6 +48,10 @@ class HomeRecommendContainerCell: UITableViewCell {
     super.setSelected(selected, animated: animated)
   }
   
+  func setData(_ data: [Home.Recommend]) {
+    self.recommends = data
+    self.tableView.reloadData()
+  }
 }
 
 extension HomeRecommendContainerCell: UITableViewDelegate, UITableViewDataSource {
@@ -54,7 +60,17 @@ extension HomeRecommendContainerCell: UITableViewDelegate, UITableViewDataSource
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    return tableView.dequeueReusableCell(withIdentifier: HomeRecommendItemCell.identifier, for: indexPath)
+    let cell = tableView.dequeueReusableCell(
+      withIdentifier: HomeRecommendItemCell.identifier,
+      for: indexPath
+    )
+    
+    if let cell = cell as? HomeRecommendItemCell,
+       let data = self.recommends?[indexPath.row] {
+      cell.setData(data, rank: indexPath.row + 1)
+    }
+       
+    return cell
   }
   
   func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
