@@ -13,6 +13,8 @@ import Foundation
 // 3. View와 Model 연결: ViewController가 직접 데이터를 처리하지 않고 ViewModel을 통해 처리
 @MainActor class HomeViewModel {
   private(set) var home: Home?
+  var recommendViewModel: HomeRecommendViewModel = HomeRecommendViewModel()
+  
   // 데이터가 변경되면 실행할 함수 → Observer 패턴
   var dataChanged: (() -> Void)?
   
@@ -20,7 +22,9 @@ import Foundation
     Task {
       do {
         // 백그라운드에서 네트워크 요청
-        self.home = try await DataLoader.load(url: URLDefines.home, for: Home.self)
+        let home = try await DataLoader.load(url: URLDefines.home, for: Home.self)
+        self.recommendViewModel.recommends = home.recommends
+        
         self.dataChanged?() // 해당 콜백 내에서 UI 업데이트가 되기 때문에 @MainActor 필요
       } catch {
         print("json parsing failed: \(error.localizedDescription)")
