@@ -24,7 +24,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QBP-pE-5ax">
                                 <rect key="frame" x="0.0" y="0.0" width="410" height="160"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IDO-2u-dbi">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IDO-2u-dbi">
                                         <rect key="frame" x="0.0" y="0.0" width="410" height="160"/>
                                     </imageView>
                                 </subviews>
@@ -73,7 +73,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fOy-2W-fl7">
                                         <rect key="frame" x="0.0" y="57" width="354" height="40"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="CHG-sy-UnR">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="CHG-sy-UnR">
                                                 <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="6c6-VI-sEY"/>
@@ -87,7 +87,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCm-Uc-4y3">
-                                                <rect key="frame" x="50" y="21" width="43.666666666666657" height="14.333333333333336"/>
+                                                <rect key="frame" x="50" y="21" width="304" height="14.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -96,9 +96,11 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="lCm-Uc-4y3" firstAttribute="leading" secondItem="CHG-sy-UnR" secondAttribute="trailing" constant="10" id="2mb-el-KAN"/>
+                                            <constraint firstAttribute="trailing" secondItem="lCm-Uc-4y3" secondAttribute="trailing" id="7ay-hb-6wl"/>
                                             <constraint firstItem="CHG-sy-UnR" firstAttribute="top" secondItem="fOy-2W-fl7" secondAttribute="top" id="955-OK-zu7"/>
                                             <constraint firstItem="CHG-sy-UnR" firstAttribute="leading" secondItem="fOy-2W-fl7" secondAttribute="leading" id="JHS-wh-Akj"/>
                                             <constraint firstAttribute="bottom" secondItem="CHG-sy-UnR" secondAttribute="bottom" id="NwN-NE-ELI"/>
+                                            <constraint firstAttribute="trailing" secondItem="TJb-UI-IMI" secondAttribute="trailing" id="oo0-Ze-oWk"/>
                                             <constraint firstItem="lCm-Uc-4y3" firstAttribute="top" secondItem="TJb-UI-IMI" secondAttribute="bottom" constant="4" id="ulG-WL-prS"/>
                                             <constraint firstAttribute="trailing" secondItem="TJb-UI-IMI" secondAttribute="trailing" id="w5n-cu-rOC"/>
                                             <constraint firstItem="TJb-UI-IMI" firstAttribute="top" secondItem="fOy-2W-fl7" secondAttribute="top" id="wys-eo-p2B"/>
@@ -110,12 +112,16 @@
                                 <constraints>
                                     <constraint firstItem="1PU-c5-l7e" firstAttribute="leading" secondItem="4w4-d6-AvE" secondAttribute="leading" id="1Hv-JD-WFb"/>
                                     <constraint firstItem="zkh-BP-rhh" firstAttribute="top" secondItem="1PU-c5-l7e" secondAttribute="bottom" constant="7" id="1fd-dM-vJt"/>
+                                    <constraint firstItem="1PU-c5-l7e" firstAttribute="top" secondItem="4w4-d6-AvE" secondAttribute="top" id="4NY-nC-LeE"/>
                                     <constraint firstItem="zkh-BP-rhh" firstAttribute="leading" secondItem="4w4-d6-AvE" secondAttribute="leading" id="6RA-8p-R2f"/>
                                     <constraint firstAttribute="trailing" secondItem="1PU-c5-l7e" secondAttribute="trailing" id="AvU-kN-1g8"/>
                                     <constraint firstItem="fOy-2W-fl7" firstAttribute="top" secondItem="zkh-BP-rhh" secondAttribute="bottom" constant="14" id="BJU-uu-YSf"/>
+                                    <constraint firstItem="1PU-c5-l7e" firstAttribute="leading" secondItem="4w4-d6-AvE" secondAttribute="leading" id="LII-Co-rq7"/>
+                                    <constraint firstAttribute="trailing" secondItem="1PU-c5-l7e" secondAttribute="trailing" id="Rno-HX-gqH"/>
                                     <constraint firstAttribute="bottom" secondItem="fOy-2W-fl7" secondAttribute="bottom" id="S3p-10-SSn"/>
                                     <constraint firstItem="1PU-c5-l7e" firstAttribute="top" secondItem="4w4-d6-AvE" secondAttribute="top" id="dDJ-3d-hBC"/>
                                     <constraint firstItem="fOy-2W-fl7" firstAttribute="leading" secondItem="4w4-d6-AvE" secondAttribute="leading" id="gdr-F9-yAf"/>
+                                    <constraint firstItem="1PU-c5-l7e" firstAttribute="leading" secondItem="4w4-d6-AvE" secondAttribute="leading" id="hq2-ux-CXu"/>
                                     <constraint firstAttribute="trailing" secondItem="fOy-2W-fl7" secondAttribute="trailing" id="hwY-hz-hf0"/>
                                     <constraint firstAttribute="trailing" secondItem="zkh-BP-rhh" secondAttribute="trailing" id="x0R-v3-puq"/>
                                 </constraints>
@@ -150,6 +156,7 @@
                     <constraint firstItem="GMk-p6-X3V" firstAttribute="leading" secondItem="EVZ-1q-b1A" secondAttribute="leading" id="mkr-R8-eGr"/>
                 </constraints>
             </collectionViewCellContentView>
+            <size key="customSize" width="1159" height="325"/>
             <connections>
                 <outlet property="channelImageView" destination="CHG-sy-UnR" id="q3j-RD-PAU"/>
                 <outlet property="channelSubtitleLabel" destination="lCm-Uc-4y3" id="0Wr-5h-q20"/>
@@ -160,7 +167,7 @@
                 <outlet property="thumbnailImageView" destination="IDO-2u-dbi" id="vyZ-Rq-nLh"/>
                 <outlet property="titleLabel" destination="uNT-sd-HKp" id="tKa-oQ-Tss"/>
             </connections>
-            <point key="canvasLocation" x="802" y="-26"/>
+            <point key="canvasLocation" x="1373.2824427480916" y="-17.253521126760564"/>
         </collectionViewCell>
     </objects>
     <resources>
