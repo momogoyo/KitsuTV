@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeVideoCell: UITableViewCell {
+class HomeVideoCell: UICollectionViewCell {
   
   static let identifier: String = "HomeVideoCell"
   static let height: CGFloat = 321
@@ -37,10 +37,6 @@ class HomeVideoCell: UITableViewCell {
     self.containerView.clipsToBounds = true
     self.containerView.layer.borderWidth = 1
     self.containerView.layer.borderColor = UIColor(named: "stroke-light")?.cgColor
-  }
-  
-  override func setSelected(_ selected: Bool, animated: Bool) {
-    super.setSelected(selected, animated: animated)
   }
   
   func setData(_ data: Home.Video) {
