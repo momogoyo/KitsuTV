@@ -10,16 +10,13 @@ import UIKit
 class HomeVideoCell: UICollectionViewCell {
   
   static let identifier: String = "HomeVideoCell"
-  static let height: CGFloat = 321
+  static let height: CGFloat = 300
   
   @IBOutlet weak var containerView: UIView!
-  
   @IBOutlet weak var thumbnailImageView: UIImageView!
-  
   @IBOutlet weak var hotImageView: UIImageView!
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var subtitleLabel: UILabel!
-  
   @IBOutlet weak var channelImageView: UIImageView!
   @IBOutlet weak var channelTitleLabel: UILabel!
   @IBOutlet weak var channelSubtitleLabel: UILabel!
@@ -34,9 +31,25 @@ class HomeVideoCell: UICollectionViewCell {
     super.awakeFromNib()
     
     self.containerView.layer.cornerRadius = 10
-    self.containerView.clipsToBounds = true
     self.containerView.layer.borderWidth = 1
     self.containerView.layer.borderColor = UIColor(named: "stroke-light")?.cgColor
+    self.containerView.clipsToBounds = true
+  }
+  
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    
+    self.thumbnailImageViewTask?.cancel()
+    self.thumbnailImageViewTask = nil
+    self.channelImageViewTask?.cancel()
+    self.channelImageViewTask = nil
+    
+    self.thumbnailImageView.image = nil
+    self.titleLabel.text = nil
+    self.subtitleLabel.text = nil
+    self.channelImageView.image = nil
+    self.channelTitleLabel.text = nil
+    self.channelSubtitleLabel.text = nil
   }
   
   func setData(_ data: Home.Video) {

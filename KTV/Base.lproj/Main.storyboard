@@ -6,6 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -75,27 +76,43 @@
         <scene sceneID="4JB-U0-wTb">
             <objects>
                 <viewController id="NbN-qP-09L" customClass="HomeViewController" customModule="KTV" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fFK-Kv-vSH">
+                    <view key="view" contentMode="scaleToFill" id="rGY-fC-Ovd">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rkR-AD-LcJ">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pjQ-As-gbH">
                                 <rect key="frame" x="0.0" y="118" width="393" height="617"/>
                                 <color key="backgroundColor" name="bg"/>
-                            </tableView>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rAq-xo-RLS">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="6Qc-HF-6fx">
+                                        <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WYV-K2-3Sp">
+                                            <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="VEW-hW-VAR"/>
+                        <viewLayoutGuide key="safeArea" id="CaM-Vf-PWT"/>
                         <color key="backgroundColor" name="bg"/>
                         <constraints>
-                            <constraint firstItem="VEW-hW-VAR" firstAttribute="trailing" secondItem="rkR-AD-LcJ" secondAttribute="trailing" id="1bV-4v-vPu"/>
-                            <constraint firstItem="VEW-hW-VAR" firstAttribute="bottom" secondItem="rkR-AD-LcJ" secondAttribute="bottom" id="BhQ-7h-Bbs"/>
-                            <constraint firstItem="rkR-AD-LcJ" firstAttribute="leading" secondItem="VEW-hW-VAR" secondAttribute="leading" id="Yrm-NR-un7"/>
-                            <constraint firstItem="rkR-AD-LcJ" firstAttribute="top" secondItem="VEW-hW-VAR" secondAttribute="top" id="sjB-ir-Hn2"/>
+                            <constraint firstItem="pjQ-As-gbH" firstAttribute="top" secondItem="CaM-Vf-PWT" secondAttribute="top" id="CRW-kr-d4P"/>
+                            <constraint firstItem="pjQ-As-gbH" firstAttribute="leading" secondItem="CaM-Vf-PWT" secondAttribute="leading" id="d2O-40-Wff"/>
+                            <constraint firstItem="CaM-Vf-PWT" firstAttribute="bottom" secondItem="pjQ-As-gbH" secondAttribute="bottom" id="fh8-zi-dfO"/>
+                            <constraint firstItem="CaM-Vf-PWT" firstAttribute="trailing" secondItem="pjQ-As-gbH" secondAttribute="trailing" id="wSF-1h-Bvg"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="tabIcon_home" selectedImage="tabIcon_home_selected" id="fFj-18-EU3"/>
                     <connections>
-                        <outlet property="tableView" destination="rkR-AD-LcJ" id="XV8-HX-4NV"/>
+                        <outlet property="collectionView" destination="pjQ-As-gbH" id="TBP-7U-YBk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SPA-Tm-718" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -23,6 +23,7 @@ import Foundation
       do {
         // 백그라운드에서 네트워크 요청
         let home = try await DataLoader.load(url: URLDefines.home, for: Home.self)
+        self.home = home
         self.recommendViewModel.recommends = home.recommends
         
         self.dataChanged?() // 해당 콜백 내에서 UI 업데이트가 되기 때문에 @MainActor 필요

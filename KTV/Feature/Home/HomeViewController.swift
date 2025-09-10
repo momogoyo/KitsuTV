@@ -8,172 +8,249 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-  
   let homeViewModel = HomeViewModel()
-  @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var collectionView: UICollectionView!
   
   override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    setupTableView()
+    setupCollectionView()
     bindViewModel()
     
     self.homeViewModel.requestData()
   }
   
-  private func setupTableView() {
-    self.tableView.register(
-      UINib(nibName: HomeHeaderCell.identifier, bundle: nil),
-      forCellReuseIdentifier: HomeHeaderCell.identifier
+  private func setupCollectionView() {
+    self.collectionView.register(
+      UINib(nibName: "HomeHeader", bundle: .main),
+      forCellWithReuseIdentifier: HomeHeaderView.identifier
     )
-    self.tableView.register(
-      UINib(nibName: HomeVideoCell.identifier, bundle: nil),
-      forCellReuseIdentifier: HomeVideoCell.identifier
-    )
-    self.tableView.register(
-      UINib(nibName: HomeRecommendContainerCell.identifier, bundle: nil),
-      forCellReuseIdentifier: HomeRecommendContainerCell.identifier
-    )
-    self.tableView.register(
-      UINib(nibName: HomeFooterCell.identifier, bundle: nil),
-      forCellReuseIdentifier: HomeFooterCell.identifier
+    self.collectionView.register(
+      UINib(nibName: "HomeVideoCell", bundle: .main),
+      forCellWithReuseIdentifier: HomeVideoCell.identifier
     )
     
-    // MARK: - Ranking View
-    self.tableView.register(
-      UINib(nibName: HomeRankingContainerCell.identifier, bundle: nil),
-      forCellReuseIdentifier: HomeRankingContainerCell.identifier
+    self.collectionView.register(
+      UICollectionViewCell.self,
+      forCellWithReuseIdentifier: "empty"
     )
+    self.collectionView.delegate = self
+    self.collectionView.dataSource = self
     
-    // MARK: - Recent Watch View
-    self.tableView.register(
-      UINib(nibName: HomeRecentWatchContainerCell.identifier, bundle: nil),
-      forCellReuseIdentifier: HomeRecentWatchContainerCell.identifier
-    )
-    
-    self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "empty")
-    self.tableView.delegate = self
-    self.tableView.dataSource = self
+    self.collectionView.isHidden = true
   }
   
   private func bindViewModel() {
-    // TableView 동작 방식
-    // 1. dataSource에게 몇개의 셀이 있는지 물어봄
-    // 2. 각 셀에 뭘 보여줄까?라고 물어봄
-    // 3. reloadData를 호출해야 다시 물어볼 수 있음
     self.homeViewModel.dataChanged = { [weak self] in
-      self?.tableView.reloadData()
+      self?.collectionView.isHidden = false
+      self?.collectionView.reloadData()
     }
   }
 }
 
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
-  func numberOfSections(in tableView: UITableView) -> Int {
+extension HomeViewController: UICollectionViewDataSource {
+  func numberOfSections(in collectionView: UICollectionView) -> Int {
     HomeSection.allCases.count
   }
   
-  // 각 section의 row 개수
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func collectionView(
+    _ collectionView: UICollectionView,
+    numberOfItemsInSection section: Int
+  ) -> Int {
     guard let section = HomeSection(rawValue: section) else { return 0 }
     
     switch section {
     case .header:
-      return 1
+      return 0
     case .video:
       return self.homeViewModel.home?.videos.count ?? 0
-    case .ranking:
-      return 1
-    case .recentWatch:
-      return 1
-    case .recommend:
-      return 1
-    case .footer:
-      return 1
+//    case .ranking:
+//      return 1
+//    case .recentWatch:
+//      return 1
+//    case .recommend:
+//      return 1
+//    case .footer:
+//      return 0
     }
   }
   
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    guard let section = HomeSection(rawValue: indexPath.section) else { return 0 }
-    
-    switch section {
-    case .header:
-      return HomeHeaderCell.height
-    case .video:
-      return HomeVideoCell.height
-    case .ranking:
-      return HomeRankingContainerCell.height
-    case .recentWatch:
-      return HomeRecentWatchContainerCell.height
-    case .recommend:
-      return HomeRecommendContainerCell.height(homeRecommendViewModel: self.homeViewModel.recommendViewModel)
-    case .footer:
-      return HomeFooterCell.height
-    }
-  }
-  
-  // 셀 구성
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  func collectionView(
+    _ collectionView: UICollectionView,
+    cellForItemAt indexPath: IndexPath
+  ) -> UICollectionViewCell {
     guard let section = HomeSection(rawValue: indexPath.section) else {
-      return tableView.dequeueReusableCell(withIdentifier: "empty", for: indexPath)
+      return collectionView.dequeueReusableCell(
+        withReuseIdentifier: "empty",
+        for: indexPath
+      )
     }
     
     switch section {
-    case .header:
-      return tableView.dequeueReusableCell(withIdentifier: HomeHeaderCell.identifier, for: indexPath)
+    case .header
+//      , .footer
+      :
+      return collectionView.dequeueReusableCell(
+        withReuseIdentifier: "empty",
+        for: indexPath
+      )
+      
     case .video:
-      let cell = tableView.dequeueReusableCell(
-        withIdentifier: HomeVideoCell.identifier,
+      let cell = collectionView.dequeueReusableCell(
+        withReuseIdentifier: HomeVideoCell.identifier,
         for: indexPath
       )
       
       if let cell = cell as? HomeVideoCell,
-         let data = self.homeViewModel.home?.videos[indexPath.row] {
+         let data = self.homeViewModel.home?.videos[indexPath.item] {
         cell.setData(data)
       }
       
       return cell
-    case .ranking:
-      let cell = tableView.dequeueReusableCell(
-        withIdentifier: HomeRankingContainerCell.identifier,
-        for: indexPath
-      )
-      
-      if let cell = cell as? HomeRankingContainerCell,
-         let data = self.homeViewModel.home?.rankings {
-        cell.delegate = self
-        cell.setData(data)
-      }
-      
-      return cell
-    case .recentWatch:
-      let cell = tableView.dequeueReusableCell(
-        withIdentifier: HomeRecentWatchContainerCell.identifier,
-        for: indexPath
-      )
-      
-      if let cell = cell as? HomeRecentWatchContainerCell,
-         let data = self.homeViewModel.home?.recents {
-        cell.delegate = self
-        cell.setData(data)
-      }
-      
-      return cell
-    case .recommend:
-      let cell = tableView.dequeueReusableCell(
-        withIdentifier: HomeRecommendContainerCell.identifier,
-        for: indexPath
-      )
-      
-      if let cell = cell as? HomeRecommendContainerCell {
-        cell.delegate = self
-        cell.setViewModel(self.homeViewModel.recommendViewModel)
-      }
-      
-      return cell
-    case .footer:
-      return tableView.dequeueReusableCell(withIdentifier: HomeFooterCell.identifier, for: indexPath)
+//    case .ranking:
+//      let cell = collectionView.dequeueReusableCell(
+//        withReuseIdentifier: HomeRankingContainerCell.identifier,
+//        for: indexPath
+//      )
+//      
+//      if let cell = cell as? HomeRankingContainerCell,
+//         let data = self.homeViewModel.home?.rankings {
+//        cell.setData(data)
+//      }
+//      
+//      (cell as? HomeRankingContainerCell)?.delegate = self
+//      
+//      return cell
+//      
+//    case .recentWatch:
+//      let cell = collectionView.dequeueReusableCell(
+//        withReuseIdentifier: HomeRecentWatchContainerCell.identifier,
+//        for: indexPath
+//      )
+//      
+//      if let cell = cell as? HomeRecentWatchContainerCell,
+//         let data = self.homeViewModel.home?.recents {
+//        cell.delegate = self
+//        cell.setData(data)
+//      }
+//      
+//      return cell
+//      
+//    case .recommend:
+//      let cell = collectionView.dequeueReusableCell(
+//        withReuseIdentifier: HomeRecommendContainerCell.identifier,
+//        for: indexPath
+//      )
+//      
+//      if let cell = cell as? HomeRecommendContainerCell {
+//        cell.delegate = self
+//      }
+//      
+//      return cell
+    }
+  }
+}
+
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    guard let section = HomeSection(rawValue: section) else {
+      return .zero
+    }
+    
+    switch section {
+    case .header:
+      return CGSize(width: collectionView.frame.width, height: HomeHeaderView.height)
+//    case .ranking:
+//      return CGSize(width: collectionView.frame.width, height: HomeRankingHeaderView.height)
+    case .video
+//      , .recentWatch, .recommend, .footer
+      :
+      return .zero
+    }
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+    guard let section = HomeSection(rawValue: section) else {
+      return .zero
+    }
+    
+    switch section {
+//    case .footer:
+//      return CGSize(width: collectionView.frame.width, height: HomeFooterView.height)
+    case
+        .header,
+//        .ranking,
+        .video
+//        .recentWatch, .recommend
+      :
+      return .zero
+    }
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    guard let section = HomeSection(rawValue: section) else {
+      return .zero
+    }
+    
+    return self.insetForSection(section)
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    guard let section = HomeSection(rawValue: section) else {
+      return 0
+    }
+    
+    switch section {
+    case .header
+//      , .footer
+      :
+      return 0
+    case .video
+//      , .ranking, .recentWatch, .recommend
+      :
+      return 1
+    }
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    guard let section = HomeSection(rawValue: indexPath.section) else {
+      return .zero
+    }
+    
+    let inset = self.insetForSection(section)
+    let width = collectionView.frame.width - inset.left - inset.right
+    
+    switch section {
+    case .header
+//      , .footer
+      :
+      return .zero
+    case .video:
+      return .init(width: width, height: HomeVideoCell.height)
+//    case .ranking:
+//      return .init(width: width, height: HomeRankingContainerCell.height)
+//    case .recentWatch:
+//      return .init(width: width, height: HomeRecentWatchContainerCell.height)
+//    case .recommend:
+//      return .init(
+//        width: width,
+//        height: HomeRecommendContainerCell.height(homeRecommendViewModel: self.homeViewModel.recommendViewModel)
+//      )
+    }
+  }
+  
+  private func insetForSection(_ section: HomeSection) -> UIEdgeInsets {
+    switch section {
+    case .header
+//      , .footer
+      :
+      return .zero
+    case .video
+//      , .ranking, .recentWatch, .recommend
+      :
+      return .init(top: 0, left: 21, bottom: 21, right: 21)
     }
   }
 }
@@ -184,8 +261,7 @@ extension HomeViewController: HomeRecommendContainerCellDelegate {
   }
   
   func homeRecommendContainerCellFoldChanged(_ cell: HomeRecommendContainerCell) {
-    // cell의 높이를 다시 바꿔줘야하기 때문에
-    self.tableView.reloadData()
+    self.collectionView.collectionViewLayout.invalidateLayout()
   }
 }
 
