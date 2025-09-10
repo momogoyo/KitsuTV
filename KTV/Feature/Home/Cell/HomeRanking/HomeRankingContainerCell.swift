@@ -11,10 +11,10 @@ protocol HomeRankingContainerCellDelegate: AnyObject {
   func homeRankingContainerCell(_ cell: HomeRankingContainerCell, didSelectItemAt index: Int)
 }
 
-class HomeRankingContainerCell: UITableViewCell {
+class HomeRankingContainerCell: UICollectionViewCell {
   
   static let identifier: String = "HomeRankingContainerCell"
-  static let height: CGFloat = 349
+  static let height: CGFloat = 265
   
   @IBOutlet weak var collectionView: UICollectionView!
   weak var delegate: HomeRankingContainerCellDelegate?
@@ -32,19 +32,16 @@ class HomeRankingContainerCell: UITableViewCell {
     self.collectionView.dataSource = self
   }
   
-  override func setSelected(_ selected: Bool, animated: Bool) {
-    super.setSelected(selected, animated: animated)
-  }
-  
   func setData(_ data: [Home.Ranking]) {
     self.rankings = data
+    print("Ranking data count: \(data.count)")
     self.collectionView.reloadData()
   }
 }
 
 extension HomeRankingContainerCell: UICollectionViewDelegate, UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 5
+    return self.rankings?.count ?? 0
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

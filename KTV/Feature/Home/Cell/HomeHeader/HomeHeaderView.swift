@@ -14,7 +14,5 @@ class HomeHeaderView: UICollectionReusableView {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    
-    print("123")
   }
 }
