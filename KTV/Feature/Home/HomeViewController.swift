@@ -35,13 +35,18 @@ class HomeViewController: UIViewController {
       withReuseIdentifier: HomeRankingHeaderView.identifier
     )
     
+    // UICollectionViewCell
     self.collectionView.register(
-      UINib(nibName: "HomeVideoCell", bundle: .main),
+      UINib(nibName: HomeVideoCell.identifier, bundle: .main),
       forCellWithReuseIdentifier: HomeVideoCell.identifier
     )
     self.collectionView.register(
-      UINib(nibName: HomeRankingContainerCell.identifier, bundle: nil),
+      UINib(nibName: HomeRankingContainerCell.identifier, bundle: .main),
       forCellWithReuseIdentifier: HomeRankingContainerCell.identifier
+    )
+    self.collectionView.register(
+      UINib(nibName: HomeRecentWatchContainerCell.identifier, bundle: .main),
+      forCellWithReuseIdentifier: HomeRecentWatchContainerCell.identifier
     )
     
     self.collectionView.register(
@@ -62,11 +67,114 @@ class HomeViewController: UIViewController {
   }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout으로 UICollectionView의 레이아웃을 세밀하게 제어
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
+  // 섹션별 헤더 크기 설정
+  func collectionView(
+    _ collectionView: UICollectionView,
+    layout collectionViewLayout: UICollectionViewLayout,
+    referenceSizeForHeaderInSection section: Int
+  ) -> CGSize {
+    guard let section = HomeSection(rawValue: section) else {
+      return .zero
+    }
+    
+    switch section {
+    case .header:
+      return CGSize(width: collectionView.frame.width, height: HomeHeaderView.height)
+    case .ranking:
+      return CGSize(width: collectionView.frame.width, height: HomeRankingHeaderView.height)
+    case .video, .recentWatch:
+      return .zero
+    }
+  }
+  
+  // 섹션별 푸터 크기 설정
+  func collectionView(
+    _ collectionView: UICollectionView,
+    layout collectionViewLayout: UICollectionViewLayout,
+    referenceSizeForFooterInSection section: Int
+  ) -> CGSize {
+    guard let section = HomeSection(rawValue: section) else {
+      return .zero
+    }
+    
+    switch section {
+    case .header, .video, .ranking, .recentWatch:
+      return .zero
+    }
+  }
+  
+  // 섹션 여백 설정
+  func collectionView(
+    _ collectionView: UICollectionView,
+    layout collectionViewLayout: UICollectionViewLayout,
+    insetForSectionAt section: Int
+  ) -> UIEdgeInsets {
+    guard let section = HomeSection(rawValue: section) else {
+      return .zero
+    }
+    
+    return self.insetForSection(section)
+  }
+  
+  // 아이템 간 간격 설정
+  func collectionView(
+    _ collectionView: UICollectionView,
+    layout collectionViewLayout: UICollectionViewLayout,
+    minimumLineSpacingForSectionAt section: Int
+  ) -> CGFloat {
+    guard let section = HomeSection(rawValue: section) else { return 0 }
+    
+    switch section {
+    case .header:
+      return 0
+    case .video, .ranking, .recentWatch:
+      return 21
+    }
+  }
+  
+  // 각 셀의 크기 설정
+  func collectionView(
+    _ collectionView: UICollectionView,
+    layout collectionViewLayout: UICollectionViewLayout,
+    sizeForItemAt indexPath: IndexPath
+  ) -> CGSize {
+    guard let section = HomeSection(rawValue: indexPath.section) else {
+      return .zero
+    }
+    
+    let inset = self.insetForSection(section)
+    let width = collectionView.frame.width - inset.left - inset.right
+    
+    switch section {
+    case .header:
+      return .zero
+    case .video:
+      return .init(width: width, height: HomeVideoCell.height)
+    case .ranking:
+      return .init(width: width, height: HomeRankingContainerCell.height)
+    case .recentWatch:
+      return .init(width: width, height: HomeRecentWatchContainerCell.height)
+    }
+  }
+  
+  private func insetForSection(_ section: HomeSection) -> UIEdgeInsets {
+    switch section {
+    case .header:
+      return .zero
+    case .video, .ranking, .recentWatch:
+      return .init(top: 0, left: 21, bottom: 21, right: 21)
+    }
+  }
+}
+
 extension HomeViewController: UICollectionViewDataSource {
   func numberOfSections(in collectionView: UICollectionView) -> Int {
     HomeSection.allCases.count
   }
   
+  // 각 섹션의 아이템 개수 반환
   func collectionView(
     _ collectionView: UICollectionView,
     numberOfItemsInSection section: Int
@@ -80,8 +188,8 @@ extension HomeViewController: UICollectionViewDataSource {
       return self.homeViewModel.home?.videos.count ?? 0
     case .ranking:
       return 1
-      //    case .recentWatch:
-      //      return 1
+    case .recentWatch:
+      return 1
       //    case .recommend:
       //      return 1
       //    case .footer:
@@ -89,6 +197,7 @@ extension HomeViewController: UICollectionViewDataSource {
     }
   }
   
+  // 섹션별 헤더/푸터 뷰 생성 및 반환
   func collectionView(
     _ collectionView: UICollectionView,
     viewForSupplementaryElementOfKind kind: String,
@@ -111,11 +220,12 @@ extension HomeViewController: UICollectionViewDataSource {
         withReuseIdentifier: HomeRankingHeaderView.identifier,
         for: indexPath
       )
-    case .video:
+    case .video, .recentWatch:
       return .init()
     }
   }
   
+  // 각 인덱스에 해당하는 셀 생성
   func collectionView(
     _ collectionView: UICollectionView,
     cellForItemAt indexPath: IndexPath
@@ -153,107 +263,25 @@ extension HomeViewController: UICollectionViewDataSource {
       
       if let cell = cell as? HomeRankingContainerCell,
          let data = self.homeViewModel.home?.rankings {
-        print("Setting ranking data: \(data.count) items")
         cell.setData(data)
       }
       
       (cell as? HomeRankingContainerCell)?.delegate = self
       
       return cell
-    }
-  }
-}
-
-extension HomeViewController: UICollectionViewDelegateFlowLayout {
-  func collectionView(
-    _ collectionView: UICollectionView,
-    layout collectionViewLayout: UICollectionViewLayout,
-    referenceSizeForHeaderInSection section: Int
-  ) -> CGSize {
-    guard let section = HomeSection(rawValue: section) else {
-      return .zero
-    }
-    
-    switch section {
-    case .header:
-      return CGSize(width: collectionView.frame.width, height: HomeHeaderView.height)
-    case .ranking:
-      return CGSize(width: collectionView.frame.width, height: HomeRankingHeaderView.height)
-    case .video:
-      return .zero
-    }
-  }
-  
-  func collectionView(
-    _ collectionView: UICollectionView,
-    layout collectionViewLayout: UICollectionViewLayout,
-    referenceSizeForFooterInSection section: Int
-  ) -> CGSize {
-    guard let section = HomeSection(rawValue: section) else {
-      return .zero
-    }
-    
-    switch section {
-    case .header, .ranking, .video:
-      return .zero
-    }
-  }
-  
-  func collectionView(
-    _ collectionView: UICollectionView,
-    layout collectionViewLayout: UICollectionViewLayout,
-    insetForSectionAt section: Int
-  ) -> UIEdgeInsets {
-    guard let section = HomeSection(rawValue: section) else {
-      return .zero
-    }
-    
-    return self.insetForSection(section)
-  }
-  
-  func collectionView(
-    _ collectionView: UICollectionView,
-    layout collectionViewLayout: UICollectionViewLayout,
-    minimumLineSpacingForSectionAt section: Int
-  ) -> CGFloat {
-    guard let section = HomeSection(rawValue: section) else { return 0 }
-    
-    switch section {
-    case .header:
-      return 0
-    case .video, .ranking:
-      return 21
-    }
-  }
-  
-  func collectionView(
-    _ collectionView: UICollectionView,
-    layout collectionViewLayout: UICollectionViewLayout,
-    sizeForItemAt indexPath: IndexPath
-  ) -> CGSize {
-    guard let section = HomeSection(rawValue: indexPath.section) else {
-      return .zero
-    }
-    
-    let inset = self.insetForSection(section)
-    let width = collectionView.frame.width - inset.left - inset.right
-    
-    switch section {
-    case .header:
-      return .zero
-    case .video:
-      return .init(width: width, height: HomeVideoCell.height)
-    case .ranking:
-      return .init(width: width, height: HomeRankingContainerCell.height)
-    }
-  }
-  
-  private func insetForSection(_ section: HomeSection) -> UIEdgeInsets {
-    switch section {
-    case .header:
-      return .zero
-    case .video, .ranking:
-        return .init(top: 0, left: 21, bottom: 21, right: 21)
+    case .recentWatch:
+      let cell = collectionView.dequeueReusableCell(
+        withReuseIdentifier: HomeRecentWatchContainerCell.identifier,
+        for: indexPath
+      )
+      
+      if let cell = cell as? HomeRecentWatchContainerCell,
+         let data = self.homeViewModel.home?.recents {
+        cell.delegate = self
+        cell.setData(data)
+      }
+      
+      return cell
     }
   }
 }

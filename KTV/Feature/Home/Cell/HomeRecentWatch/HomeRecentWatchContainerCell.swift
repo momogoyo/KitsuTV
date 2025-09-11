@@ -14,7 +14,7 @@ protocol HomeRecentWatchContainerCellDelegate: AnyObject {
 class HomeRecentWatchContainerCell: UICollectionViewCell {
   
   static let identifier: String = "HomeRecentWatchContainerCell"
-  static let height: CGFloat = 207
+  static let height: CGFloat = 189
   
   @IBOutlet weak var collectionView: UICollectionView!
   weak var delegate: HomeRecentWatchContainerCellDelegate?
@@ -43,11 +43,17 @@ class HomeRecentWatchContainerCell: UICollectionViewCell {
 }
 
 extension HomeRecentWatchContainerCell: UICollectionViewDelegate, UICollectionViewDataSource{
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+  func collectionView(
+    _ collectionView: UICollectionView,
+    numberOfItemsInSection section: Int
+  ) -> Int {
     return self.recents?.count ?? 0
   }
   
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+  func collectionView(
+    _ collectionView: UICollectionView,
+    cellForItemAt indexPath: IndexPath
+  ) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(
       withReuseIdentifier: HomeRecentWatchItemCell.identifier,
       for: indexPath
