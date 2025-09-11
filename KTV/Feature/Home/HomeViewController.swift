@@ -48,6 +48,10 @@ class HomeViewController: UIViewController {
       UINib(nibName: HomeRecentWatchContainerCell.identifier, bundle: .main),
       forCellWithReuseIdentifier: HomeRecentWatchContainerCell.identifier
     )
+    self.collectionView.register(
+      UINib(nibName: HomeRecommendContainerCell.identifier, bundle: .main),
+      forCellWithReuseIdentifier: HomeRecommendContainerCell.identifier
+    )
     
     self.collectionView.register(
       UICollectionViewCell.self,
@@ -84,7 +88,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
       return CGSize(width: collectionView.frame.width, height: HomeHeaderView.height)
     case .ranking:
       return CGSize(width: collectionView.frame.width, height: HomeRankingHeaderView.height)
-    case .video, .recentWatch:
+    case .video, .recentWatch, .recommend:
       return .zero
     }
   }
@@ -100,7 +104,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     }
     
     switch section {
-    case .header, .video, .ranking, .recentWatch:
+    case .header, .video, .ranking, .recentWatch, .recommend:
       return .zero
     }
   }
@@ -129,7 +133,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     switch section {
     case .header:
       return 0
-    case .video, .ranking, .recentWatch:
+    case .video, .ranking, .recentWatch, .recommend:
       return 21
     }
   }
@@ -156,6 +160,8 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
       return .init(width: width, height: HomeRankingContainerCell.height)
     case .recentWatch:
       return .init(width: width, height: HomeRecentWatchContainerCell.height)
+    case .recommend:
+      return .init(width: width, height: HomeRecommendContainerCell.height(homeRecommendViewModel: self.homeViewModel.recommendViewModel))
     }
   }
   
@@ -163,7 +169,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     switch section {
     case .header:
       return .zero
-    case .video, .ranking, .recentWatch:
+    case .video, .ranking, .recentWatch, .recommend:
       return .init(top: 0, left: 21, bottom: 21, right: 21)
     }
   }
@@ -190,8 +196,8 @@ extension HomeViewController: UICollectionViewDataSource {
       return 1
     case .recentWatch:
       return 1
-      //    case .recommend:
-      //      return 1
+    case .recommend:
+      return 1
       //    case .footer:
       //      return 0
     }
@@ -220,7 +226,7 @@ extension HomeViewController: UICollectionViewDataSource {
         withReuseIdentifier: HomeRankingHeaderView.identifier,
         for: indexPath
       )
-    case .video, .recentWatch:
+    case .video, .recentWatch, .recommend:
       return .init()
     }
   }
@@ -279,6 +285,18 @@ extension HomeViewController: UICollectionViewDataSource {
          let data = self.homeViewModel.home?.recents {
         cell.delegate = self
         cell.setData(data)
+      }
+      
+      return cell
+    case .recommend:
+      let cell = collectionView.dequeueReusableCell(
+        withReuseIdentifier: HomeRecommendContainerCell.identifier,
+        for: indexPath
+      )
+      
+      if let cell = cell as? HomeRecommendContainerCell {
+        cell.delegate = self
+        cell.setViewModel(self.homeViewModel.recommendViewModel)
       }
       
       return cell

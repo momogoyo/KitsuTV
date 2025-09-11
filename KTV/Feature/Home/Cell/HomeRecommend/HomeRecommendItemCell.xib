@@ -61,7 +61,6 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" name="more-bk"/>
                         <constraints>
                             <constraint firstItem="Iql-zd-4iO" firstAttribute="top" secondItem="091-nX-cuA" secondAttribute="top" id="5N4-La-6Wy"/>
                             <constraint firstItem="2hK-mr-drX" firstAttribute="leading" secondItem="091-nX-cuA" secondAttribute="leading" constant="72" id="Ytz-pP-pCh"/>
@@ -88,7 +87,6 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" name="more-bk"/>
                         <constraints>
                             <constraint firstItem="k0A-Rd-f5x" firstAttribute="leading" secondItem="Ohj-IA-Odg" secondAttribute="leading" id="2qb-a4-c9y"/>
                             <constraint firstItem="k0A-Rd-f5x" firstAttribute="top" secondItem="Ohj-IA-Odg" secondAttribute="top" constant="7" id="ExE-fv-q2b"/>
@@ -99,7 +97,7 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" name="more-bk"/>
+                <color key="backgroundColor" name="bk-origin"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="091-nX-cuA" secondAttribute="bottom" constant="6" id="1nI-fS-U68"/>
                     <constraint firstItem="091-nX-cuA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="F70-vm-ufP"/>
@@ -136,9 +134,6 @@
         </namedColor>
         <namedColor name="main-yellow">
             <color red="0.99215686274509807" green="0.89411764705882357" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="more-bk">
-            <color red="0.078431372549019607" green="0.078431372549019607" blue="0.078431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

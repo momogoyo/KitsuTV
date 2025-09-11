@@ -18,7 +18,7 @@ class HomeRecommendViewModel {
   var recommends: [Home.Recommend]?
   var itemCount: Int {
     let count = self.isFolded ? 5 : self.recommends?.count ?? 0
-
+    
     return min(self.recommends?.count ?? 0, count)
   }
   

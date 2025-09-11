@@ -12,7 +12,7 @@ protocol HomeRecommendContainerCellDelegate: AnyObject {
   func homeRecommendContainerCellFoldChanged(_ cell: HomeRecommendContainerCell)
 }
 
-class HomeRecommendContainerCell: UITableViewCell {
+class HomeRecommendContainerCell: UICollectionViewCell {
   
   static let identifier: String = "HomeRecommendContainerCell"
   
@@ -29,7 +29,7 @@ class HomeRecommendContainerCell: UITableViewCell {
   @IBOutlet weak var foldButton: UIButton!
   weak var delegate: HomeRecommendContainerCellDelegate?
   
-  private var homeRecommendViewModel: HomeRecommendViewModel = HomeRecommendViewModel()
+  private var homeRecommendViewModel: HomeRecommendViewModel?
   private var recommends: [Home.Recommend]?
   
   override func awakeFromNib() {
@@ -47,12 +47,8 @@ class HomeRecommendContainerCell: UITableViewCell {
     )
   }
   
-  override func setSelected(_ selected: Bool, animated: Bool) {
-    super.setSelected(selected, animated: animated)
-  }
-  
   @IBAction func foldButtonDidTap(_ sender: UIButton) {
-    self.homeRecommendViewModel.toggleFoldState()
+    self.homeRecommendViewModel?.toggleFoldState()
     self.delegate?.homeRecommendContainerCellFoldChanged(self)
   }
   
@@ -62,8 +58,8 @@ class HomeRecommendContainerCell: UITableViewCell {
     self.tableView.reloadData()
     
     homeRecommendViewModel.foldChanged = { [weak self] isFolded in
-      self?.tableView.reloadData()
       self?.setButtonImage(isFolded)
+      self?.tableView.reloadData()
     }
   }
   
@@ -77,18 +73,24 @@ class HomeRecommendContainerCell: UITableViewCell {
 }
 
 extension HomeRecommendContainerCell: UITableViewDelegate, UITableViewDataSource {
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 5
+  func tableView(
+    _ tableView: UITableView,
+    numberOfRowsInSection section: Int
+  ) -> Int {
+      self.homeRecommendViewModel?.itemCount ?? 0
   }
   
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  func tableView(
+    _ tableView: UITableView,
+    cellForRowAt indexPath: IndexPath
+  ) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(
       withIdentifier: HomeRecommendItemCell.identifier,
       for: indexPath
     )
     
     if let cell = cell as? HomeRecommendItemCell,
-       let data = self.recommends?[indexPath.row] {
+       let data = self.homeRecommendViewModel?.recommends?[indexPath.row] {
       cell.setData(data, rank: indexPath.row + 1)
     }
        
