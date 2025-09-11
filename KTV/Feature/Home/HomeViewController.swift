@@ -34,6 +34,11 @@ class HomeViewController: UIViewController {
       forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
       withReuseIdentifier: HomeRankingHeaderView.identifier
     )
+    self.collectionView.register(
+      UINib(nibName: "HomeFooterView", bundle: .main),
+      forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
+      withReuseIdentifier: HomeFooterView.identifier
+    )
     
     // UICollectionViewCell
     self.collectionView.register(
@@ -88,7 +93,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
       return CGSize(width: collectionView.frame.width, height: HomeHeaderView.height)
     case .ranking:
       return CGSize(width: collectionView.frame.width, height: HomeRankingHeaderView.height)
-    case .video, .recentWatch, .recommend:
+    case .video, .recentWatch, .recommend, .footer:
       return .zero
     }
   }
@@ -104,6 +109,8 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     }
     
     switch section {
+    case .footer:
+        return CGSize(width: collectionView.frame.width, height: HomeFooterView.height)
     case .header, .video, .ranking, .recentWatch, .recommend:
       return .zero
     }
@@ -131,7 +138,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     guard let section = HomeSection(rawValue: section) else { return 0 }
     
     switch section {
-    case .header:
+    case .header, .footer:
       return 0
     case .video, .ranking, .recentWatch, .recommend:
       return 21
@@ -152,7 +159,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     let width = collectionView.frame.width - inset.left - inset.right
     
     switch section {
-    case .header:
+    case .header, .footer:
       return .zero
     case .video:
       return .init(width: width, height: HomeVideoCell.height)
@@ -167,7 +174,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
   
   private func insetForSection(_ section: HomeSection) -> UIEdgeInsets {
     switch section {
-    case .header:
+    case .header, .footer:
       return .zero
     case .video, .ranking, .recentWatch, .recommend:
       return .init(top: 0, left: 21, bottom: 21, right: 21)
@@ -198,8 +205,8 @@ extension HomeViewController: UICollectionViewDataSource {
       return 1
     case .recommend:
       return 1
-      //    case .footer:
-      //      return 0
+    case .footer:
+      return 0
     }
   }
   
@@ -228,7 +235,14 @@ extension HomeViewController: UICollectionViewDataSource {
       )
     case .video, .recentWatch, .recommend:
       return .init()
+    case .footer:
+      return collectionView.dequeueReusableSupplementaryView(
+        ofKind: kind,
+        withReuseIdentifier: HomeFooterView.identifier,
+        for: indexPath
+      )
     }
+  
   }
   
   // 각 인덱스에 해당하는 셀 생성
@@ -244,7 +258,7 @@ extension HomeViewController: UICollectionViewDataSource {
     }
     
     switch section {
-    case .header:
+    case .header, .footer:
       return collectionView.dequeueReusableCell(
         withReuseIdentifier: "empty",
         for: indexPath

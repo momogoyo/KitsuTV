@@ -13,5 +13,5 @@ enum HomeSection: Int, CaseIterable {
   case ranking
   case recentWatch
   case recommend
-//  case footer
+  case footer
 }
