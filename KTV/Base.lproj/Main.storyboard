@@ -19,18 +19,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchImage" translatesAutoresizingMaskIntoConstraints="NO" id="cSB-ra-dIO">
-                                <rect key="frame" x="146.66666666666666" y="401" width="100" height="100"/>
+                                <rect key="frame" x="116.66666666666669" y="371" width="160" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="BKK-7k-qC1"/>
+                                    <constraint firstAttribute="height" constant="160" id="pjk-Dq-n5U"/>
+                                </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2t5-Aa-jPF">
-                                <rect key="frame" x="96.666666666666686" y="553" width="200" height="38"/>
+                                <rect key="frame" x="96.666666666666686" y="583" width="200" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="LUq-9P-Rhw"/>
                                     <constraint firstAttribute="height" constant="38" id="loq-Ty-NjQ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="로그인">
-                                    <color key="titleColor" name="main-brown"/>
+                                    <color key="titleColor" name="bk-origin"/>
                                 </state>
                                 <connections>
                                     <action selector="loginDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x7s-2o-PGH"/>
@@ -38,7 +42,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" name="main-yellow"/>
+                        <color key="backgroundColor" name="main-wh"/>
                         <constraints>
                             <constraint firstItem="cSB-ra-dIO" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="N9p-fv-qYg"/>
                             <constraint firstItem="2t5-Aa-jPF" firstAttribute="top" secondItem="cSB-ra-dIO" secondAttribute="bottom" constant="52" id="Ubd-Mx-V1c"/>
@@ -164,7 +168,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="launchImage" width="100" height="100"/>
+        <image name="launchImage" width="682.66668701171875" height="682.66668701171875"/>
         <image name="tabIcon_home" width="28" height="28"/>
         <image name="tabIcon_home_selected" width="28" height="28"/>
         <image name="tabIcon_live" width="80" height="28"/>
@@ -174,11 +178,11 @@
         <namedColor name="bg">
             <color red="0.10588235294117647" green="0.10588235294117647" blue="0.10588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="main-brown">
-            <color red="0.27843137254901962" green="0.12941176470588237" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="bk-origin">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="main-yellow">
-            <color red="0.99215686274509807" green="0.89411764705882357" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="main-wh">
+            <color red="0.99607843137254903" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="more-bk">
             <color red="0.078431372549019607" green="0.078431372549019607" blue="0.078431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -16,9 +16,9 @@ class LoginViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.loginButton.layer.cornerRadius = 19
-    self.loginButton.layer.borderColor = UIColor(named: "main-brown")?.cgColor
-    self.loginButton.layer.borderWidth = 1 
+    self.loginButton.layer.cornerRadius = 8
+    self.loginButton.layer.borderColor = UIColor(named: "bk-origin")?.cgColor
+    self.loginButton.layer.borderWidth = 2
   }
 
   @IBAction func loginDidTap(_ sender: UIButton) {
