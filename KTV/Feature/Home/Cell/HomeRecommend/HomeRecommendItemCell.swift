@@ -28,9 +28,9 @@ class HomeRecommendItemCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     
-    self.thumbnailImageView.layer.cornerRadius = 5
+    self.thumbnailImageView.layer.cornerRadius = 6
     self.thumbnailImageView.clipsToBounds = true
-    self.rankLabel.layer.cornerRadius = 5
+    self.rankLabel.layer.cornerRadius = 4
     self.rankLabel.clipsToBounds = true
     self.playTimeBGView.layer.cornerRadius = 3
   }

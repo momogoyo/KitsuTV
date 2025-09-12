@@ -18,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchImage" translatesAutoresizingMaskIntoConstraints="NO" id="h7q-SB-gBz">
-                                <rect key="frame" x="116.66666666666669" y="371" width="160" height="160"/>
+                                <rect key="frame" x="96.666666666666686" y="351" width="200" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="160" id="Kgr-0l-fzg"/>
-                                    <constraint firstAttribute="height" constant="160" id="fcF-oT-k2V"/>
+                                    <constraint firstAttribute="width" constant="200" id="Kgr-0l-fzg"/>
+                                    <constraint firstAttribute="height" constant="200" id="fcF-oT-k2V"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -39,7 +39,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="launchImage" width="682.66668701171875" height="682.66668701171875"/>
+        <image name="launchImage" width="1024" height="1024"/>
         <namedColor name="main-wh">
             <color red="0.99607843137254903" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "down-video-screen.png",
+      "filename" : "Download.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "down-video-screen@2x.png",
+      "filename" : "Download@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "down-video-screen@3x.png",
+      "filename" : "Download@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

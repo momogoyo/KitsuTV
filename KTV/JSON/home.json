@@ -2,126 +2,126 @@
   "recommends": [
     {
       "playtime": 90,
-      "title": "첫번째 추천",
-      "imageUrl": "http:\/\/localhost:8080\/image\/listthumb.png",
+      "title": "Meet with Apple: Explore the biggest updates from WWDC25",
+      "imageUrl": "http:\/\/localhost:8080\/image\/wwdc1.png",
       "videoId": 1,
-      "channel": "추천 채널"
+      "channel": "Apple Developer"
     },
     {
       "playtime": 70,
-      "title": "두번째 추천",
-      "imageUrl": "http:\/\/localhost:8080\/image\/listthumb.png",
+      "title": "WWDC25: Platforms State of the Union | Apple",
+      "imageUrl": "http:\/\/localhost:8080\/image\/wwdc2.png",
       "videoId": 2,
-      "channel": "추천 채널"
+      "channel": "Apple Developer"
     },
     {
       "playtime": 100,
-      "title": "세번째 추천",
-      "imageUrl": "http:\/\/localhost:8080\/image\/listthumb.png",
+      "title": "Liquid Glass 만나보기",
+      "imageUrl": "http:\/\/localhost:8080\/image\/wwdc3.png",
       "videoId": 3,
-      "channel": "추천 채널"
+      "channel": "Apple Developer"
     },
     {
       "playtime": 90,
-      "title": "네번째 추천",
-      "imageUrl": "http:\/\/localhost:8080\/image\/listthumb.png",
+      "title": "WWDC25 Platforms State of the Union Recap | Apple",
+      "imageUrl": "http:\/\/localhost:8080\/image\/wwdc4.png",
       "videoId": 4,
-      "channel": "추천 채널"
+      "channel": "Apple Developer"
     },
     {
       "playtime": 30,
-      "title": "다섯번째 추천",
-      "imageUrl": "http:\/\/localhost:8080\/image\/listthumb.png",
+      "title": "New things on the way from Apple",
+      "imageUrl": "http:\/\/localhost:8080\/image\/wwdc5.png",
       "videoId": 5,
-      "channel": "추천 채널"
+      "channel": "Apple Developer"
     },
     {
       "playtime": 40,
-      "title": "여섯번째 추천",
-      "imageUrl": "http:\/\/localhost:8080\/image\/listthumb.png",
+      "title": "Icon Composer로 아이콘 생성하기",
+      "imageUrl": "http:\/\/localhost:8080\/image\/wwdc6.png",
       "videoId": 6,
-      "channel": "추천 채널"
+      "channel": "Apple Developer"
     },
     {
       "playtime": 60,
-      "title": "일곱번째 추천",
-      "imageUrl": "http:\/\/localhost:8080\/image\/listthumb.png",
+      "title": "앱 아이콘의 새로운 디자인 만나보기",
+      "imageUrl": "http:\/\/localhost:8080\/image\/wwdc7.png",
       "videoId": 7,
-      "channel": "추천 채널"
+      "channel": "Apple Developer"
     },
     {
       "playtime": 40,
-      "title": "여덟번째 추천",
-      "imageUrl": "http:\/\/localhost:8080\/image\/listthumb.png",
+      "title": "아이디어에서 인터페이스까지 디자인 기초 구축하기",
+      "imageUrl": "http:\/\/localhost:8080\/image\/wwdc8.png",
       "videoId": 8,
-      "channel": "추천 채널"
+      "channel": "Apple Developer"
     },
     {
       "playtime": 60,
-      "title": "아홉번째 추천",
-      "imageUrl": "http:\/\/localhost:8080\/image\/listthumb.png",
+      "title": "Welcome to WWDC25 | Apple",
+      "imageUrl": "http:\/\/localhost:8080\/image\/wwdc9.png",
       "videoId": 9,
-      "channel": "추천 채널"
+      "channel": "Apple Developer"
     }
   ],
   "rankings": [
     {
       "videoId": 3,
-      "imageUrl": "http:\/\/localhost:8080\/image\/rankingthumbnail.png"
+      "imageUrl": "http:\/\/localhost:8080\/image\/shorts1.jpg"
     },
     {
       "videoId": 4,
-      "imageUrl": "http:\/\/localhost:8080\/image\/rankingthumbnail.png"
+      "imageUrl": "http:\/\/localhost:8080\/image\/shorts2.jpg"
     },
     {
       "videoId": 5,
-      "imageUrl": "http:\/\/localhost:8080\/image\/rankingthumbnail.png"
+      "imageUrl": "http:\/\/localhost:8080\/image\/shorts3.jpg"
     },
     {
       "videoId": 6,
-      "imageUrl": "http:\/\/localhost:8080\/image\/rankingthumbnail.png"
+      "imageUrl": "http:\/\/localhost:8080\/image\/shorts4.jpg"
     },
     {
       "videoId": 7,
-      "imageUrl": "http:\/\/localhost:8080\/image\/rankingthumbnail.png"
+      "imageUrl": "http:\/\/localhost:8080\/image\/shorts5.jpg"
     }
   ],
   "recents": [
     {
       "timeStamp": 1694335224.0776711,
-      "title": "첫번째 동영상",
-      "imageUrl": "http:\/\/localhost:8080\/image\/v_thumbnail2.png",
+      "title": "Animation videos explaining things with optimistic nihilism since 12,013",
+      "imageUrl": "http:\/\/localhost:8080\/image\/recent_watch1.jpg",
       "videoId": 1,
-      "channel": "첫번째 채널"
+      "channel": "Kurzgesagt – In a Nutshell"
     },
     {
       "timeStamp": 1694335224.0776811,
       "title": "두번째 동영상",
-      "imageUrl": "http:\/\/localhost:8080\/image\/v_thumbnail2.png",
-      "videoId": 1,
+      "imageUrl": "http:\/\/localhost:8080\/image\/recent_watch2.jpg",
+      "videoId": 2,
       "channel": "두번째 채널"
     }
   ],
   "videos": [
     {
-      "channel": "첫번째 채널",
-      "subtitle": "첫번째 부제목",
+      "channel": "디토이야기",
+      "subtitle": "상실과 고독이 뒤섞인 삶 속에서 자신 안의 괴물을 깨운 여인",
       "isHot": true,
-      "title": "첫번째 동영상",
-      "channelThumbnailURL": "http:\/\/localhost:8080\/image\/user.png",
-      "imageUrl": "http:\/\/localhost:8080\/image\/v_thumbnail3.png",
+      "title": "[영화리뷰/결말포함] 프랑케슈타인",
+      "channelThumbnailURL": "http:\/\/localhost:8080\/image\/user1.jpg",
+      "imageUrl": "http:\/\/localhost:8080\/image\/video_cell1.jpg",
       "videoId": 1,
-      "channelDescription": "이런저런 채널"
+      "channelDescription": "안녕하세요^^ 영화 리뷰 채널입니다."
     },
     {
-      "channel": "첫번째 채널",
-      "subtitle": "두번째 부제목",
+      "channel": "디토이야기",
+      "subtitle": "삶의 고난 속에서도 흔들림 없이 자유와 존엄을 꽃피운 여인",
       "isHot": false,
-      "title": "두번째 동영상",
-      "channelThumbnailURL": "http:\/\/localhost:8080\/image\/user.png",
-      "imageUrl": "http:\/\/localhost:8080\/image\/v_thumbnail1.png",
+      "title": "[영화리뷰/결말포함] 제인에어",
+      "channelThumbnailURL": "http:\/\/localhost:8080\/image\/user2.jpg",
+      "imageUrl": "http:\/\/localhost:8080\/image\/video_cell2.jpg",
       "videoId": 2,
-      "channelDescription": "이런저런 채널"
+      "channelDescription": "안녕하세요^^ 영화 리뷰 채널입니다."
     }
   ]
 }
