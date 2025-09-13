@@ -19,7 +19,11 @@ class HomeRankingItemCell: UICollectionViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     
-    self.layer.cornerRadius = 10
+    self.thumbnailImageView.layer.cornerRadius = 14
+    self.thumbnailImageView.clipsToBounds = true
+    self.numberLabel.layer.cornerRadius = 4
+    self.numberLabel.layer.maskedCorners = [.layerMaxXMaxYCorner]
+    self.numberLabel.clipsToBounds = true
   }
   
   // 셀이 재사용 되기 전에 초기화 해주는 역할

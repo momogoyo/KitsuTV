@@ -26,7 +26,7 @@
                         </imageView>
                     </subviews>
                     <viewLayoutGuide key="safeArea" id="tpL-zT-9uf"/>
-                    <color key="backgroundColor" name="foreground"/>
+                    <color key="backgroundColor" name="background"/>
                     <constraints>
                         <constraint firstItem="QpC-IY-L5I" firstAttribute="centerY" secondItem="Hl4-va-F6C" secondAttribute="centerY" id="Nsh-oV-PKo"/>
                         <constraint firstItem="QpC-IY-L5I" firstAttribute="leading" secondItem="Hl4-va-F6C" secondAttribute="leading" id="OHW-MN-p1d"/>
@@ -38,7 +38,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="KzM-AT-J9N"/>
-            <color key="backgroundColor" name="foreground"/>
+            <color key="backgroundColor" name="background"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="Hl4-va-F6C" secondAttribute="bottom" constant="16" id="Voe-ez-DOR"/>
                 <constraint firstItem="Hl4-va-F6C" firstAttribute="top" secondItem="iUZ-9r-Lmr" secondAttribute="top" id="XfF-1H-hkw"/>
@@ -50,8 +50,8 @@
     </objects>
     <resources>
         <image name="logo" width="200" height="200"/>
-        <namedColor name="foreground">
-            <color red="0.039000000804662704" green="0.039000000804662704" blue="0.039000000804662704" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="background">
+            <color red="0.039215687662363052" green="0.039215687662363052" blue="0.039215687662363052" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

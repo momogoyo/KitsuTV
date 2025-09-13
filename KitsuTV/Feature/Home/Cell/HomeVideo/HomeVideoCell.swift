@@ -30,7 +30,7 @@ class HomeVideoCell: UICollectionViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     
-    self.containerView.layer.cornerRadius = 10
+    self.containerView.layer.cornerRadius = 14
     self.containerView.layer.borderWidth = 1
     self.containerView.layer.borderColor = UIColor(named: "border")?.cgColor
     self.containerView.clipsToBounds = true
