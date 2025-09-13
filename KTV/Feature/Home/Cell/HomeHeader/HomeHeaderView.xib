@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,25 +17,20 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hl4-va-F6C">
                     <rect key="frame" x="16" y="0.0" width="361" height="50"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video" translatesAutoresizingMaskIntoConstraints="NO" id="QpC-IY-L5I">
-                            <rect key="frame" x="0.0" y="2.6666666666666679" width="30" height="45"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="QpC-IY-L5I">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="50"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="30" id="ssS-gp-3lW"/>
+                                <constraint firstAttribute="width" constant="40" id="6FS-Al-qva"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kitsu Premium" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qHO-Af-gvZ">
-                            <rect key="frame" x="40" y="15" width="114" height="20"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                            <color key="textColor" name="main-wh"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                     </subviews>
                     <viewLayoutGuide key="safeArea" id="tpL-zT-9uf"/>
                     <constraints>
                         <constraint firstItem="QpC-IY-L5I" firstAttribute="centerY" secondItem="Hl4-va-F6C" secondAttribute="centerY" id="Nsh-oV-PKo"/>
                         <constraint firstItem="QpC-IY-L5I" firstAttribute="leading" secondItem="Hl4-va-F6C" secondAttribute="leading" id="OHW-MN-p1d"/>
-                        <constraint firstItem="qHO-Af-gvZ" firstAttribute="leading" secondItem="QpC-IY-L5I" secondAttribute="trailing" constant="10" id="gqY-y0-EIM"/>
-                        <constraint firstItem="qHO-Af-gvZ" firstAttribute="centerY" secondItem="Hl4-va-F6C" secondAttribute="centerY" id="wU7-8l-wv9"/>
+                        <constraint firstItem="QpC-IY-L5I" firstAttribute="top" secondItem="Hl4-va-F6C" secondAttribute="top" id="VwB-pe-ia4"/>
+                        <constraint firstAttribute="bottom" secondItem="QpC-IY-L5I" secondAttribute="bottom" id="irw-xJ-N40"/>
+                        <constraint firstItem="QpC-IY-L5I" firstAttribute="leading" secondItem="tpL-zT-9uf" secondAttribute="leading" id="z1Z-e3-fvn"/>
                         <constraint firstItem="QpC-IY-L5I" firstAttribute="leading" secondItem="Hl4-va-F6C" secondAttribute="leading" id="zqk-fo-N20"/>
                     </constraints>
                 </view>
@@ -48,13 +42,10 @@
                 <constraint firstItem="Hl4-va-F6C" firstAttribute="leading" secondItem="iUZ-9r-Lmr" secondAttribute="leading" constant="16" id="nj0-VB-e32"/>
                 <constraint firstAttribute="trailing" secondItem="Hl4-va-F6C" secondAttribute="trailing" constant="16" id="nwU-Aa-wCl"/>
             </constraints>
-            <point key="canvasLocation" x="161" y="-51"/>
+            <point key="canvasLocation" x="159.54198473282443" y="-51.408450704225352"/>
         </collectionReusableView>
     </objects>
     <resources>
-        <image name="video" width="45" height="45"/>
-        <namedColor name="main-wh">
-            <color red="0.99607843137254903" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
+        <image name="logo" width="200" height="200"/>
     </resources>
 </document>
