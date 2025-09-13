@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="HomeRankingHeaderView" customModule="KitsuTV" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wo5-9S-W2a">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shorts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kjg-mp-FHw">
+                            <rect key="frame" x="20.999999999999996" y="21" width="57.666666666666657" height="21"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                            <color key="textColor" name="TextInverse"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" name="foreground"/>
+                    <constraints>
+                        <constraint firstItem="Kjg-mp-FHw" firstAttribute="top" secondItem="wo5-9S-W2a" secondAttribute="top" constant="21" id="JIL-WW-kFD"/>
+                        <constraint firstAttribute="bottom" secondItem="Kjg-mp-FHw" secondAttribute="bottom" constant="21" id="PQi-ze-1ES"/>
+                        <constraint firstItem="Kjg-mp-FHw" firstAttribute="leading" secondItem="wo5-9S-W2a" secondAttribute="leading" constant="21" id="fgf-X6-fSt"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="wo5-9S-W2a" secondAttribute="trailing" id="A9z-8f-pdn"/>
+                <constraint firstAttribute="bottom" secondItem="wo5-9S-W2a" secondAttribute="bottom" id="Kgg-rE-EFK"/>
+                <constraint firstItem="wo5-9S-W2a" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="Mnw-1p-zw3"/>
+                <constraint firstItem="wo5-9S-W2a" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="jkj-hj-jfY"/>
+            </constraints>
+            <point key="canvasLocation" x="47.328244274809158" y="20.774647887323944"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <namedColor name="TextInverse">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="foreground">
+            <color red="0.039000000804662704" green="0.039000000804662704" blue="0.039000000804662704" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
