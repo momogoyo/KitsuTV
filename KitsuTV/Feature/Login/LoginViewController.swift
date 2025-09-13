@@ -16,7 +16,7 @@ class LoginViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.loginButton.layer.cornerRadius = 8
+    self.loginButton.layer.cornerRadius = 6
   }
 
   @IBAction func loginDidTap(_ sender: UIButton) {
