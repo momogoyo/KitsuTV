@@ -19,7 +19,7 @@ class HomeRankingItemCell: UICollectionViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     
-    self.thumbnailImageView.layer.cornerRadius = 14
+    self.thumbnailImageView.layer.cornerRadius = 8
     self.thumbnailImageView.clipsToBounds = true
     self.numberLabel.layer.cornerRadius = 4
     self.numberLabel.layer.maskedCorners = [.layerMaxXMaxYCorner]

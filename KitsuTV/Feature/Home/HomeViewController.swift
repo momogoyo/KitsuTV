@@ -110,7 +110,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     
     switch section {
     case .footer:
-        return CGSize(width: collectionView.frame.width, height: HomeFooterView.height)
+      return CGSize(width: collectionView.frame.width, height: HomeFooterView.height)
     case .header, .video, .ranking, .recentWatch, .recommend:
       return .zero
     }
@@ -242,7 +242,7 @@ extension HomeViewController: UICollectionViewDataSource {
         for: indexPath
       )
     }
-  
+    
   }
   
   // 각 인덱스에 해당하는 셀 생성

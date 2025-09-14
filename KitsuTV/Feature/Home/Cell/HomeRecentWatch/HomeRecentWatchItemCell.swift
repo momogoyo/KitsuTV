@@ -21,7 +21,7 @@ class HomeRecentWatchItemCell: UICollectionViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     
-    self.thumbnailImageView.layer.cornerRadius = 42
+    self.thumbnailImageView.layer.cornerRadius = self.thumbnailImageView.frame.width / 2
     self.thumbnailImageView.layer.borderWidth = 2
     self.thumbnailImageView.layer.borderColor = UIColor(named: "border")?.cgColor
   }

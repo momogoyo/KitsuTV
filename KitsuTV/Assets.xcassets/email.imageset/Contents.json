@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "user2.jpg",
+      "filename" : "Envelope Closed.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Envelope Closed@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "Envelope Closed@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

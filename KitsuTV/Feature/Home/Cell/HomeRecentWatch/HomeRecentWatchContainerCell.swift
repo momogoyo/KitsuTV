@@ -24,7 +24,7 @@ class HomeRecentWatchContainerCell: UICollectionViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     
-    self.collectionView.layer.cornerRadius = 10
+    self.collectionView.layer.cornerRadius = 12
     self.collectionView.layer.borderWidth = 1
     self.collectionView.layer.borderColor = UIColor(named: "border")?.cgColor
     
