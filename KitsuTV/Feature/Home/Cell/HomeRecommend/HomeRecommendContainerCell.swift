@@ -21,7 +21,7 @@ class HomeRecommendContainerCell: UICollectionViewCell {
     let bottom: CGFloat = 68 - 6 // cell의 하단 여백
     let footerInset: CGFloat = 51 // container -> footer 까지의 여백
     
-    return HomeRecommendItemCell.height * CGFloat(homeRecommendViewModel.itemCount) + top + bottom + footerInset
+    return VideoListItemCell.height * CGFloat(homeRecommendViewModel.itemCount) + top + bottom + footerInset
   }
   
   @IBOutlet weak var containerView: UIView!
@@ -30,7 +30,7 @@ class HomeRecommendContainerCell: UICollectionViewCell {
   weak var delegate: HomeRecommendContainerCellDelegate?
   
   private var homeRecommendViewModel: HomeRecommendViewModel?
-  private var recommends: [Home.Recommend]?
+  private var recommends: [VideoListItem]?
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -38,12 +38,12 @@ class HomeRecommendContainerCell: UICollectionViewCell {
     self.containerView.layer.cornerRadius = 12
     self.containerView.layer.borderWidth = 1
     self.containerView.layer.borderColor = UIColor(named: "border")?.cgColor
-    self.tableView.rowHeight = HomeRecommendItemCell.height
+    self.tableView.rowHeight = VideoListItemCell.height
     self.tableView.delegate = self
     self.tableView.dataSource = self
     self.tableView.register(
-      UINib(nibName: "HomeRecommendItemCell", bundle: .main),
-      forCellReuseIdentifier: HomeRecommendItemCell.identifier
+      UINib(nibName: VideoListItemCell.identifier, bundle: .main),
+      forCellReuseIdentifier: VideoListItemCell.identifier
     )
   }
   
@@ -85,11 +85,11 @@ extension HomeRecommendContainerCell: UITableViewDelegate, UITableViewDataSource
     cellForRowAt indexPath: IndexPath
   ) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(
-      withIdentifier: HomeRecommendItemCell.identifier,
+      withIdentifier: VideoListItemCell.identifier,
       for: indexPath
     )
     
-    if let cell = cell as? HomeRecommendItemCell,
+    if let cell = cell as? VideoListItemCell,
        let data = self.homeRecommendViewModel?.recommends?[indexPath.row] {
       cell.setData(data, rank: indexPath.row + 1)
     }

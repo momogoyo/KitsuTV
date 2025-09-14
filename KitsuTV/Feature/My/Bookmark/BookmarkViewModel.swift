@@ -7,7 +7,7 @@
 
 import Foundation
 
-@MainActor class BookmarkViewModel: ObservableObject {
+@MainActor class BookmarkViewModel {
   private(set) var channels: [Bookmark.Item]?
   var dataChanged: (() -> Void)?
   

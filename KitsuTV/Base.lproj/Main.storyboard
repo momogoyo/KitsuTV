@@ -257,7 +257,7 @@
         <!--Favorite-->
         <scene sceneID="rux-gf-ZUp">
             <objects>
-                <viewController title="Favorite" id="l1H-0f-hRm" userLabel="Favorite" sceneMemberID="viewController">
+                <viewController title="Favorite" id="l1H-0f-hRm" userLabel="Favorite" customClass="FavoriteViewController" customModule="KitsuTV" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BQ2-Sm-Tfv">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="735"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -277,6 +277,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Favorite" id="7rE-T4-WR9"/>
+                    <connections>
+                        <outlet property="tableView" destination="Vuq-WF-QGL" id="0Vh-J9-ehf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9GF-BD-bKY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -1,5 +1,5 @@
 //
-//  HomeRecommendItemCell.swift
+//  VideoListItemCell.swift
 //  KTV
 //
 //  Created by 현유진 on 9/2/25.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-class HomeRecommendItemCell: UITableViewCell {
+class VideoListItemCell: UITableViewCell {
   
-  static let identifier: String = "HomeRecommendItemCell"
+  static let identifier: String = "VideoListItemCell"
   static let height: CGFloat = 71
   
   @IBOutlet weak var thumbnailContainerView: UIView!
@@ -40,7 +40,7 @@ class HomeRecommendItemCell: UITableViewCell {
     super.setSelected(selected, animated: animated)
   }
   
-  func setData(_ data: Home.Recommend, rank: Int?) {
+  func setData(_ data: VideoListItem, rank: Int?) {
     self.rankLabel.isHidden = rank == nil
     if let rank {
       self.rankLabel.text = "\(rank)"
@@ -50,4 +50,6 @@ class HomeRecommendItemCell: UITableViewCell {
     self.imageTask = self.thumbnailImageView.loadImage(url: data.imageUrl)
     self.playTimeLabel.text = data.playtime.timeFormatter
   }
+  
+  
 }
