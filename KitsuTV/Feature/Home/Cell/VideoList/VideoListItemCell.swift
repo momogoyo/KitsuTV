@@ -22,6 +22,8 @@ class VideoListItemCell: UITableViewCell {
   @IBOutlet weak var playTimeBGView: UIView!
   @IBOutlet weak var playTimeLabel: UILabel!
   
+  @IBOutlet weak var contentLeadingConstraint: NSLayoutConstraint!
+  
   private var imageTask: Task<Void, Never>?
   
   // xid로 만들어진 UI가 해당 class에 정상적으로 연동을 마쳤을 때 불려지는 함수
@@ -34,6 +36,11 @@ class VideoListItemCell: UITableViewCell {
     self.rankLabel.clipsToBounds = true
     self.rankLabel.layer.maskedCorners = [.layerMaxXMaxYCorner]
     self.playTimeBGView.layer.cornerRadius = 2
+    
+    self.contentLeadingConstraint.constant = 0
+    
+    // tableView 한정 cell의 backgroundColor를 Default로 해도 흰색으로 표시가 되기 때문에 해당 작업을 해주어야 한다.
+    self.backgroundConfiguration = .clear()
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {
@@ -51,5 +58,7 @@ class VideoListItemCell: UITableViewCell {
     self.playTimeLabel.text = data.playtime.timeFormatter
   }
   
-  
+  func setLeading(_ leading: CGFloat) {
+    self.contentLeadingConstraint.constant = leading
+  }
 }

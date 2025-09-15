@@ -44,6 +44,7 @@ extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource {
     if let cell = cell as? VideoListItemCell,
        let data = self.favoriteViewModel.favorite?.list[indexPath.row] {
       cell.setData(data, rank: nil)
+      cell.setLeading(16)
     }
     
     return cell
