@@ -32,6 +32,6 @@ class MyViewController: UIViewController {
   }
   
   @IBAction func favoriteDidTap(_ sender: UIButton) {
-    self.performSegue(withIdentifier: "favorite", sender: nil)
+//    self.performSegue(withIdentifier: "favorite", sender: nil)
   }
 }

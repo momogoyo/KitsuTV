@@ -118,6 +118,7 @@
                                                                 </buttonConfiguration>
                                                                 <connections>
                                                                     <action selector="favoriteDidTap:" destination="uks-wo-WIQ" eventType="touchUpInside" id="imf-SL-nFH"/>
+                                                                    <segue destination="l1H-0f-hRm" kind="show" id="lQf-LI-2rP"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -215,7 +216,6 @@
                         <outlet property="buttonGroups" destination="6IB-hR-0MX" id="SdB-Ij-PbL"/>
                         <outlet property="profileImageView" destination="sgC-3I-9cz" id="JkF-3w-aQM"/>
                         <outlet property="profileView" destination="ZhX-iu-EZS" id="JmK-Uw-DAD"/>
-                        <segue destination="l1H-0f-hRm" kind="show" identifier="favorite" id="u0Y-is-KVG"/>
                         <segue destination="IJC-n4-Cif" kind="show" identifier="bookmark" id="Vc8-Kt-6bh"/>
                     </connections>
                 </viewController>
