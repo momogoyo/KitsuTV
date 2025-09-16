@@ -27,6 +27,11 @@ class VideoViewController: UIViewController {
     super.viewDidLoad()
     
     self.channelThumnailImageView.layer.cornerRadius = self.channelThumnailImageView.frame.width / 2
+    
+    self.setupRecommendTableView()
+    
+    // 버튼들이 실제로 존재하는지 확인
+        print("playButton exists: \(playButton != nil)")
   }
   
   @IBAction func commentDidTap(_ sender: UIButton) {
@@ -36,30 +41,6 @@ class VideoViewController: UIViewController {
 
 extension VideoViewController {
   @IBAction func toggleControlPannel(_ sender: UITapGestureRecognizer) {
-    
-  }
-  
-  @IBAction func fastForwardDidTap(_ sender: UIButton) {
-    
-  }
-  
-  @IBAction func playDidTap(_ sender: UIButton) {
-    
-  }
-  
-  @IBAction func rewindDidTap(_ sender: UIButton) {
-    
-  }
-  
-  @IBAction func closeDidTap(_ sender: UIButton) {
-    
-  }
-  
-  @IBAction func moreDidTap(_ sender: UIButton) {
-    
-  }
-  
-  @IBAction func expandDidTap(_ sender: UIButton) {
     
   }
 }
