@@ -21,13 +21,6 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="R7s-L0-B3m">
-                    <rect key="frame" x="0.0" y="619" width="393" height="233"/>
-                    <color key="backgroundColor" name="background"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="233" id="4c7-FM-YgC"/>
-                    </constraints>
-                </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QBB-te-EZr">
                     <rect key="frame" x="0.0" y="573" width="393" height="46"/>
                     <subviews>
@@ -50,36 +43,46 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" name="background"/>
+                    <viewLayoutGuide key="safeArea" id="YQO-So-1BR"/>
+                    <color key="backgroundColor" name="card"/>
                     <constraints>
                         <constraint firstItem="B08-j3-toV" firstAttribute="centerY" secondItem="QBB-te-EZr" secondAttribute="centerY" id="7tc-ux-EDb"/>
                         <constraint firstAttribute="height" constant="46" id="Jr5-W2-dY8"/>
-                        <constraint firstAttribute="trailing" secondItem="B08-j3-toV" secondAttribute="trailing" constant="21" id="KPr-8w-cKN"/>
                         <constraint firstItem="uyT-36-8qy" firstAttribute="centerY" secondItem="QBB-te-EZr" secondAttribute="centerY" id="Ogy-bI-00p"/>
                         <constraint firstItem="uyT-36-8qy" firstAttribute="centerX" secondItem="QBB-te-EZr" secondAttribute="centerX" id="PWB-op-6UW"/>
+                        <constraint firstAttribute="trailing" secondItem="B08-j3-toV" secondAttribute="trailing" constant="21" id="URD-tg-yTn"/>
                     </constraints>
                 </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="R7s-L0-B3m">
+                    <rect key="frame" x="0.0" y="619" width="393" height="233"/>
+                    <color key="backgroundColor" name="card"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="233" id="4c7-FM-YgC"/>
+                    </constraints>
+                </tableView>
             </subviews>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <viewLayoutGuide key="safeArea" id="SWQ-9I-6cp"/>
             <color key="backgroundColor" name="bg-controlpannel"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="R7s-L0-B3m" secondAttribute="trailing" id="0yG-xd-nd9"/>
-                <constraint firstItem="QBB-te-EZr" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Jcp-5N-Psd"/>
+                <constraint firstAttribute="trailing" secondItem="R7s-L0-B3m" secondAttribute="trailing" id="0yG-xd-nd9"/>
+                <constraint firstItem="QBB-te-EZr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Jcp-5N-Psd"/>
+                <constraint firstItem="QBB-te-EZr" firstAttribute="trailing" secondItem="SWQ-9I-6cp" secondAttribute="trailing" id="Zx2-TS-Lyd"/>
                 <constraint firstItem="R7s-L0-B3m" firstAttribute="top" secondItem="QBB-te-EZr" secondAttribute="bottom" id="f3G-Zw-D21"/>
-                <constraint firstItem="R7s-L0-B3m" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="gMx-bN-Sb8"/>
+                <constraint firstItem="R7s-L0-B3m" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gMx-bN-Sb8"/>
                 <constraint firstAttribute="bottom" secondItem="R7s-L0-B3m" secondAttribute="bottom" id="hDO-ch-gDz"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="QBB-te-EZr" secondAttribute="trailing" id="rx4-M2-5qK"/>
+                <constraint firstAttribute="trailing" secondItem="QBB-te-EZr" secondAttribute="trailing" id="rx4-M2-5qK"/>
+                <constraint firstItem="QBB-te-EZr" firstAttribute="leading" secondItem="SWQ-9I-6cp" secondAttribute="leading" id="zMW-x9-bMc"/>
             </constraints>
             <point key="canvasLocation" x="-4" y="20"/>
         </view>
     </objects>
     <resources>
         <image name="small_close" width="15" height="15"/>
-        <namedColor name="background">
-            <color red="0.039000000804662704" green="0.039000000804662704" blue="0.039000000804662704" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="bg-controlpannel">
             <color red="0.0" green="0.0" blue="0.0" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="card">
+            <color red="0.082000002264976501" green="0.082000002264976501" blue="0.082000002264976501" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary">
             <color red="0.9179999828338623" green="0.9179999828338623" blue="0.9179999828338623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

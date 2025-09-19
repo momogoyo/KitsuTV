@@ -24,7 +24,10 @@ class MoreViewController: UIViewController {
       UINib(nibName: MoreTableViewCell.identifier, bundle: nil),
       forCellReuseIdentifier: MoreTableViewCell.identifier
     )
-    
+  }
+  
+  // 실제 오토레이아웃 적용 후 headerView.bounds를 기반으로 path를 계산할 수 있음
+  override func viewDidLayoutSubviews() {
     self.setupCornerRadius()
   }
   
