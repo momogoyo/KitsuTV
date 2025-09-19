@@ -2,20 +2,16 @@
 //  VideoViewController.swift
 //  KitsuTV
 //
-//  Created by 현유진 on 9/16/25.
+//  Created by 현유진 on 9/19/25.
 //
 
 import UIKit
 
 class VideoViewController: UIViewController {
   
-  // MARK: - 제어패널
-  @IBOutlet weak var playButton: UIButton!
-  
-  // MARK: - Scroll
   @IBOutlet weak var titleLabel: UILabel!
-  @IBOutlet weak var playCountLabel: UILabel!
   @IBOutlet weak var updateDateLabel: UILabel!
+  @IBOutlet weak var playCountLabel: UILabel!
   @IBOutlet weak var favoriteButton: UIButton!
   @IBOutlet weak var channelThumnailImageView: UIImageView!
   @IBOutlet weak var channelNameLabel: UILabel!
@@ -23,29 +19,28 @@ class VideoViewController: UIViewController {
   @IBOutlet weak var recommendTableView: UITableView!
   @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
   
+  private var contentSizeObservation: NSKeyValueObservation?
+  
+  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    
+    self.modalPresentationStyle = .fullScreen
+  }
+  
+  required init?(coder: NSCoder) {
+    super.init(coder: coder)
+    
+    self.modalPresentationStyle = .fullScreen
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
     self.channelThumnailImageView.layer.cornerRadius = self.channelThumnailImageView.frame.width / 2
     
     self.setupRecommendTableView()
-    
-    // 버튼들이 실제로 존재하는지 확인
-        print("playButton exists: \(playButton != nil)")
   }
   
-  @IBAction func commentDidTap(_ sender: UIButton) {
-    
-  }
-}
-
-extension VideoViewController {
-  @IBAction func toggleControlPannel(_ sender: UITapGestureRecognizer) {
-    
-  }
-}
-
-extension VideoViewController: UITableViewDelegate, UITableViewDataSource {
   func setupRecommendTableView() {
     self.recommendTableView.delegate = self
     self.recommendTableView.dataSource = self
@@ -54,8 +49,30 @@ extension VideoViewController: UITableViewDelegate, UITableViewDataSource {
       UINib(nibName: VideoListItemCell.identifier, bundle: nil),
       forCellReuseIdentifier: VideoListItemCell.identifier
     )
+    
+    self.contentSizeObservation = self.recommendTableView.observe(
+      \.contentSize,
+       changeHandler: { [weak self] tableView, _ in
+         self?.tableViewHeightConstraint.constant = tableView.contentSize.height
+       }
+    )
   }
   
+  @IBAction func moreDidTap(_ sender: UIButton) {
+    let moreViewController: MoreViewController = MoreViewController()
+    self.present(moreViewController, animated: false)
+  }
+  
+  @IBAction func commentDidTap(_ sender: UIButton) {
+    
+  }
+  
+  @IBAction func toggleControlPannel(_ sender: UITapGestureRecognizer) {
+    
+  }
+}
+
+extension VideoViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     10
   }
