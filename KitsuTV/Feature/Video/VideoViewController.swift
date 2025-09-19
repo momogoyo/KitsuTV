@@ -20,6 +20,7 @@ class VideoViewController: UIViewController {
   @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
   
   private var contentSizeObservation: NSKeyValueObservation?
+  private var videoViewModel: VideoViewModel = VideoViewModel()
   
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -39,6 +40,24 @@ class VideoViewController: UIViewController {
     self.channelThumnailImageView.layer.cornerRadius = self.channelThumnailImageView.frame.width / 2
     
     self.setupRecommendTableView()
+    self.bindViewModel()
+    self.videoViewModel.request()
+  }
+  
+  private func bindViewModel() {
+    self.videoViewModel.dataChangeHandler = { [weak self] in
+      self?.setupData($0)
+    }
+  }
+  
+  private func setupData(_ video: Video) {
+    self.titleLabel.text = video.title
+    self.channelThumnailImageView.loadImage(url: video.channelImageUrl)
+    self.channelNameLabel.text = video.channel
+    self.updateDateLabel.text = video.uploadTimestamp.formattedTime
+    self.playCountLabel.text = "\(video.playCount) views"
+    self.favoriteButton.setTitle("\(video.favoriteCount)", for: .normal)
+    self.recommendTableView.reloadData()
   }
   
   func setupRecommendTableView() {
@@ -74,7 +93,7 @@ class VideoViewController: UIViewController {
 
 extension VideoViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    10
+    self.videoViewModel.video?.recommends.count ?? 0
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -82,6 +101,11 @@ extension VideoViewController: UITableViewDelegate, UITableViewDataSource {
       withIdentifier: VideoListItemCell.identifier,
       for: indexPath
     )
+    
+    if let cell = cell as? VideoListItemCell,
+       let data = self.videoViewModel.video?.recommends[indexPath.row] {
+      cell.setData(data, rank: indexPath.row + 1)
+    }
     
     return cell
   }

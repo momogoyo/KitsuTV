@@ -14,6 +14,8 @@ import UIKit
 // 4. try? 에러나면 nil 반환
 extension UIImageView {
   // Task: 비동기로 실행되는 작업 단위 - 백그라운드에서 작업
+  
+  @discardableResult
   func loadImage(url: URL) -> Task<Void, Never> {
     
     // 이미지 다운로드 및 설정
