@@ -18,9 +18,15 @@ class VideoViewController: UIViewController {
   
   @IBOutlet weak var recommendTableView: UITableView!
   @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
+  @IBOutlet weak var portraitControlPannel: UIView!
   
   private var contentSizeObservation: NSKeyValueObservation?
   private var videoViewModel: VideoViewModel = VideoViewModel()
+  private var isControlPannelHidden: Bool = true {
+    didSet {
+      self.portraitControlPannel.isHidden = self.isControlPannelHidden
+    }
+  }
   
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -87,7 +93,7 @@ class VideoViewController: UIViewController {
   }
   
   @IBAction func toggleControlPannel(_ sender: UITapGestureRecognizer) {
-    
+    self.isControlPannelHidden.toggle()
   }
 }
 
