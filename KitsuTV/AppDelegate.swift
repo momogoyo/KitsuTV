@@ -1,9 +1,11 @@
 //
 //  AppDelegate.swift
-//  KTV
+//  KitsuTV
 //
 //  Created by 현유진 on 8/30/25.
 //
+
+// 글로벌 설정 - 전역 초기화 (로그, SDK, DI 등)
 
 import UIKit
 

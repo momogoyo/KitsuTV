@@ -1,9 +1,11 @@
 //
 //  SceneDelegate.swift
-//  KTV
+//  KitsuTV
 //
 //  Created by 현유진 on 8/30/25.
 //
+
+// 실제 윈도우 구성 - iPad 멀티윈도우 지원, Mac Catalyst 등
 
 import UIKit
 
