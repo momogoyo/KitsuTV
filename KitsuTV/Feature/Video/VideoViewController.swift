@@ -19,6 +19,7 @@ class VideoViewController: UIViewController {
   @IBOutlet weak var recommendTableView: UITableView!
   @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
   @IBOutlet weak var portraitControlPannel: UIView!
+  @IBOutlet weak var playerView: PlayerView!
   
   private var contentSizeObservation: NSKeyValueObservation?
   private var videoViewModel: VideoViewModel = VideoViewModel()
