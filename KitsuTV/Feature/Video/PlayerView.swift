@@ -9,7 +9,7 @@ import UIKit
 import AVFoundation
 
 protocol PlayerViewDelegate: AnyObject {
-  
+  func playerViewLoading(_ playerView: PlayerView)
   // 재생 준비 완료, 데이터 로드 완료 - 토탈 플레이 타임 업데이트해줄 수 있도록
   func playerViewReadyToPlay(_ playerView: PlayerView)
   func playerView(_ playerView: PlayerView, didPlay playTime: Double, playableTime: Double)
@@ -66,6 +66,8 @@ class PlayerView: UIView {
   }
   
   func set(url: URL) {
+    self.delegate?.playerViewLoading(self)
+    
     self.player = AVPlayer(
       playerItem: AVPlayerItem(
         asset: AVURLAsset(url: url)
@@ -136,6 +138,10 @@ extension PlayerView {
       self.delegate?.playerView(self, didPlay: playTime, playableTime: playableTime)
     }
     
+    self.observePlayerStatus(player)
+  }
+  
+  private func observePlayerStatus(_ player: AVPlayer) {
     self.statusObservation = player.currentItem?.observe(
       \.status,
        changeHandler: { [weak self] item, _ in
@@ -144,12 +150,13 @@ extension PlayerView {
          switch item.status {
          case .readyToPlay:
            self.delegate?.playerViewReadyToPlay(self)
-         case .failed, .unknown:
+         case .failed:
            print("Failed to play \(item.error?.localizedDescription ?? "")")
+         case .unknown:
+           self.delegate?.playerViewLoading(self)
          default:
            print("Failed to play \(item.error?.localizedDescription ?? "")")
          }
-         
        }
     )
   }
