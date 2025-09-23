@@ -8,6 +8,15 @@
 import UIKit
 import AVFoundation
 
+protocol PlayerViewDelegate: AnyObject {
+  
+  // 재생 준비 완료, 데이터 로드 완료 - 토탈 플레이 타임 업데이트해줄 수 있도록
+  func playerViewReadyToPlay(_ playerView: PlayerView)
+  func playerView(_ playerView: PlayerView, didPlay playTime: Double, playableTime: Double)
+  // 영상이 끝나는 타이밍
+  func playerViewDidFinishToPlay(_ playerView: PlayerView)
+}
+
 class PlayerView: UIView {
   
   override init(frame: CGRect) {
@@ -30,12 +39,25 @@ class PlayerView: UIView {
     return self.layer as? AVPlayerLayer
   }
   
+  private var playObservation: Any?
+  private var statusObservation: NSKeyValueObservation?
+  
+  weak var delegate: PlayerViewDelegate?
+  
   var player: AVPlayer? {
     get {
       self.avPlayerLayer?.player
     }
     set {
+      if let oldPlayer = self.avPlayerLayer?.player {
+        self.unsetPlayer(player: oldPlayer)
+      }
+      
       self.avPlayerLayer?.player = newValue
+      
+      if let player = newValue {
+        self.setup(player: player)
+      }
     }
   }
   
@@ -87,5 +109,53 @@ class PlayerView: UIView {
     self.player?.seek(
       to: CMTime(seconds: currentTime - second, preferredTimescale: 1)
     )
+  }
+}
+
+extension PlayerView {
+  private func setup(player: AVPlayer) {
+    player.addPeriodicTimeObserver(
+      forInterval: CMTime(seconds: 0.5, preferredTimescale: 10),
+      queue: .main
+    ) { [weak self, weak player] time in
+      guard let self else { return }
+      
+      guard let currentItem = player?.currentItem,
+            currentItem.status == .readyToPlay,
+            let timeRange = (currentItem.loadedTimeRanges as? [CMTimeRange])?.first
+      else { return }
+      
+      // 재생 가능한 구간의 끝지점 = 로드된 구간의 첫지점 + 로드된 구간의 길이
+      let playableTime = timeRange.start.seconds + timeRange.duration.seconds
+      let playTime = time.seconds
+      
+      self.delegate?.playerView(self, didPlay: playTime, playableTime: playableTime)
+    }
+    
+    self.statusObservation = player.currentItem?.observe(
+      \.status,
+       changeHandler: { [weak self] item, _ in
+         guard let self else { return }
+         
+         switch item.status {
+         case .readyToPlay:
+           self.delegate?.playerViewReadyToPlay(self)
+         case .failed, .unknown:
+           print("Failed to play \(item.error?.localizedDescription ?? "")")
+         default:
+           print("Failed to play \(item.error?.localizedDescription ?? "")")
+         }
+         
+       }
+    )
+  }
+  
+  private func unsetPlayer(player: AVPlayer) {
+    self.statusObservation?.invalidate()
+    self.statusObservation = nil
+    
+    if let playObservation {
+      player.removeTimeObserver(playObservation)
+    }
   }
 }
