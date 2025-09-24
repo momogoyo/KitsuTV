@@ -10,39 +10,14 @@ import AVFoundation
 
 protocol PlayerViewDelegate: AnyObject {
   func playerViewLoading(_ playerView: PlayerView)
-  // 재생 준비 완료, 데이터 로드 완료 - 토탈 플레이 타임 업데이트해줄 수 있도록
   func playerViewReadyToPlay(_ playerView: PlayerView)
   func playerView(_ playerView: PlayerView, didPlay playTime: Double, playableTime: Double)
-  // 영상이 끝나는 타이밍
   func playerViewDidFinishToPlay(_ playerView: PlayerView)
 }
 
 class PlayerView: UIView {
   
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-    
-    self.setupNotification()
-  }
-  
-  required init?(coder: NSCoder) {
-    super.init(coder: coder)
-    
-    self.setupNotification()
-  }
-  
-  // CALayer 대신 다른 Layer를 쓸 수 있게 해주는 클래스 프로퍼티
-  override class var layerClass: AnyClass {
-    // 뷰가 생성될 때 AVPlayerLayer 인스턴스가 만들어짐
-    return AVPlayerLayer.self
-  }
-  
-  // 편리한 접근 프로퍼티
-  var avPlayerLayer: AVPlayerLayer? {
-    // 깨진 유리창처럼 이렇게 확실한 경우에도 !를 쓰면 나도 모르게 크래시가 날 수 있기 때문에 가능하면 지양한다.
-    return self.layer as? AVPlayerLayer
-  }
-  
+  // MARK: - Properties
   private var playObservation: Any?
   private var statusObservation: NSKeyValueObservation?
   
@@ -65,6 +40,40 @@ class PlayerView: UIView {
     }
   }
   
+  // MARK: - Computed Properties
+  var isPlaying: Bool {
+    guard let player else { return false }
+    
+    return player.rate != 0
+  }
+  
+  var totalPlayTime: Double {
+    self.player?.currentItem?.duration.seconds ?? 0
+  }
+  
+  // MARK: - Initialization
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    
+    self.setupNotification()
+  }
+  
+  required init?(coder: NSCoder) {
+    super.init(coder: coder)
+    
+    self.setupNotification()
+  }
+  
+  // MARK: - Layer Configuration
+  override class var layerClass: AnyClass {
+    AVPlayerLayer.self
+  }
+  
+  var avPlayerLayer: AVPlayerLayer? {
+    return self.layer as? AVPlayerLayer
+  }
+  
+  // MARK: - Setup Methods
   func set(url: URL) {
     self.delegate?.playerViewLoading(self)
     
@@ -75,18 +84,7 @@ class PlayerView: UIView {
     )
   }
   
-  var isPlaying: Bool {
-    guard let player else {
-      return false
-    }
-    
-    return player.rate != 0
-  }
-  
-  var totalPlayTime: Double {
-    return self.player?.currentItem?.duration.seconds ?? 0
-  }
-  
+  // MARK: - Player Controls
   func play() {
     self.player?.play()
   }
@@ -118,9 +116,10 @@ class PlayerView: UIView {
   }
 }
 
+// MARK: - Player Setup
 extension PlayerView {
   private func setup(player: AVPlayer) {
-    player.addPeriodicTimeObserver(
+    self.playObservation = player.addPeriodicTimeObserver(
       forInterval: CMTime(seconds: 0.5, preferredTimescale: 10),
       queue: .main
     ) { [weak self, weak player] time in
@@ -167,9 +166,13 @@ extension PlayerView {
     
     if let playObservation {
       player.removeTimeObserver(playObservation)
+      self.playObservation = nil
     }
   }
-  
+}
+
+// MARK: - Notification Setup
+extension PlayerView {
   private func setupNotification() {
     NotificationCenter.default.addObserver(
       self,

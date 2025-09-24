@@ -15,35 +15,51 @@ enum PlayerState {
 
 class VideoViewController: UIViewController {
   
+  // MARK: - Video Detail Section
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var updateDateLabel: UILabel!
   @IBOutlet weak var playCountLabel: UILabel!
   @IBOutlet weak var favoriteButton: UIButton!
-  @IBOutlet weak var channelThumnailImageView: UIImageView!
+  
+  // MARK: - Channel Info Section
+  @IBOutlet weak var channelThumbnailImageView: UIImageView!
   @IBOutlet weak var channelNameLabel: UILabel!
   
+  // MARK: - Recommend Section
   @IBOutlet weak var recommendTableView: UITableView!
   @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
-  @IBOutlet weak var portraitControlPannel: UIView!
   
+  // MARK: - Player Section
   @IBOutlet weak var playerView: PlayerView!
-  // 실제로 사용하지 않을 때는 사라져있을 수 있기 때문에 weak로 선언하면 안된다.
+  @IBOutlet weak var playButton: UIButton!
+  @IBOutlet weak var seekbarView: SeekbarView!
+  @IBOutlet weak var landscapeTitleLabel: UILabel!
+  @IBOutlet weak var landscapePlayButton: UIButton!
+  @IBOutlet weak var landscapePlayTimeLabel: UILabel!
   @IBOutlet var playerViewBottomConstraint: NSLayoutConstraint!
   
-  // MARK: - 제어 패널
+  // MARK: - Control Panel
+  @IBOutlet weak var portraitControlPanel: UIView!
+  @IBOutlet weak var landscapeControlPanel: UIView!
+  @IBOutlet weak var loadingContainer: UIView!
   @IBOutlet weak var loadingIndicator: UIActivityIndicatorView! {
     didSet {
       loadingIndicator.hidesWhenStopped = true
     }
   }
-  @IBOutlet weak var loadingContainer: UIView!
-  @IBOutlet weak var playButton: UIButton!
   
-  private var contentSizeObservation: NSKeyValueObservation?
+  // MARK: - Properties
   private var videoViewModel: VideoViewModel = VideoViewModel()
-  private var isControlPannelHidden: Bool = true {
+  private var contentSizeObservation: NSKeyValueObservation?
+  
+  // MARK: - Property Observer
+  private var isControlPanelHidden: Bool = true {
     didSet {
-      self.portraitControlPannel.isHidden = self.isControlPannelHidden
+      if self.isLandscape(size: self.view.frame.size) {
+        self.landscapeControlPanel.isHidden = self.isControlPanelHidden
+      } else {
+        self.portraitControlPanel.isHidden = self.isControlPanelHidden
+      }
     }
   }
   private var playerState: PlayerState = .loading {
@@ -52,23 +68,7 @@ class VideoViewController: UIViewController {
     }
   }
   
-  func upadteUI(for status: PlayerState) {
-    switch status {
-    case .loading:
-      loadingIndicator.startAnimating()
-      loadingContainer.isHidden = false
-      isControlPannelHidden = true
-    case .readyToPlay:
-      loadingIndicator.stopAnimating()
-      loadingContainer.isHidden = true
-      isControlPannelHidden = false
-    case .error:
-      loadingIndicator.startAnimating()
-      loadingContainer.isHidden = false
-      print("error")
-    }
-  }
-  
+  // MARK: - Initialization
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     
@@ -81,29 +81,28 @@ class VideoViewController: UIViewController {
     self.modalPresentationStyle = .fullScreen
   }
   
+  // MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.channelThumnailImageView.layer.cornerRadius = self.channelThumnailImageView.frame.width / 2
-    
+    self.channelThumbnailImageView.layer.cornerRadius = self.channelThumbnailImageView.frame.width / 2
     self.setupRecommendTableView()
+    
     self.bindViewModel()
     self.videoViewModel.request()
     
     self.playerView.delegate = self
+    self.seekbarView.delegate = self
   }
   
-  // 뷰의 화면 회전이나 크기가 곧 변경될 것이라는 것을 알려주는 메서드
   override func viewWillTransition(to size: CGSize, with coordinator: any UIViewControllerTransitionCoordinator) {
     super.viewWillTransition(to: size, with: coordinator)
     
+    self.switchControlPannel(size: size)
     self.playerViewBottomConstraint.isActive = self.isLandscape(size: size)
   }
   
-  private func isLandscape(size: CGSize) -> Bool {
-    size.width > size.height
-  }
-  
+  // MARK: - Setup Methods
   private func bindViewModel() {
     self.videoViewModel.dataChangeHandler = { [weak self] in
       self?.setupData($0)
@@ -115,11 +114,13 @@ class VideoViewController: UIViewController {
     self.playerView.play()
     
     self.titleLabel.text = video.title
-    self.channelThumnailImageView.loadImage(url: video.channelImageUrl)
+    self.landscapeTitleLabel.text = video.title
+    self.channelThumbnailImageView.loadImage(url: video.channelImageUrl)
     self.channelNameLabel.text = video.channel
     self.updateDateLabel.text = video.uploadTimestamp.formattedTime
     self.playCountLabel.text = "\(video.playCount) views"
     self.favoriteButton.setTitle("\(video.favoriteCount)", for: .normal)
+    
     self.recommendTableView.reloadData()
   }
   
@@ -140,22 +141,45 @@ class VideoViewController: UIViewController {
     )
   }
   
+  // MARK: - Update UI Methods
+  private func upadteUI(for status: PlayerState) {
+    switch status {
+    case .loading:
+      loadingIndicator.startAnimating()
+      loadingContainer.isHidden = false
+      isControlPanelHidden = true
+    case .readyToPlay:
+      loadingIndicator.stopAnimating()
+      loadingContainer.isHidden = true
+      isControlPanelHidden = false
+    case .error:
+      loadingIndicator.startAnimating()
+      loadingContainer.isHidden = false
+    }
+  }
+  
   private func updatePlayButton(isPlaying: Bool) {
     let playImage = isPlaying ? UIImage(named: "small_pause") : UIImage(named: "small_play")
+    let landscapePlayImage = isPlaying ? UIImage(named: "big_pause") : UIImage(named: "big_play")
     self.playButton.setImage(playImage, for: .normal)
+    self.landscapePlayButton.setImage(landscapePlayImage, for: .normal)
   }
   
-  @IBAction func moreDidTap(_ sender: UIButton) {
-    let moreViewController: MoreViewController = MoreViewController()
-    self.present(moreViewController, animated: false)
+  // MARK: - Helper Methods
+  private func isLandscape(size: CGSize) -> Bool {
+    size.width > size.height
   }
   
-  @IBAction func commentDidTap(_ sender: UIButton) {
+  private func switchControlPannel(size: CGSize) {
+    guard self.isControlPanelHidden == false else { return }
     
+    self.landscapeControlPanel.isHidden = !self.isLandscape(size: size)
+    self.portraitControlPanel.isHidden = self.isLandscape(size: size)
   }
   
+  // MARK: - Actions
   @IBAction func toggleControlPannel(_ sender: UITapGestureRecognizer) {
-    self.isControlPannelHidden.toggle()
+    self.isControlPanelHidden.toggle()
   }
   
   @IBAction func playDidTap(_ sender: UIButton) {
@@ -180,9 +204,63 @@ class VideoViewController: UIViewController {
     self.dismiss(animated: true)
   }
   
+  @IBAction func moreDidTap(_ sender: UIButton) {
+    let moreViewController: MoreViewController = MoreViewController()
+    self.present(moreViewController, animated: false)
+  }
   
+  @IBAction func expandDidTap(_ sender: UIButton) {
+    // TODO: Implement expand functionality
+  }
+  
+  @IBAction func shrinkDidTap(_ sender: UIButton) {
+    // TODO: Implement expand functionality
+  }
+  
+  @IBAction func commentDidTap(_ sender: UIButton) {
+    // TODO: Implement expand functionality
+  }
 }
 
+// MARK: - PlayerViewDelegate
+extension VideoViewController: PlayerViewDelegate {
+  func playerViewLoading(_ playerView: PlayerView) {
+    self.playerState = .loading
+  }
+  
+  func playerViewReadyToPlay(_ playerView: PlayerView) {
+    self.seekbarView.setTotalPlayTime(self.playerView.totalPlayTime)
+    self.playerState = .readyToPlay
+    self.updatePlayButton(isPlaying: playerView.isPlaying)
+    self.updatePlayTime(0, totalPlayTime: playerView.totalPlayTime)
+  }
+  
+  func playerView(_ playerView: PlayerView, didPlay playTime: Double, playableTime: Double) {
+    self.seekbarView.setPlayTime(playTime, playableTime: playableTime)
+    self.updatePlayTime(playTime, totalPlayTime: playerView.totalPlayTime)
+  }
+  
+  func playerViewDidFinishToPlay(_ playerView: PlayerView) {
+    self.playerView.seek(to: 0)
+    self.updatePlayButton(isPlaying: false)
+  }
+  
+  private func updatePlayTime(_ playTime: Double, totalPlayTime: Double) {
+    let playTimeText = playTime.timeFormatter
+    let totalPlayTimeText = totalPlayTime.timeFormatter
+    
+    self.landscapePlayTimeLabel.text = playTimeText + " / " + totalPlayTimeText
+  }
+}
+
+// MARK: - SeekbarViewDelegate
+extension VideoViewController: SeekBarViewDelegate {
+  func seekbar(_ seekbar: SeekbarView, seekToPercent percent: Double) {
+    self.playerView.seek(to: percent)
+  }
+}
+
+// MARK: - UITableViewDataSource & UITableViewDelegate
 extension VideoViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     self.videoViewModel.video?.recommends.count ?? 0
@@ -201,28 +279,4 @@ extension VideoViewController: UITableViewDelegate, UITableViewDataSource {
     
     return cell
   }
-}
-
-extension VideoViewController: PlayerViewDelegate {
-  func playerViewLoading(_ playerView: PlayerView) {
-    self.playerState = .loading
-    print("Loading started")
-  }
-  
-  func playerViewReadyToPlay(_ playerView: PlayerView) {
-    self.playerState = .readyToPlay
-    self.updatePlayButton(isPlaying: playerView.isPlaying)
-    print("Ready to play")
-  }
-  
-  func playerView(_ playerView: PlayerView, didPlay playTime: Double, playableTime: Double) {
-    
-  }
-  
-  func playerViewDidFinishToPlay(_ playerView: PlayerView) {
-    // 다시 재생 아이콘으로 바꾸고 클릭하면 처음부터 재생하는 로직으로 개선하고 싶다.
-    self.playerView.seek(to: 0)
-    self.updatePlayButton(isPlaying: false)
-  }
-  
 }
