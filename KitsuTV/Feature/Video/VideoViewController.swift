@@ -7,6 +7,12 @@
 
 import UIKit
 
+enum PlayerState {
+  case loading
+  case readyToPlay
+  case error
+}
+
 class VideoViewController: UIViewController {
   
   @IBOutlet weak var titleLabel: UILabel!
@@ -21,6 +27,8 @@ class VideoViewController: UIViewController {
   @IBOutlet weak var portraitControlPannel: UIView!
   
   @IBOutlet weak var playerView: PlayerView!
+  // 실제로 사용하지 않을 때는 사라져있을 수 있기 때문에 weak로 선언하면 안된다.
+  @IBOutlet var playerViewBottomConstraint: NSLayoutConstraint!
   
   // MARK: - 제어 패널
   @IBOutlet weak var loadingIndicator: UIActivityIndicatorView! {
@@ -38,9 +46,26 @@ class VideoViewController: UIViewController {
       self.portraitControlPannel.isHidden = self.isControlPannelHidden
     }
   }
-  private var isLoading: Bool = true {
+  private var playerState: PlayerState = .loading {
     didSet {
-      self.updateLoadingStatus()
+      self.upadteUI(for: playerState)
+    }
+  }
+  
+  func upadteUI(for status: PlayerState) {
+    switch status {
+    case .loading:
+      loadingIndicator.startAnimating()
+      loadingContainer.isHidden = false
+      isControlPannelHidden = true
+    case .readyToPlay:
+      loadingIndicator.stopAnimating()
+      loadingContainer.isHidden = true
+      isControlPannelHidden = false
+    case .error:
+      loadingIndicator.startAnimating()
+      loadingContainer.isHidden = false
+      print("error")
     }
   }
   
@@ -61,7 +86,6 @@ class VideoViewController: UIViewController {
     
     self.channelThumnailImageView.layer.cornerRadius = self.channelThumnailImageView.frame.width / 2
     
-    self.isLoading = false
     self.setupRecommendTableView()
     self.bindViewModel()
     self.videoViewModel.request()
@@ -69,16 +93,15 @@ class VideoViewController: UIViewController {
     self.playerView.delegate = self
   }
   
-  private func updateLoadingStatus() {
-    if isLoading {
-      loadingIndicator.startAnimating()
-      loadingContainer.isHidden = false
-      isControlPannelHidden = true
-    } else {
-      loadingIndicator.stopAnimating()
-      loadingContainer.isHidden = true
-      isControlPannelHidden = false
-    }
+  // 뷰의 화면 회전이나 크기가 곧 변경될 것이라는 것을 알려주는 메서드
+  override func viewWillTransition(to size: CGSize, with coordinator: any UIViewControllerTransitionCoordinator) {
+    super.viewWillTransition(to: size, with: coordinator)
+    
+    self.playerViewBottomConstraint.isActive = self.isLandscape(size: size)
+  }
+  
+  private func isLandscape(size: CGSize) -> Bool {
+    size.width > size.height
   }
   
   private func bindViewModel() {
@@ -100,7 +123,7 @@ class VideoViewController: UIViewController {
     self.recommendTableView.reloadData()
   }
   
-  func setupRecommendTableView() {
+  private func setupRecommendTableView() {
     self.recommendTableView.delegate = self
     self.recommendTableView.dataSource = self
     self.recommendTableView.rowHeight = VideoListItemCell.height
@@ -115,6 +138,11 @@ class VideoViewController: UIViewController {
          self?.tableViewHeightConstraint.constant = tableView.contentSize.height
        }
     )
+  }
+  
+  private func updatePlayButton(isPlaying: Bool) {
+    let playImage = isPlaying ? UIImage(named: "small_pause") : UIImage(named: "small_play")
+    self.playButton.setImage(playImage, for: .normal)
   }
   
   @IBAction func moreDidTap(_ sender: UIButton) {
@@ -148,10 +176,10 @@ class VideoViewController: UIViewController {
     self.playerView.rewind()
   }
   
-  private func updatePlayButton(isPlaying: Bool) {
-    let playImage = isPlaying ? UIImage(named: "small_pause") : UIImage(named: "small_play")
-    self.playButton.setImage(playImage, for: .normal)
+  @IBAction func closeDidTap(_ sender: UIButton) {
+    self.dismiss(animated: true)
   }
+  
 }
 
 extension VideoViewController: UITableViewDelegate, UITableViewDataSource {
@@ -176,14 +204,14 @@ extension VideoViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension VideoViewController: PlayerViewDelegate {
   func playerViewLoading(_ playerView: PlayerView) {
-    self.isLoading = true
+    self.playerState = .loading
+    print("Loading started")
   }
   
   func playerViewReadyToPlay(_ playerView: PlayerView) {
-    self.isLoading = false
-    
+    self.playerState = .readyToPlay
     self.updatePlayButton(isPlaying: playerView.isPlaying)
-    print("Ready to Play")
+    print("Ready to play")
   }
   
   func playerView(_ playerView: PlayerView, didPlay playTime: Double, playableTime: Double) {
