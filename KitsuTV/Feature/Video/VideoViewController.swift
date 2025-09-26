@@ -165,6 +165,18 @@ class VideoViewController: UIViewController {
     self.landscapePlayButton.setImage(landscapePlayImage, for: .normal)
   }
   
+  private func rotateScene(landscape: Bool) {
+    if #available(iOS 16.0, *) {
+      self.view.window?.windowScene?.requestGeometryUpdate(
+        .iOS(interfaceOrientations: landscape ? .landscapeRight : .portrait)
+      )
+    } else {
+      let orientation: UIInterfaceOrientation = landscape ? .landscapeRight : .portrait
+      UIDevice.current.setValue(orientation.rawValue, forKey: "orientation")
+      UIViewController.attemptRotationToDeviceOrientation()
+    }
+  }
+  
   // MARK: - Helper Methods
   private func isLandscape(size: CGSize) -> Bool {
     size.width > size.height
@@ -210,11 +222,11 @@ class VideoViewController: UIViewController {
   }
   
   @IBAction func expandDidTap(_ sender: UIButton) {
-    // TODO: Implement expand functionality
+    self.rotateScene(landscape: true)
   }
   
   @IBAction func shrinkDidTap(_ sender: UIButton) {
-    // TODO: Implement expand functionality
+    self.rotateScene(landscape: false)
   }
   
   @IBAction func commentDidTap(_ sender: UIButton) {

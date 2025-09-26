@@ -32,7 +32,6 @@ class HomeRankingItemCell: UICollectionViewCell {
   private func setupThumbnail() {
     self.thumbnailImageView.layer.cornerRadius = 8
     self.thumbnailImageView.clipsToBounds = true
-    
   }
   
   private func setupNumberLabel() {
