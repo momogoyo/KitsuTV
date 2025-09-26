@@ -117,7 +117,7 @@ class VideoViewController: UIViewController {
     self.landscapeTitleLabel.text = video.title
     self.channelThumbnailImageView.loadImage(url: video.channelImageUrl)
     self.channelNameLabel.text = video.channel
-    self.updateDateLabel.text = video.uploadTimestamp.formattedTime
+    self.updateDateLabel.text = video.uploadTimestamp.timestampFormatted
     self.playCountLabel.text = "\(video.playCount) views"
     self.favoriteButton.setTitle("\(video.favoriteCount)", for: .normal)
     
@@ -246,8 +246,8 @@ extension VideoViewController: PlayerViewDelegate {
   }
   
   private func updatePlayTime(_ playTime: Double, totalPlayTime: Double) {
-    let playTimeText = playTime.timeFormatter
-    let totalPlayTimeText = totalPlayTime.timeFormatter
+    let playTimeText = playTime.durationFormatted
+    let totalPlayTimeText = totalPlayTime.durationFormatted
     
     self.landscapePlayTimeLabel.text = playTimeText + " / " + totalPlayTimeText
   }

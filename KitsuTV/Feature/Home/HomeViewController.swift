@@ -7,9 +7,6 @@
 
 import UIKit
 
-
-
-
 class HomeViewController: UIViewController {
   
   @IBOutlet weak var collectionView: UICollectionView!
@@ -20,7 +17,7 @@ class HomeViewController: UIViewController {
   // MARK: - View Configuration
   override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
   
-  // MARK: - Life Cycle
+  // MARK: - View Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -30,6 +27,7 @@ class HomeViewController: UIViewController {
     self.homeViewModel.requestData()
   }
   
+  // MARK: - Setup
   private func setupCollectionView() {
     self.registerSupplementaryViews()
     self.registerCells()
@@ -38,7 +36,6 @@ class HomeViewController: UIViewController {
     self.collectionView.isHidden = true
   }
   
-  // MARK: - Setup
   private func registerSupplementaryViews() {
     // Headers
     self.collectionView.register(
@@ -283,7 +280,6 @@ extension HomeViewController: UICollectionViewDataSource {
         for: indexPath
       )
     }
-    
   }
   
   // 각 인덱스에 해당하는 셀 생성
@@ -305,62 +301,75 @@ extension HomeViewController: UICollectionViewDataSource {
         for: indexPath
       )
     case .video:
-      let cell = collectionView.dequeueReusableCell(
-        withReuseIdentifier: HomeVideoCell.identifier,
-        for: indexPath
-      )
-      
-      if let cell = cell as? HomeVideoCell,
-         let data = self.homeViewModel.home?.videos[indexPath.item] {
-        cell.setData(data)
-      }
-      
-      return cell
+      return self.configureVideoCell(collectionView, indexPath: indexPath)
     case .ranking:
-      let cell = collectionView.dequeueReusableCell(
-        withReuseIdentifier: HomeRankingContainerCell.identifier,
-        for: indexPath
-      )
-      
-      if let cell = cell as? HomeRankingContainerCell,
-         let data = self.homeViewModel.home?.rankings {
-        cell.setData(data)
-      }
-      
-      (cell as? HomeRankingContainerCell)?.delegate = self
-      
-      return cell
+      return self.configureRankingCell(collectionView, indexPath: indexPath)
     case .recentWatch:
-      let cell = collectionView.dequeueReusableCell(
-        withReuseIdentifier: HomeRecentWatchContainerCell.identifier,
-        for: indexPath
-      )
-      
-      if let cell = cell as? HomeRecentWatchContainerCell,
-         let data = self.homeViewModel.home?.recents {
-        cell.delegate = self
-        cell.setData(data)
-      }
-      
-      return cell
+      return self.configureRecentWatchCell(collectionView, indexPath: indexPath)
     case .recommend:
-      let cell = collectionView.dequeueReusableCell(
-        withReuseIdentifier: HomeRecommendContainerCell.identifier,
-        for: indexPath
-      )
-      
-      if let cell = cell as? HomeRecommendContainerCell {
-        cell.delegate = self
-        cell.setViewModel(self.homeViewModel.recommendViewModel)
-      }
-      
-      return cell
+      return self.configureRecommendCell(collectionView, indexPath: indexPath)
     }
   }
+  
+  // MARK: - Cell Configuration
+  private func configureVideoCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCell(
+      withReuseIdentifier: HomeVideoCell.identifier,
+      for: indexPath
+    )
+    
+    if let cell = cell as? HomeVideoCell,
+       let data = self.homeViewModel.home?.videos[indexPath.item] {
+      cell.setData(data)
+    }
+    
+    return cell
+  }
+  
+  private func configureRankingCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCell(
+      withReuseIdentifier: HomeRankingContainerCell.identifier,
+      for: indexPath
+    )
+    
+    if let cell = cell as? HomeRankingContainerCell,
+       let data = self.homeViewModel.home?.rankings {
+      cell.setData(data)
+      cell.delegate = self
+    }
+    
+    return cell
+  }
+  
+  private func configureRecentWatchCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCell(
+      withReuseIdentifier: HomeRecentWatchContainerCell.identifier,
+      for: indexPath
+    )
+    
+    if let cell = cell as? HomeRecentWatchContainerCell,
+       let data = self.homeViewModel.home?.recents {
+      cell.delegate = self
+      cell.setData(data)
+    }
+    
+    return cell
+  }
+  
+  private func configureRecommendCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCell(
+      withReuseIdentifier: HomeRecommendContainerCell.identifier,
+      for: indexPath
+    )
+    
+    if let cell = cell as? HomeRecommendContainerCell {
+      cell.delegate = self
+      cell.setViewModel(self.homeViewModel.recommendViewModel)
+    }
+    
+    return cell
+  }
 }
-
-// MARK: - Cell Configuration
-
 
 
 // MARK: - HomeRecommendContainerCellDelegate

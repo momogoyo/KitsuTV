@@ -88,7 +88,7 @@ class VideoListItemCell: UITableViewCell {
   private func configureContent(_ data: VideoListItem) {
     self.titleLabel.text = data.title
     self.descriptionLabel.text = data.channel
-    self.playTimeLabel.text = data.playtime.timeFormatter
+    self.playTimeLabel.text = data.playtime.durationFormatted
   }
   
   private func loadThumbnail(_ url: URL) {

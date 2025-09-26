@@ -39,7 +39,7 @@ class HomeRecentWatchItemCell: UICollectionViewCell {
   }
   
   private func configureContent(_ data: Home.Recent) {
-    self.dateLabel.text = data.timeStamp.formattedTime
+    self.dateLabel.text = data.timeStamp.timestampFormatted
     self.titleLabel.text = data.title
     self.subtitleLabel.text = data.channel
   }

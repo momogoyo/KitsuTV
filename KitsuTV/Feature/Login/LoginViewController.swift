@@ -31,7 +31,6 @@ class LoginViewController: UIViewController {
     self.loginButton.layer.cornerRadius = 6
   }
   
-  
   // MARK: - Actions
   @IBAction func loginDidTap(_ sender: UIButton) {
     self.view.window?.rootViewController = self.storyboard?.instantiateViewController(withIdentifier: "tabbar")

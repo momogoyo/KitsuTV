@@ -20,7 +20,6 @@ class PlayerView: UIView {
   // MARK: - Properties
   private var playObservation: Any?
   private var statusObservation: NSKeyValueObservation?
-  
   weak var delegate: PlayerViewDelegate?
   
   var player: AVPlayer? {

@@ -1,6 +1,6 @@
 //
 //  Home.swift
-//  KTV
+//  KitsuTV
 //
 //  Created by 현유진 on 9/5/25.
 //
