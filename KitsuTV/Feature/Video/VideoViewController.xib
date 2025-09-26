@@ -463,16 +463,16 @@
                                     <color key="textColor" name="primaryWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="dD3-mT-H4b">
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="dD3-mT-H4b">
                                     <rect key="frame" x="30" y="266" width="333" height="0.0"/>
-                                    <color key="backgroundColor" name="card"/>
+                                    <color key="backgroundColor" name="code"/>
                                     <constraints>
                                         <constraint firstAttribute="height" id="43o-TZ-6XM"/>
                                     </constraints>
                                 </tableView>
                             </subviews>
                             <viewLayoutGuide key="safeArea" id="mmi-Oo-2Nf"/>
-                            <color key="backgroundColor" name="card"/>
+                            <color key="backgroundColor" name="code"/>
                             <constraints>
                                 <constraint firstItem="mFy-mI-I4L" firstAttribute="leading" secondItem="gDg-u8-PNJ" secondAttribute="trailing" constant="7.3333333333333286" id="066-db-ib4"/>
                                 <constraint firstItem="mmi-Oo-2Nf" firstAttribute="trailing" secondItem="KZd-WT-4ir" secondAttribute="trailing" constant="24" id="0Wa-Eu-T8w"/>
@@ -519,7 +519,7 @@
                 </scrollView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" name="background"/>
+            <color key="backgroundColor" name="code"/>
             <gestureRecognizers/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="9w2-B9-d5g" secondAttribute="bottom" id="9jc-Iq-oT0"/>
@@ -561,9 +561,6 @@
         <image name="user3" width="200" height="200"/>
         <image name="video_comment" width="15" height="15"/>
         <image name="video_share" width="15" height="15"/>
-        <namedColor name="background">
-            <color red="0.039000000804662704" green="0.039000000804662704" blue="0.039000000804662704" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="bg-controlpannel">
             <color red="0.0" green="0.0" blue="0.0" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -573,8 +570,8 @@
         <namedColor name="border">
             <color red="1" green="1" blue="1" alpha="0.10000000149011612" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="card">
-            <color red="0.082000002264976501" green="0.082000002264976501" blue="0.082000002264976501" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="code">
+            <color red="0.10199999809265137" green="0.10199999809265137" blue="0.10199999809265137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="code-highlight">
             <color red="0.27099999785423279" green="0.27099999785423279" blue="0.27099999785423279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

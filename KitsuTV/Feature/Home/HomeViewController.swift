@@ -1,6 +1,6 @@
 //
 //  HomeViewController.swift
-//  KTV
+//  KitsuTV
 //
 //  Created by 현유진 on 9/2/25.
 //
@@ -9,23 +9,38 @@ import UIKit
 
 
 
+
 class HomeViewController: UIViewController {
-  let homeViewModel = HomeViewModel()
+  
   @IBOutlet weak var collectionView: UICollectionView!
   
+  // MARK: - Properties
+  let homeViewModel = HomeViewModel()
+  
+  // MARK: - View Configuration
   override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
   
+  // MARK: - Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    setupCollectionView()
-    bindViewModel()
+    self.setupCollectionView()
+    self.bindViewModel()
     
     self.homeViewModel.requestData()
   }
   
   private func setupCollectionView() {
-    // UICollectionReusableView
+    self.registerSupplementaryViews()
+    self.registerCells()
+    self.configureDelegates()
+    
+    self.collectionView.isHidden = true
+  }
+  
+  // MARK: - Setup
+  private func registerSupplementaryViews() {
+    // Headers
     self.collectionView.register(
       UINib(nibName: "HomeHeaderView", bundle: .main),
       forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
@@ -36,13 +51,16 @@ class HomeViewController: UIViewController {
       forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
       withReuseIdentifier: HomeRankingHeaderView.identifier
     )
+    
+    // Footers
     self.collectionView.register(
       UINib(nibName: "HomeFooterView", bundle: .main),
       forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
       withReuseIdentifier: HomeFooterView.identifier
     )
-    
-    // UICollectionViewCell
+  }
+  
+  private func registerCells() {
     self.collectionView.register(
       UINib(nibName: HomeVideoCell.identifier, bundle: .main),
       forCellWithReuseIdentifier: HomeVideoCell.identifier
@@ -64,11 +82,13 @@ class HomeViewController: UIViewController {
       UICollectionViewCell.self,
       forCellWithReuseIdentifier: "empty"
     )
-    self.collectionView.delegate = self
-    self.collectionView.dataSource = self
-    
-    self.collectionView.isHidden = true
   }
+  
+  private func configureDelegates() {
+     self.collectionView.delegate = self
+     self.collectionView.dataSource = self
+   }
+   
   
   private func bindViewModel() {
     self.homeViewModel.dataChanged = { [weak self] in
@@ -77,13 +97,24 @@ class HomeViewController: UIViewController {
     }
   }
   
+  // MARK: - Navigation
   private func presentVideoViewController() {
     let videoViewController = VideoViewController()
     self.present(videoViewController, animated: true)
   }
+  
+  // MARK: - Helper Methods
+  private func insetForSection(_ section: HomeSection) -> UIEdgeInsets {
+    switch section {
+    case .header, .footer:
+      return .zero
+    case .video, .ranking, .recentWatch, .recommend:
+      return .init(top: 0, left: 21, bottom: 21, right: 21)
+    }
+  }
 }
 
-// MARK: - UICollectionViewDelegateFlowLayout으로 UICollectionView의 레이아웃을 세밀하게 제어
+// MARK: - UICollectionViewDelegateFlowLayout
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
   // 섹션별 헤더 크기 설정
   func collectionView(
@@ -189,17 +220,9 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
       self.presentVideoViewController()
     }
   }
-  
-  private func insetForSection(_ section: HomeSection) -> UIEdgeInsets {
-    switch section {
-    case .header, .footer:
-      return .zero
-    case .video, .ranking, .recentWatch, .recommend:
-      return .init(top: 0, left: 21, bottom: 21, right: 21)
-    }
-  }
 }
 
+// MARK: - UICollectionViewDataSource
 extension HomeViewController: UICollectionViewDataSource {
   func numberOfSections(in collectionView: UICollectionView) -> Int {
     HomeSection.allCases.count
@@ -336,6 +359,11 @@ extension HomeViewController: UICollectionViewDataSource {
   }
 }
 
+// MARK: - Cell Configuration
+
+
+
+// MARK: - HomeRecommendContainerCellDelegate
 extension HomeViewController: HomeRecommendContainerCellDelegate {
   func homeRecommendContainerCell(_ cell: HomeRecommendContainerCell, didSelectItemAt index: Int) {
     self.presentVideoViewController()
@@ -346,12 +374,14 @@ extension HomeViewController: HomeRecommendContainerCellDelegate {
   }
 }
 
+// MARK: - HomeRankingContainerCellDelegate
 extension HomeViewController: HomeRankingContainerCellDelegate {
   func homeRankingContainerCell(_ cell: HomeRankingContainerCell, didSelectItemAt index: Int) {
     self.presentVideoViewController()
   }
 }
 
+// MARK: - HomeRecentWatchContainerCellDelegate
 extension HomeViewController: HomeRecentWatchContainerCellDelegate {
   func homeRecentWatchContainerCell(_ cell: HomeRecentWatchContainerCell, didSelectItemAt index: Int) {
     self.presentVideoViewController()

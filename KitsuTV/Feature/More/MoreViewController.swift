@@ -9,28 +9,12 @@ import UIKit
 
 class MoreViewController: UIViewController {
   
-  private let moreViewModel: MoreViewModel = MoreViewModel()
-  
   @IBOutlet weak var headerView: UIView!
   @IBOutlet weak var tableView: UITableView!
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    
-    self.tableView.delegate = self
-    self.tableView.dataSource = self
-    self.tableView.rowHeight = MoreTableViewCell.height
-    self.tableView.register(
-      UINib(nibName: MoreTableViewCell.identifier, bundle: nil),
-      forCellReuseIdentifier: MoreTableViewCell.identifier
-    )
-  }
+  private let moreViewModel: MoreViewModel = MoreViewModel()
   
-  // 실제 오토레이아웃 적용 후 headerView.bounds를 기반으로 path를 계산할 수 있음
-  override func viewDidLayoutSubviews() {
-    self.setupCornerRadius()
-  }
-  
+  // MARK: - Initialization
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     
@@ -43,8 +27,34 @@ class MoreViewController: UIViewController {
     self.modalPresentationStyle = .overFullScreen
   }
   
-  @IBAction func closeDidTap(_ sender: UIButton) {
-    self.dismiss(animated: false)
+  // MARK: - Life Cycle
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    self.setupTableView()
+  }
+  
+  override func viewWillLayoutSubviews() {
+    self.setupCornerRadius()
+  }
+  
+  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    super.viewWillTransition(to: size, with: coordinator)
+    
+    coordinator.animate { _ in
+      self.setupCornerRadius()
+    }
+  }
+  
+  // MARK: - Setup
+  private func setupTableView() {
+    self.tableView.delegate = self
+    self.tableView.dataSource = self
+    self.tableView.rowHeight = MoreTableViewCell.height
+    self.tableView.register(
+      UINib(nibName: MoreTableViewCell.identifier, bundle: nil),
+      forCellReuseIdentifier: MoreTableViewCell.identifier
+    )
   }
   
   private func setupCornerRadius() {
@@ -58,11 +68,17 @@ class MoreViewController: UIViewController {
     maskLayer.path = path.cgPath
     self.headerView.layer.mask = maskLayer
     
-//    self.headerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-//    self.headerView.layer.cornerRadius = 13
+    // self.headerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+    // self.headerView.layer.cornerRadius = 13
+  }
+  
+  // MARK: - Actions
+  @IBAction func closeDidTap(_ sender: UIButton) {
+    self.dismiss(animated: false)
   }
 }
 
+// MARK: - UITableViewDataSource & UITableViewDelegate
 extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     self.moreViewModel.items.count
@@ -83,6 +99,4 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
     
     return cell
   }
-  
-  
 }

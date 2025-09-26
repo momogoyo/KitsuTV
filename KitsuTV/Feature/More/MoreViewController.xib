@@ -64,13 +64,13 @@
             <viewLayoutGuide key="safeArea" id="SWQ-9I-6cp"/>
             <color key="backgroundColor" name="bg-controlpannel"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="R7s-L0-B3m" secondAttribute="trailing" id="0yG-xd-nd9"/>
-                <constraint firstItem="QBB-te-EZr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Jcp-5N-Psd"/>
+                <constraint firstItem="SWQ-9I-6cp" firstAttribute="trailing" secondItem="R7s-L0-B3m" secondAttribute="trailing" id="0yG-xd-nd9"/>
+                <constraint firstItem="QBB-te-EZr" firstAttribute="leading" secondItem="SWQ-9I-6cp" secondAttribute="leading" id="Jcp-5N-Psd"/>
                 <constraint firstItem="QBB-te-EZr" firstAttribute="trailing" secondItem="SWQ-9I-6cp" secondAttribute="trailing" id="Zx2-TS-Lyd"/>
                 <constraint firstItem="R7s-L0-B3m" firstAttribute="top" secondItem="QBB-te-EZr" secondAttribute="bottom" id="f3G-Zw-D21"/>
-                <constraint firstItem="R7s-L0-B3m" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gMx-bN-Sb8"/>
+                <constraint firstItem="R7s-L0-B3m" firstAttribute="leading" secondItem="SWQ-9I-6cp" secondAttribute="leading" id="gMx-bN-Sb8"/>
                 <constraint firstAttribute="bottom" secondItem="R7s-L0-B3m" secondAttribute="bottom" id="hDO-ch-gDz"/>
-                <constraint firstAttribute="trailing" secondItem="QBB-te-EZr" secondAttribute="trailing" id="rx4-M2-5qK"/>
+                <constraint firstItem="SWQ-9I-6cp" firstAttribute="trailing" secondItem="QBB-te-EZr" secondAttribute="trailing" id="rx4-M2-5qK"/>
                 <constraint firstItem="QBB-te-EZr" firstAttribute="leading" secondItem="SWQ-9I-6cp" secondAttribute="leading" id="zMW-x9-bMc"/>
             </constraints>
             <point key="canvasLocation" x="-4" y="20"/>

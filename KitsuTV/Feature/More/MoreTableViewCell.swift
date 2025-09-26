@@ -16,10 +16,14 @@ class MoreTableViewCell: UITableViewCell {
   @IBOutlet weak var descriptionLabel: UILabel!
   @IBOutlet weak var separatorView: UIView!
   
+  // MARK: - Setup
   override func awakeFromNib() {
     super.awakeFromNib()
+    
+    self.backgroundConfiguration = .clear()
   }
   
+  // MARK: - Cell Configuration
   override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
   }

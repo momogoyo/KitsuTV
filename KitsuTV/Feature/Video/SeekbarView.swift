@@ -26,6 +26,7 @@ class SeekbarView: UIView {
   private(set) var totalPlayTime: Double = 0
   private(set) var playableTime: Double = 0
   private(set) var currentPlayTime: Double = 0
+  private(set) var isDragging: Bool = false
   
   weak var delegate: SeekBarViewDelegate?
   
@@ -40,28 +41,31 @@ class SeekbarView: UIView {
     super.touchesBegan(touches, with: event)
     
     guard let touch = touches.first else { return }
-    self.updatePlayedWidth(touch: touch)
+    self.isDragging = true
+    self.updatePlayedWidth(touch: touch, notifyDelegate: false)
   }
   
   override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
     super.touchesMoved(touches, with: event)
     
     guard let touch = touches.first else { return }
-    self.updatePlayedWidth(touch: touch)
+    self.isDragging = true
+    self.updatePlayedWidth(touch: touch, notifyDelegate: false)
   }
   
   override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
     super.touchesEnded(touches, with: event)
     
     guard let touch = touches.first else { return }
-    self.updatePlayedWidth(touch: touch)
+    self.isDragging = false
+    self.updatePlayedWidth(touch: touch, notifyDelegate: true)
   }
   
   override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
     super.touchesCancelled(touches, with: event)
     
     guard let touch = touches.first else { return }
-    self.updatePlayedWidth(touch: touch)
+    self.isDragging = false
   }
   
   // MARK: - Update Time Seekbar UI
@@ -84,11 +88,14 @@ class SeekbarView: UIView {
     min(touch.location(in: self).x, self.playableTimeWidth.constant)
   }
   
-  private func updatePlayedWidth(touch: UITouch) {
+  private func updatePlayedWidth(touch: UITouch, notifyDelegate: Bool) {
     let xPosition = self.widthForTouch(touch)
     self.playTimeWidth.constant = xPosition
     
-    self.delegate?.seekbar(self, seekToPercent: xPosition / self.frame.width)
+    if notifyDelegate {
+      let percent = xPosition / self.frame.width
+      self.delegate?.seekbar(self, seekToPercent: percent)
+    }
   }
   
   // MARK: - PlayTime Configuration
@@ -99,9 +106,12 @@ class SeekbarView: UIView {
   }
   
   func setPlayTime(_ playTime: Double, playableTime: Double) {
+    guard !isDragging else { return }
+      
     self.currentPlayTime = playTime
     self.playableTime = playableTime
     
     self.update()
+    
   }
 }

@@ -1,12 +1,13 @@
 //
 //  HomeRecommendContainerCell.swift
-//  KTV
+//  KitsuTV
 //
 //  Created by 현유진 on 9/2/25.
 //
 
 import UIKit
 
+// MARK: - HomeRecommendContainerCellDelegate
 protocol HomeRecommendContainerCellDelegate: AnyObject {
   func homeRecommendContainerCell(_ cell: HomeRecommendContainerCell, didSelectItemAt index: Int)
   func homeRecommendContainerCellFoldChanged(_ cell: HomeRecommendContainerCell)
@@ -16,6 +17,16 @@ class HomeRecommendContainerCell: UICollectionViewCell {
   
   static let identifier: String = "HomeRecommendContainerCell"
   
+  @IBOutlet weak var containerView: UIView!
+  @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var foldButton: UIButton!
+  
+  // MARK: - Properties
+  private var homeRecommendViewModel: HomeRecommendViewModel?
+  private var recommends: [VideoListItem]?
+  weak var delegate: HomeRecommendContainerCellDelegate?
+  
+  // MARK: - Height Calculation
   static func height(homeRecommendViewModel: HomeRecommendViewModel) -> CGFloat {
     let top: CGFloat = 84 - 16 // cell의 상단 여백
     let bottom: CGFloat = 68 - 6 // cell의 하단 여백
@@ -24,20 +35,21 @@ class HomeRecommendContainerCell: UICollectionViewCell {
     return VideoListItemCell.height * CGFloat(homeRecommendViewModel.itemCount) + top + bottom + footerInset
   }
   
-  @IBOutlet weak var containerView: UIView!
-  @IBOutlet weak var tableView: UITableView!
-  @IBOutlet weak var foldButton: UIButton!
-  weak var delegate: HomeRecommendContainerCellDelegate?
-  
-  private var homeRecommendViewModel: HomeRecommendViewModel?
-  private var recommends: [VideoListItem]?
-  
+  // MARK: - Setup
   override func awakeFromNib() {
     super.awakeFromNib()
     
+    self.setupUI()
+    self.setupTableView()
+  }
+  
+  private func setupUI() {
     self.containerView.layer.cornerRadius = 12
     self.containerView.layer.borderWidth = 1
     self.containerView.layer.borderColor = UIColor(named: "border")?.cgColor
+  }
+  
+  private func setupTableView() {
     self.tableView.rowHeight = VideoListItemCell.height
     self.tableView.delegate = self
     self.tableView.dataSource = self
@@ -47,23 +59,33 @@ class HomeRecommendContainerCell: UICollectionViewCell {
     )
   }
   
+  // MARK: - Actions
   @IBAction func foldButtonDidTap(_ sender: UIButton) {
     self.homeRecommendViewModel?.toggleFoldState()
     self.delegate?.homeRecommendContainerCellFoldChanged(self)
   }
   
+  // MARK: - Cell Configuration
   func setViewModel(_ homeRecommendViewModel: HomeRecommendViewModel) {
     self.homeRecommendViewModel = homeRecommendViewModel
-    self.setButtonImage(homeRecommendViewModel.isFolded)
-    self.tableView.reloadData()
     
+    self.updateUI(isFolded: homeRecommendViewModel.isFolded)
+    self.setupViewModelBinding(homeRecommendViewModel)
+  }
+  
+  private func updateUI(isFolded: Bool) {
+    self.setButtonImage(isFolded)
+    self.tableView.reloadData()
+  }
+  
+  private func setupViewModelBinding(_ homeRecommendViewModel: HomeRecommendViewModel) {
     homeRecommendViewModel.foldChanged = { [weak self] isFolded in
       self?.setButtonImage(isFolded)
       self?.tableView.reloadData()
     }
   }
   
-  func setButtonImage(_ isFolded: Bool) {
+  private func setButtonImage(_ isFolded: Bool) {
     let imageName = isFolded ? "unfold" : "fold"
     self.foldButton.setImage(
       UIImage(named: imageName),
@@ -72,6 +94,7 @@ class HomeRecommendContainerCell: UICollectionViewCell {
   }
 }
 
+// MARK: - UITableViewDataSource & UITableViewDelegate
 extension HomeRecommendContainerCell: UITableViewDelegate, UITableViewDataSource {
   func tableView(
     _ tableView: UITableView,
