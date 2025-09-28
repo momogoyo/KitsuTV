@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "FilmSlate 1.png",
+      "filename" : "FilmSlate.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "FilmSlate@2x 1.png",
+      "filename" : "FilmSlate@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "FilmSlate@3x 1.png",
+      "filename" : "FilmSlate@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

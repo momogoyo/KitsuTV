@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "EnvelopeSimple.png",
+      "filename" : "Envelope.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "EnvelopeSimple@2x.png",
+      "filename" : "Envelope@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "EnvelopeSimple@3x.png",
+      "filename" : "Envelope@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

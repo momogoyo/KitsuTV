@@ -23,7 +23,7 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bD4-u6-gME">
                                 <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
-                                <color key="backgroundColor" name="code-foreground"/>
+                                <color key="backgroundColor" name="muteForeground"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="83n-NS-wHb"/>
                                     <constraint firstAttribute="width" constant="48" id="CJ9-wr-IQV"/>
@@ -32,7 +32,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T2l-6o-rM6">
                                 <rect key="frame" x="63" y="14.333333333333334" width="197" height="19.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="textColor" name="text-white"/>
+                                <color key="textColor" name="textWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -66,10 +66,10 @@
         <namedColor name="background">
             <color red="0.14509803921568629" green="0.14509803921568629" blue="0.14509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="code-foreground">
-            <color red="0.70200002193450928" green="0.70200002193450928" blue="0.70200002193450928" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="muteForeground">
+            <color red="0.71372549019607845" green="0.71372549019607845" blue="0.71372549019607845" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="text-white">
+        <namedColor name="textWhite">
             <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

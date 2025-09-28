@@ -27,7 +27,7 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uyT-36-8qy">
                             <rect key="frame" x="171.33333333333334" y="14.666666666666629" width="50.333333333333343" height="17"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                            <color key="textColor" name="primary"/>
+                            <color key="textColor" name="textWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B08-j3-toV">
@@ -37,7 +37,9 @@
                                 <constraint firstAttribute="width" constant="40" id="jgm-wS-hn7"/>
                             </constraints>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" image="small_close"/>
+                            <state key="normal" image="small_close">
+                                <color key="titleColor" name="textWhite"/>
+                            </state>
                             <connections>
                                 <action selector="closeDidTap:" destination="-1" eventType="touchUpInside" id="ev7-TA-wP9"/>
                             </connections>
@@ -77,15 +79,15 @@
         </view>
     </objects>
     <resources>
-        <image name="small_close" width="15" height="15"/>
+        <image name="small_close" width="24" height="24"/>
         <namedColor name="bg-controlpannel">
             <color red="0.0" green="0.0" blue="0.0" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="card">
-            <color red="0.082000002264976501" green="0.082000002264976501" blue="0.082000002264976501" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156862745098" green="0.20392156862745098" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="primary">
-            <color red="0.9179999828338623" green="0.9179999828338623" blue="0.9179999828338623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="textWhite">
+            <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

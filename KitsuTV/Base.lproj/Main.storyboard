@@ -35,7 +35,7 @@
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Login">
-                                    <color key="titleColor" name="text-primary"/>
+                                    <color key="titleColor" name="textPrimary"/>
                                 </state>
                                 <connections>
                                     <action selector="loginDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x7s-2o-PGH"/>
@@ -44,6 +44,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="background"/>
+                        <color key="tintColor" name="textWhite"/>
                         <constraints>
                             <constraint firstItem="cSB-ra-dIO" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="N9p-fv-qYg"/>
                             <constraint firstItem="2t5-Aa-jPF" firstAttribute="top" secondItem="cSB-ra-dIO" secondAttribute="bottom" constant="20" id="Ubd-Mx-V1c"/>
@@ -97,7 +98,7 @@
                                                                     <color key="titleColor" name="primary"/>
                                                                 </state>
                                                                 <buttonConfiguration key="configuration" style="plain" image="my_bookmark" title="Bookmark" imagePadding="4">
-                                                                    <color key="baseForegroundColor" name="text-white"/>
+                                                                    <color key="baseForegroundColor" name="textWhite"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
                                                                     <action selector="bookmarkDidTap:" destination="uks-wo-WIQ" eventType="touchUpInside" id="bPZ-Dg-1ho"/>
@@ -114,16 +115,18 @@
                                                                 <rect key="frame" x="159" y="0.0" width="154" height="60"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain" image="my_like" title="Favorite" imagePadding="4">
-                                                                    <color key="baseForegroundColor" name="text-white"/>
+                                                                    <color key="baseForegroundColor" name="textWhite"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
                                                                     <segue destination="l1H-0f-hRm" kind="show" identifier="favorite" id="C9c-Jj-0mM"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
+                                                        <color key="tintColor" name="text-white"/>
                                                     </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" name="background-overlay"/>
+                                                <color key="tintColor" name="text-white"/>
                                                 <constraints>
                                                     <constraint firstItem="dcb-Hx-1E3" firstAttribute="leading" secondItem="6IB-hR-0MX" secondAttribute="leading" id="2hR-iB-7kI"/>
                                                     <constraint firstAttribute="bottom" secondItem="dcb-Hx-1E3" secondAttribute="bottom" id="74W-4B-QM6"/>
@@ -148,7 +151,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h95-v9-c5N">
                                                                 <rect key="frame" x="30" y="0.0" width="283" height="30"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                                <color key="textColor" name="text-white"/>
+                                                                <color key="textColor" name="textWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
@@ -179,8 +182,11 @@
                                                         </constraints>
                                                     </stackView>
                                                 </subviews>
+                                                <color key="tintColor" name="textWhite"/>
                                             </stackView>
                                         </subviews>
+                                        <color key="backgroundColor" name="background"/>
+                                        <color key="tintColor" name="textWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="6IB-hR-0MX" secondAttribute="trailing" constant="24" id="8QJ-2C-MJM"/>
                                             <constraint firstItem="sgC-3I-9cz" firstAttribute="centerX" secondItem="ZhX-iu-EZS" secondAttribute="centerX" id="9nN-85-LWa"/>
@@ -196,6 +202,7 @@
                                 </subviews>
                                 <viewLayoutGuide key="safeArea" id="ThV-eP-ckd"/>
                                 <color key="backgroundColor" name="background"/>
+                                <color key="tintColor" name="textWhite"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" summaryElement="YES"/>
                                 </accessibility>
@@ -220,7 +227,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s4l-g8-rNY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2582.4427480916029" y="679.57746478873241"/>
+            <point key="canvasLocation" x="2524" y="680"/>
         </scene>
         <!--Bookmark-->
         <scene sceneID="V0d-UB-bUp">
@@ -233,10 +240,12 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="otu-Md-Pbs">
                                 <rect key="frame" x="0.0" y="186" width="393" height="549"/>
                                 <color key="backgroundColor" name="background"/>
+                                <color key="tintColor" name="text-white"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xVC-HI-7Lu"/>
                         <color key="backgroundColor" name="background"/>
+                        <color key="tintColor" name="textWhite"/>
                         <constraints>
                             <constraint firstItem="xVC-HI-7Lu" firstAttribute="bottom" secondItem="otu-Md-Pbs" secondAttribute="bottom" id="cCb-lv-C5M"/>
                             <constraint firstItem="otu-Md-Pbs" firstAttribute="top" secondItem="xVC-HI-7Lu" secondAttribute="top" constant="24" id="lY8-dD-EHP"/>
@@ -268,6 +277,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qQd-dy-rsq"/>
                         <color key="backgroundColor" name="background"/>
+                        <color key="tintColor" name="textWhite"/>
                         <constraints>
                             <constraint firstItem="qQd-dy-rsq" firstAttribute="trailing" secondItem="Vuq-WF-QGL" secondAttribute="trailing" id="0rv-ee-zim"/>
                             <constraint firstItem="Vuq-WF-QGL" firstAttribute="top" secondItem="qQd-dy-rsq" secondAttribute="top" constant="24" id="Gz1-wb-07C"/>
@@ -282,7 +292,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9GF-BD-bKY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3580" y="1014"/>
+            <point key="canvasLocation" x="3610" y="978"/>
         </scene>
         <!--Live View Controller-->
         <scene sceneID="vbp-Hv-og1">
@@ -295,7 +305,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Live Channel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbi-JT-fvC">
                                 <rect key="frame" x="16" y="118" width="110" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <color key="textColor" name="primaryWhite"/>
+                                <color key="textColor" name="textWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aMU-Du-fIS">
@@ -363,6 +373,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Yc9-z6-x0a"/>
                         <color key="backgroundColor" name="background"/>
+                        <color key="tintColor" name="textWhite"/>
                         <constraints>
                             <constraint firstItem="Yc9-z6-x0a" firstAttribute="bottom" secondItem="aMU-Du-fIS" secondAttribute="bottom" constant="36" id="4Bw-gy-vA3"/>
                             <constraint firstItem="Yc9-z6-x0a" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jbi-JT-fvC" secondAttribute="trailing" symbolic="YES" id="8S5-SY-vXf"/>
@@ -399,7 +410,7 @@
                     <connections>
                         <segue destination="ULJ-E6-WMp" kind="relationship" relationship="viewControllers" id="z5R-Ms-5Wj"/>
                         <segue destination="A4r-eB-qiY" kind="relationship" relationship="viewControllers" id="Shr-Y4-Oz2"/>
-                        <segue destination="r0Q-P1-szS" kind="relationship" relationship="viewControllers" id="HVl-b1-ytR"/>
+                        <segue destination="r0Q-P1-szS" kind="relationship" relationship="viewControllers" id="e6C-9z-Jac"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B8l-sj-hsa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -462,17 +473,20 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mXq-B3-jJS">
                         <rect key="frame" x="0.0" y="118" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" name="primaryWhite"/>
+                        <color key="tintColor" name="textWhite"/>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" name="textWhite"/>
+                        </textAttributes>
                         <navigationBarAppearance key="standardAppearance">
                             <color key="backgroundColor" name="background"/>
                             <textAttributes key="titleTextAttributes">
-                                <color key="textColor" name="primaryWhite"/>
+                                <color key="textColor" name="textWhite"/>
                             </textAttributes>
                         </navigationBarAppearance>
                         <navigationBarAppearance key="scrollEdgeAppearance">
                             <color key="backgroundColor" name="background"/>
                             <textAttributes key="titleTextAttributes">
-                                <color key="textColor" name="primaryWhite"/>
+                                <color key="textColor" name="textWhite"/>
                             </textAttributes>
                         </navigationBarAppearance>
                     </navigationBar>
@@ -483,22 +497,23 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oIr-Dw-mbK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1655.7251908396945" y="679.57746478873241"/>
+            <point key="canvasLocation" x="1656" y="680"/>
         </scene>
     </scenes>
+    <color key="tintColor" name="text-white"/>
     <resources>
-        <image name="email" width="32" height="32"/>
+        <image name="email" width="24" height="24"/>
         <image name="launchImage-dark" width="768" height="768"/>
         <image name="logo" width="200" height="200"/>
-        <image name="my_bookmark" width="32" height="32"/>
-        <image name="my_like" width="32" height="32"/>
-        <image name="profile" width="32" height="32"/>
-        <image name="tabIcon_home" width="40" height="40"/>
-        <image name="tabIcon_home_selected" width="40" height="40"/>
-        <image name="tabIcon_live" width="32" height="32"/>
-        <image name="tabIcon_live_selected" width="40" height="40"/>
-        <image name="tabIcon_my" width="40" height="40"/>
-        <image name="tabIcon_my_selected" width="40" height="40"/>
+        <image name="my_bookmark" width="24" height="24"/>
+        <image name="my_like" width="24" height="24"/>
+        <image name="profile" width="24" height="24"/>
+        <image name="tabIcon_home" width="30" height="30"/>
+        <image name="tabIcon_home_selected" width="30" height="30"/>
+        <image name="tabIcon_live" width="30" height="30"/>
+        <image name="tabIcon_live_selected" width="30" height="30"/>
+        <image name="tabIcon_my" width="30" height="30"/>
+        <image name="tabIcon_my_selected" width="30" height="30"/>
         <namedColor name="accent">
             <color red="0.36899998784065247" green="0.36899998784065247" blue="0.36899998784065247" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -506,7 +521,7 @@
             <color red="0.14509803921568629" green="0.14509803921568629" blue="0.14509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="background-overlay">
-            <color red="0.88235294117647056" green="0.88235294117647056" blue="0.88235294117647056" alpha="0.029999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.88235294117647056" green="0.88235294117647056" blue="0.88235294117647056" alpha="0.029999999329447746" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="border">
             <color red="0.27058823529411763" green="0.27058823529411763" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -521,7 +536,7 @@
             <color red="0.9179999828338623" green="0.9179999828338623" blue="0.9179999828338623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="ring">
-            <color red="0.55699998140335083" green="0.55699998140335083" blue="0.55699998140335083" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.5607843137254902" green="0.5607843137254902" blue="0.5607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="shadow">
             <color red="0.0" green="0.0" blue="0.0" alpha="0.10000000149011612" colorSpace="custom" customColorSpace="sRGB"/>
@@ -529,10 +544,13 @@
         <namedColor name="tabbar">
             <color red="0.20392156862745098" green="0.20392156862745098" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="text-primary">
+        <namedColor name="text-white">
+            <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textPrimary">
             <color red="0.090196078431372548" green="0.090196078431372548" blue="0.090196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="text-white">
+        <namedColor name="textWhite">
             <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

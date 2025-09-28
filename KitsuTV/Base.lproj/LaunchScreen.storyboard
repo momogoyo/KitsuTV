@@ -27,6 +27,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="background"/>
+                        <color key="tintColor" name="textWhite"/>
                         <constraints>
                             <constraint firstItem="h7q-SB-gBz" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="5se-sd-VTV"/>
                             <constraint firstItem="h7q-SB-gBz" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="QXu-BL-V0V"/>
@@ -42,6 +43,9 @@
         <image name="launchImage-dark" width="768" height="768"/>
         <namedColor name="background">
             <color red="0.14509803921568629" green="0.14509803921568629" blue="0.14509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textWhite">
+            <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

@@ -56,7 +56,7 @@ class MyViewController: UIViewController {
   }
   
   @IBAction func favoriteDidTap(_ sender: UIButton) {
-     navigateToFavorite()
+    self.navigateToFavorite()
   }
   
   // MARK: - Navigation
