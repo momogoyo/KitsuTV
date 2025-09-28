@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Enter Full Screen.png",
+      "filename" : "CornersOut.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Enter Full Screen@2x.png",
+      "filename" : "CornersOut@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Enter Full Screen@3x.png",
+      "filename" : "CornersOut@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
