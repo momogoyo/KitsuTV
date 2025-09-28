@@ -323,8 +323,11 @@
                                                     <color key="titleColor" name="ring"/>
                                                 </state>
                                                 <state key="selected">
-                                                    <color key="titleColor" name="primaryWhite"/>
+                                                    <color key="titleColor" name="textWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="sortDidTap:" destination="A4r-eB-qiY" eventType="touchUpInside" id="nyd-rp-B5B"/>
+                                                </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mYL-kt-5VA">
                                                 <rect key="frame" x="260" y="6" width="1" height="11"/>
@@ -333,7 +336,7 @@
                                                     <constraint firstAttribute="width" constant="1" id="YZM-HP-u12"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="11p-hi-T34">
+                                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="11p-hi-T34">
                                                 <rect key="frame" x="189" y="0.0" width="68" height="22"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -342,17 +345,19 @@
                                                     <color key="titleColor" name="ring"/>
                                                 </state>
                                                 <state key="selected">
-                                                    <color key="titleColor" name="primaryWhite"/>
+                                                    <color key="titleColor" name="textWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="sortDidTap:" destination="A4r-eB-qiY" eventType="touchUpInside" id="TzJ-uW-cIR"/>
+                                                </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" name="background"/>
+                                        <color key="backgroundColor" name="card"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="11p-hi-T34" secondAttribute="bottom" id="4yt-fU-ZNd"/>
                                             <constraint firstAttribute="bottom" secondItem="Axe-4q-2jV" secondAttribute="bottom" id="7lK-l1-xie"/>
                                             <constraint firstItem="Axe-4q-2jV" firstAttribute="top" secondItem="hsk-l5-K6D" secondAttribute="top" id="9Ro-MX-y9g"/>
                                             <constraint firstItem="Axe-4q-2jV" firstAttribute="top" secondItem="hsk-l5-K6D" secondAttribute="top" id="Bm3-wt-mFB"/>
-                                            <constraint firstItem="11p-hi-T34" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hsk-l5-K6D" secondAttribute="leading" constant="20" symbolic="YES" id="CTn-Yb-cCq"/>
                                             <constraint firstAttribute="bottom" secondItem="mYL-kt-5VA" secondAttribute="bottom" constant="5" id="FZi-XP-p8M"/>
                                             <constraint firstAttribute="height" constant="22" id="MD7-kj-tpB"/>
                                             <constraint firstItem="mYL-kt-5VA" firstAttribute="leading" secondItem="11p-hi-T34" secondAttribute="trailing" constant="3" id="YUE-3x-Q8f"/>
@@ -362,11 +367,27 @@
                                             <constraint firstItem="mYL-kt-5VA" firstAttribute="top" secondItem="hsk-l5-K6D" secondAttribute="top" constant="6" id="z6d-Ke-Vgj"/>
                                         </constraints>
                                     </view>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UcL-OG-FHa">
+                                        <rect key="frame" x="14" y="78" width="333" height="418"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" name="textWhite"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="5" minimumInteritemSpacing="0.0" id="xff-Er-PKY">
+                                            <size key="itemSize" width="128" height="128"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                    </collectionView>
                                 </subviews>
-                                <color key="backgroundColor" name="background"/>
+                                <color key="backgroundColor" name="card"/>
                                 <constraints>
                                     <constraint firstItem="hsk-l5-K6D" firstAttribute="top" secondItem="aMU-Du-fIS" secondAttribute="top" constant="23" id="3SR-tC-aKf"/>
+                                    <constraint firstItem="UcL-OG-FHa" firstAttribute="leading" secondItem="aMU-Du-fIS" secondAttribute="leading" constant="14" id="BJL-9g-HNh"/>
+                                    <constraint firstAttribute="trailing" secondItem="UcL-OG-FHa" secondAttribute="trailing" constant="14" id="DWD-0V-qvN"/>
                                     <constraint firstAttribute="trailing" secondItem="hsk-l5-K6D" secondAttribute="trailing" constant="14" id="EW5-5t-88C"/>
+                                    <constraint firstItem="UcL-OG-FHa" firstAttribute="top" secondItem="hsk-l5-K6D" secondAttribute="bottom" constant="33" id="Hqp-V7-Fdx"/>
+                                    <constraint firstAttribute="bottom" secondItem="UcL-OG-FHa" secondAttribute="bottom" constant="19" id="I0K-1i-Yxf"/>
                                     <constraint firstItem="hsk-l5-K6D" firstAttribute="leading" secondItem="aMU-Du-fIS" secondAttribute="leading" constant="14" id="aLE-gY-vq0"/>
                                 </constraints>
                             </view>
@@ -385,6 +406,12 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="tabIcon_live" selectedImage="tabIcon_live_selected" id="3xV-rs-7o1"/>
+                    <connections>
+                        <outlet property="collectionView" destination="UcL-OG-FHa" id="kHU-pO-30v"/>
+                        <outlet property="containerView" destination="aMU-Du-fIS" id="Fwe-gZ-Yde"/>
+                        <outlet property="popularityButton" destination="11p-hi-T34" id="4PN-4T-VWo"/>
+                        <outlet property="startTimeButton" destination="Axe-4q-2jV" id="mbU-at-7b6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wqd-uu-mXU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -526,14 +553,14 @@
         <namedColor name="border">
             <color red="0.27058823529411763" green="0.27058823529411763" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="card">
+            <color red="0.20392156862745098" green="0.20392156862745098" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="foreground">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary">
             <color red="0.54509803921568623" green="0.36078431372549019" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="primaryWhite">
-            <color red="0.9179999828338623" green="0.9179999828338623" blue="0.9179999828338623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="ring">
             <color red="0.5607843137254902" green="0.5607843137254902" blue="0.5607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

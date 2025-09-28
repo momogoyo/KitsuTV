@@ -9,8 +9,65 @@ import UIKit
 
 class LiveViewController: UIViewController {
   
+  @IBOutlet weak var popularityButton: UIButton!
+  @IBOutlet weak var startTimeButton: UIButton!
+  @IBOutlet weak var containerView: UIView!
+  @IBOutlet weak var collectionView: UICollectionView!
+  
+  override var supportedInterfaceOrientations: UIInterfaceOrientationMask { .portrait }
+  override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    self.setupUI()
+    self.setupCollectionView()
   }
+  
+  private func setupUI() {
+    self.containerView.layer.cornerRadius = 12
+    self.containerView.layer.borderColor = UIColor(named: "border")?.cgColor
+    self.containerView.layer.borderWidth = 1
+  }
+  
+  private func setupCollectionView() {
+    self.collectionView.register(
+      UINib(nibName: LiveCell.identifier, bundle: nil),
+      forCellWithReuseIdentifier: LiveCell.identifier
+    )
+    
+    self.collectionView.delegate = self
+    self.collectionView.dataSource = self
+  }
+  
+  // MARK: - Actions
+  @IBAction func sortDidTap(_ sender: UIButton) {
+    guard sender.isSelected == false else { return }
+    
+    self.popularityButton.isSelected = sender == self.popularityButton
+    self.startTimeButton.isSelected = sender == self.startTimeButton
+  }
+}
+
+extension LiveViewController: UICollectionViewDelegateFlowLayout {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    CGSize(width: collectionView.frame.width, height: LiveCell.height)
+  }
+}
+
+extension LiveViewController: UICollectionViewDataSource {
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    10
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCell(
+      withReuseIdentifier: LiveCell.identifier,
+      for: indexPath
+    )
+    
+    return cell
+  }
+  
   
 }
