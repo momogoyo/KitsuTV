@@ -6,7 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -44,7 +43,7 @@
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9fe-f1-eQ6" customClass="PlayerView" customModule="KitsuTV" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="393" height="221"/>
-                            <color key="backgroundColor" name="code-highlight"/>
+                            <color key="backgroundColor" name="card"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HqY-Kb-C2X">
                             <rect key="frame" x="0.0" y="0.0" width="393" height="221"/>
@@ -64,14 +63,15 @@
                                                 <action selector="closeDidTap:" destination="-1" eventType="touchUpInside" id="PVy-K2-pRD"/>
                                             </connections>
                                         </button>
-                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="8TM-fc-F9I">
-                                            <rect key="frame" x="186" y="100" width="20" height="20"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="8TM-fc-F9I">
+                                            <rect key="frame" x="186.66666666666666" y="100.66666666666666" width="20" height="20"/>
                                         </activityIndicatorView>
                                     </subviews>
                                     <color key="backgroundColor" name="bg-controlpannel"/>
                                     <constraints>
                                         <constraint firstItem="B1c-6H-yYU" firstAttribute="top" secondItem="CIX-DP-cO5" secondAttribute="top" constant="8" id="7CC-Vy-xdD"/>
+                                        <constraint firstItem="8TM-fc-F9I" firstAttribute="centerX" secondItem="CIX-DP-cO5" secondAttribute="centerX" id="FDP-Eg-a93"/>
+                                        <constraint firstItem="8TM-fc-F9I" firstAttribute="centerY" secondItem="CIX-DP-cO5" secondAttribute="centerY" id="Smg-Jt-CPb"/>
                                         <constraint firstItem="B1c-6H-yYU" firstAttribute="leading" secondItem="CIX-DP-cO5" secondAttribute="leading" constant="16" id="rn1-xz-N5Y"/>
                                     </constraints>
                                 </view>
@@ -187,7 +187,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CSc-Hp-hVl">
                                                     <rect key="frame" x="72" y="20.666666666666657" width="30" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                                    <color key="textColor" name="primaryWhite"/>
+                                                    <color key="textColor" name="text-white"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGx-3w-McN">
@@ -220,14 +220,14 @@
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VPv-Tu-8xH">
                                                     <rect key="frame" x="0.0" y="18" width="333" height="2"/>
-                                                    <color key="backgroundColor" name="sidebar-accent"/>
+                                                    <color key="backgroundColor" name="border"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="2" id="bim-3h-UQd"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l3D-M3-uIf">
                                                     <rect key="frame" x="0.0" y="18" width="0.0" height="2"/>
-                                                    <color key="backgroundColor" name="ring"/>
+                                                    <color key="backgroundColor" name="mute-foreground"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="2" id="mlE-WN-26E"/>
                                                         <constraint firstAttribute="width" id="sWl-Wb-KxG"/>
@@ -275,7 +275,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfR-h0-HdZ">
                                             <rect key="frame" x="30" y="161" width="30" height="12"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
-                                            <color key="textColor" name="primaryWhite"/>
+                                            <color key="textColor" name="text-white"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7wm-hq-Ypb">
@@ -321,7 +321,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" name="foreground"/>
                     <constraints>
                         <constraint firstItem="HqY-Kb-C2X" firstAttribute="top" secondItem="9w2-B9-d5g" secondAttribute="top" id="4v7-rX-J8n"/>
                         <constraint firstAttribute="bottom" secondItem="9fe-f1-eQ6" secondAttribute="bottom" id="DPs-ec-hBk"/>
@@ -343,13 +343,13 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[Lorem ips] Lorem ipsum dolor sit amet,  con" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Px7-B8-rr7">
                                     <rect key="frame" x="24" y="24" width="345" height="43"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                    <color key="textColor" name="primaryWhite"/>
+                                    <color key="textColor" name="text-white"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2025.09.16" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDg-u8-PNJ">
                                     <rect key="frame" x="24" y="71" width="72.666666666666671" height="17"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <color key="textColor" name="secondaryGray"/>
+                                    <color key="textColor" name="mute-foreground"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mFy-mI-I4L">
@@ -363,7 +363,7 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.2K views" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7M-le-VH8">
                                     <rect key="frame" x="115" y="71" width="73" height="17"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                    <color key="textColor" name="secondaryGray"/>
+                                    <color key="textColor" name="mute-foreground"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zpA-hx-Hg8">
@@ -376,7 +376,7 @@
                                             <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="-10" maxY="0.0"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal" title="0" image="my_like">
-                                                <color key="titleColor" name="primaryWhite"/>
+                                                <color key="titleColor" name="text-white"/>
                                             </state>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdB-gM-wsR">
@@ -386,7 +386,7 @@
                                             <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="-10" maxY="0.0"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal" title="comment" image="video_comment">
-                                                <color key="titleColor" name="primaryWhite"/>
+                                                <color key="titleColor" name="text-white"/>
                                             </state>
                                             <connections>
                                                 <action selector="commentDidTap:" destination="-1" eventType="touchUpInside" id="a7B-2c-vtl"/>
@@ -399,7 +399,7 @@
                                             <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="-10" maxY="0.0"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal" title="share" image="video_share">
-                                                <color key="titleColor" name="primaryWhite"/>
+                                                <color key="titleColor" name="text-white"/>
                                             </state>
                                         </button>
                                     </subviews>
@@ -443,7 +443,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ChannelName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCJ-MO-B0t">
                                             <rect key="frame" x="38" y="4.3333333333333144" width="297" height="19.333333333333332"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" name="secondaryGray"/>
+                                            <color key="textColor" name="mute-foreground"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -460,19 +460,19 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recommends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZd-WT-4ir">
                                     <rect key="frame" x="24" y="223" width="345" height="22"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                    <color key="textColor" name="primaryWhite"/>
+                                    <color key="textColor" name="text-white"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="dD3-mT-H4b">
                                     <rect key="frame" x="30" y="266" width="333" height="0.0"/>
-                                    <color key="backgroundColor" name="code"/>
+                                    <color key="backgroundColor" name="background"/>
                                     <constraints>
                                         <constraint firstAttribute="height" id="43o-TZ-6XM"/>
                                     </constraints>
                                 </tableView>
                             </subviews>
                             <viewLayoutGuide key="safeArea" id="mmi-Oo-2Nf"/>
-                            <color key="backgroundColor" name="code"/>
+                            <color key="backgroundColor" name="background"/>
                             <constraints>
                                 <constraint firstItem="mFy-mI-I4L" firstAttribute="leading" secondItem="gDg-u8-PNJ" secondAttribute="trailing" constant="7.3333333333333286" id="066-db-ib4"/>
                                 <constraint firstItem="mmi-Oo-2Nf" firstAttribute="trailing" secondItem="KZd-WT-4ir" secondAttribute="trailing" constant="24" id="0Wa-Eu-T8w"/>
@@ -519,7 +519,7 @@
                 </scrollView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" name="code"/>
+            <color key="backgroundColor" name="background"/>
             <gestureRecognizers/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="9w2-B9-d5g" secondAttribute="bottom" id="9jc-Iq-oT0"/>
@@ -561,6 +561,9 @@
         <image name="user3" width="200" height="200"/>
         <image name="video_comment" width="15" height="15"/>
         <image name="video_share" width="15" height="15"/>
+        <namedColor name="background">
+            <color red="0.14509803921568629" green="0.14509803921568629" blue="0.14509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="bg-controlpannel">
             <color red="0.0" green="0.0" blue="0.0" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -568,31 +571,25 @@
             <color red="0.34509803921568627" green="0.34509803921568627" blue="0.34509803921568627" alpha="0.20000000298023224" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="border">
-            <color red="1" green="1" blue="1" alpha="0.10000000149011612" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.27058823529411763" green="0.27058823529411763" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="code">
-            <color red="0.10199999809265137" green="0.10199999809265137" blue="0.10199999809265137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="card">
+            <color red="0.20392156862745098" green="0.20392156862745098" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="code-highlight">
-            <color red="0.27099999785423279" green="0.27099999785423279" blue="0.27099999785423279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="foreground">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="primaryWhite">
-            <color red="0.9179999828338623" green="0.9179999828338623" blue="0.9179999828338623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="ring">
-            <color red="0.55699998140335083" green="0.55699998140335083" blue="0.55699998140335083" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="mute-foreground">
+            <color red="0.71372549019607845" green="0.71372549019607845" blue="0.71372549019607845" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="secondaryGray">
-            <color red="0.27099999785423279" green="0.27099999785423279" blue="0.27099999785423279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="sidebar-accent">
             <color red="0.27099999785423279" green="0.27099999785423279" blue="0.27099999785423279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="sidebar-primary">
             <color red="0.41999998688697815" green="0.54500001668930054" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="text-white">
+            <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

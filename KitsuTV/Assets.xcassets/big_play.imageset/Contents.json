@@ -6,12 +6,12 @@
       "scale" : "1x"
     },
     {
-      "filename" : "Play 1.png",
+      "filename" : "Play@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Play 2.png",
+      "filename" : "Play@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

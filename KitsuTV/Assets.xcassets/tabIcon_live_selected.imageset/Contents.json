@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Target.png",
+      "filename" : "TelevisionSimple.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Target@2x.png",
+      "filename" : "TelevisionSimple@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Target@3x.png",
+      "filename" : "TelevisionSimple@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

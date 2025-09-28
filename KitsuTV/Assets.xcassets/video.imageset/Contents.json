@@ -1,8 +1,19 @@
 {
   "images" : [
     {
-      "filename" : "Video@3x.png",
-      "idiom" : "universal"
+      "filename" : "FilmSlate 1.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "FilmSlate@2x 1.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "FilmSlate@3x 1.png",
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {

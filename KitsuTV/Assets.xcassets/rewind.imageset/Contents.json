@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Track Previous.png",
+      "filename" : "Rewind.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Track Previous@2x.png",
+      "filename" : "Rewind@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Track Previous@3x.png",
+      "filename" : "Rewind@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

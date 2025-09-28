@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Person.png",
+      "filename" : "GearFine.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Person@2x.png",
+      "filename" : "GearFine@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Person@3x.png",
+      "filename" : "GearFine@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
