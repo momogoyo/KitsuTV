@@ -50,6 +50,8 @@ class LiveViewController: UIViewController {
   private func bindViewModel() {
     self.liveViewModel.dataChanged = { [weak self] in
       self?.collectionView.reloadData()
+      // 스크롤 맨 위로
+      self?.collectionView.setContentOffset(.zero, animated: true)
     }
   }
   
@@ -59,6 +61,12 @@ class LiveViewController: UIViewController {
     
     self.popularityButton.isSelected = sender == self.popularityButton
     self.startTimeButton.isSelected = sender == self.startTimeButton
+    
+    if self.popularityButton.isSelected {
+      self.liveViewModel.sortList(.popularity)
+    } else {
+      self.liveViewModel.sortList(.start)
+    }
   }
 }
 
