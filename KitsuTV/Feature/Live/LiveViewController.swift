@@ -17,11 +17,15 @@ class LiveViewController: UIViewController {
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask { .portrait }
   override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
   
+  private var liveViewModel: LiveViewModel = LiveViewModel()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
     self.setupUI()
     self.setupCollectionView()
+    self.bindViewModel()
+    self.liveViewModel.request(sort: .popularity)
   }
   
   private func setupUI() {
@@ -38,6 +42,12 @@ class LiveViewController: UIViewController {
     
     self.collectionView.delegate = self
     self.collectionView.dataSource = self
+  }
+  
+  private func bindViewModel() {
+    self.liveViewModel.dataChanged = { [weak self] in
+      self?.collectionView.reloadData()
+    }
   }
   
   // MARK: - Actions
