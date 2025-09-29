@@ -23,7 +23,7 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bxo-Vl-pp3">
                                 <rect key="frame" x="0.0" y="0.0" width="135" height="76"/>
-                                <color key="backgroundColor" name="secondary"/>
+                                <color key="backgroundColor" name="secondaryColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="135" id="jcx-aq-c9y"/>
                                 </constraints>
@@ -91,7 +91,7 @@
         <namedColor name="muteForeground">
             <color red="0.71372549019607845" green="0.71372549019607845" blue="0.71372549019607845" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="secondary">
+        <namedColor name="secondaryColor">
             <color red="1" green="1" blue="1" alpha="0.10000000149011612" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="textWhite">

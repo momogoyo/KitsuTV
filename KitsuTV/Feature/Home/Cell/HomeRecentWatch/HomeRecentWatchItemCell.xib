@@ -25,7 +25,7 @@
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kcs-Bp-rdz">
                                         <rect key="frame" x="0.0" y="0.0" width="84" height="84"/>
-                                        <color key="backgroundColor" name="CardBackground"/>
+                                        <color key="backgroundColor" name="secondaryColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="84" id="74R-db-E3M"/>
                                             <constraint firstAttribute="width" constant="84" id="kHd-0b-li7"/>
@@ -99,11 +99,11 @@
     </objects>
     <resources>
         <image name="small_play" width="24" height="24"/>
-        <namedColor name="CardBackground">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="muteForeground">
             <color red="0.71372549019607845" green="0.71372549019607845" blue="0.71372549019607845" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="secondaryColor">
+            <color red="1" green="1" blue="1" alpha="0.10000000149011612" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="textWhite">
             <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -15,21 +15,21 @@ enum PlayerState {
 
 class VideoViewController: UIViewController {
   
-  // MARK: - Video Detail Section
+  // Video Detail Section
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var updateDateLabel: UILabel!
   @IBOutlet weak var playCountLabel: UILabel!
   @IBOutlet weak var favoriteButton: UIButton!
   
-  // MARK: - Channel Info Section
+  // Channel Info Section
   @IBOutlet weak var channelThumbnailImageView: UIImageView!
   @IBOutlet weak var channelNameLabel: UILabel!
   
-  // MARK: - Recommend Section
+  // Recommend Section
   @IBOutlet weak var recommendTableView: UITableView!
   @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
   
-  // MARK: - Player Section
+  // Player Section
   @IBOutlet weak var playerView: PlayerView!
   @IBOutlet weak var playButton: UIButton!
   @IBOutlet weak var seekbarView: SeekbarView!
@@ -38,7 +38,7 @@ class VideoViewController: UIViewController {
   @IBOutlet weak var landscapePlayTimeLabel: UILabel!
   @IBOutlet var playerViewBottomConstraint: NSLayoutConstraint!
   
-  // MARK: - Control Panel
+  // Control Panel
   @IBOutlet weak var portraitControlPanel: UIView!
   @IBOutlet weak var landscapeControlPanel: UIView!
   @IBOutlet weak var loadingContainer: UIView!
@@ -47,6 +47,9 @@ class VideoViewController: UIViewController {
       loadingIndicator.hidesWhenStopped = true
     }
   }
+  
+  // Live Chatting
+  @IBOutlet weak var liveChattingView: LiveChattingView!
   
   // MARK: - Properties
   private var videoViewModel: VideoViewModel = VideoViewModel()
@@ -93,6 +96,9 @@ class VideoViewController: UIViewController {
     
     self.playerView.delegate = self
     self.seekbarView.delegate = self
+    
+    self.liveChattingView.delegate = self
+    self.liveChattingView.isHidden = false
   }
   
   override func viewWillTransition(to size: CGSize, with coordinator: any UIViewControllerTransitionCoordinator) {
@@ -290,5 +296,12 @@ extension VideoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     return cell
+  }
+}
+
+// MARK: - LiveChattingViewDelegate
+extension VideoViewController: LiveChattingViewDelegate {
+  func liveChattingViewCloseDidTap(_ chattingView: LiveChattingView) {
+    self.liveChattingView.isHidden = true
   }
 }

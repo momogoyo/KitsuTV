@@ -6,7 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -80,6 +79,7 @@
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="253" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="sgC-3I-9cz">
                                                 <rect key="frame" x="140.66666666666666" y="24" width="80" height="80"/>
                                                 <color key="backgroundColor" name="accent"/>
+                                                <color key="tintColor" name="textWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="80" id="HDG-z0-SZp"/>
                                                     <constraint firstAttribute="height" constant="80" id="im7-Mo-5Ha"/>
@@ -93,6 +93,7 @@
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6C-Hq-39M">
                                                                 <rect key="frame" x="0.0" y="0.0" width="156" height="60"/>
+                                                                <color key="tintColor" name="textWhite"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="4" maxY="0.0"/>
                                                                 <state key="normal" title="Bookmark" image="my_bookmark">
                                                                     <color key="titleColor" name="primary"/>
@@ -113,6 +114,7 @@
                                                             </view>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fh1-KU-oPS">
                                                                 <rect key="frame" x="159" y="0.0" width="154" height="60"/>
+                                                                <color key="tintColor" name="textWhite"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain" image="my_like" title="Favorite" imagePadding="4">
                                                                     <color key="baseForegroundColor" name="textWhite"/>
@@ -150,6 +152,7 @@
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h95-v9-c5N">
                                                                 <rect key="frame" x="30" y="0.0" width="283" height="30"/>
+                                                                <color key="tintColor" name="textWhite"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <color key="textColor" name="textWhite"/>
                                                                 <nil key="highlightedColor"/>
@@ -172,6 +175,7 @@
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="abc@mail.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAs-j2-5Mb">
                                                                 <rect key="frame" x="30" y="0.0" width="283" height="30"/>
+                                                                <color key="tintColor" name="textWhite"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <color key="textColor" name="text-white"/>
                                                                 <nil key="highlightedColor"/>
@@ -273,6 +277,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Vuq-WF-QGL">
                                 <rect key="frame" x="0.0" y="186" width="393" height="549"/>
                                 <color key="backgroundColor" name="background"/>
+                                <color key="tintColor" name="textWhite"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qQd-dy-rsq"/>
@@ -304,6 +309,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Live Channel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbi-JT-fvC">
                                 <rect key="frame" x="16" y="118" width="110" height="21"/>
+                                <color key="tintColor" name="textWhite"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <color key="textColor" name="textWhite"/>
                                 <nil key="highlightedColor"/>
@@ -358,6 +364,7 @@
                                             <constraint firstAttribute="bottom" secondItem="Axe-4q-2jV" secondAttribute="bottom" id="7lK-l1-xie"/>
                                             <constraint firstItem="Axe-4q-2jV" firstAttribute="top" secondItem="hsk-l5-K6D" secondAttribute="top" id="9Ro-MX-y9g"/>
                                             <constraint firstItem="Axe-4q-2jV" firstAttribute="top" secondItem="hsk-l5-K6D" secondAttribute="top" id="Bm3-wt-mFB"/>
+                                            <constraint firstItem="11p-hi-T34" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hsk-l5-K6D" secondAttribute="leading" constant="20" symbolic="YES" id="DeE-dR-A2D"/>
                                             <constraint firstAttribute="bottom" secondItem="mYL-kt-5VA" secondAttribute="bottom" constant="5" id="FZi-XP-p8M"/>
                                             <constraint firstAttribute="height" constant="22" id="MD7-kj-tpB"/>
                                             <constraint firstItem="mYL-kt-5VA" firstAttribute="leading" secondItem="11p-hi-T34" secondAttribute="trailing" constant="3" id="YUE-3x-Q8f"/>
@@ -381,6 +388,7 @@
                                     </collectionView>
                                 </subviews>
                                 <color key="backgroundColor" name="card"/>
+                                <color key="tintColor" name="textWhite"/>
                                 <constraints>
                                     <constraint firstItem="hsk-l5-K6D" firstAttribute="top" secondItem="aMU-Du-fIS" secondAttribute="top" constant="23" id="3SR-tC-aKf"/>
                                     <constraint firstItem="UcL-OG-FHa" firstAttribute="leading" secondItem="aMU-Du-fIS" secondAttribute="leading" constant="14" id="BJL-9g-HNh"/>
@@ -425,6 +433,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" name="textWhite"/>
                         <tabBarAppearance key="standardAppearance">
                             <color key="backgroundColor" name="tabbar"/>
                             <color key="shadowColor" name="shadow"/>
@@ -455,26 +464,19 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LUE-Je-ic2">
                                 <rect key="frame" x="0.0" y="118" width="393" height="617"/>
                                 <color key="backgroundColor" name="background"/>
+                                <color key="tintColor" name="textWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DJ2-Yf-H9U">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="f2x-fd-r2t">
-                                        <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="peV-U3-dTG">
-                                            <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="D0r-d6-ovk"/>
                         <color key="backgroundColor" name="background"/>
+                        <color key="tintColor" name="textWhite"/>
                         <constraints>
                             <constraint firstItem="D0r-d6-ovk" firstAttribute="trailing" secondItem="LUE-Je-ic2" secondAttribute="trailing" id="6oA-Bo-FnN"/>
                             <constraint firstItem="LUE-Je-ic2" firstAttribute="leading" secondItem="D0r-d6-ovk" secondAttribute="leading" id="Dlh-Vi-LWJ"/>

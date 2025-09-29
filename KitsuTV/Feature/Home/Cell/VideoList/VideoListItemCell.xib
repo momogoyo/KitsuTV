@@ -26,7 +26,7 @@
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SYy-rz-BFr">
                                         <rect key="frame" x="0.0" y="0.0" width="107" height="59"/>
-                                        <color key="backgroundColor" name="secondary"/>
+                                        <color key="backgroundColor" name="secondaryColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="59" id="7yG-XO-22H"/>
                                             <constraint firstAttribute="width" constant="107" id="8l0-qN-umU"/>
@@ -40,7 +40,7 @@
                                             <constraint firstAttribute="width" constant="16" id="32K-aW-u6C"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" name="primary"/>
+                                        <color key="textColor" name="primaryColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pwe-Yr-Tmg" userLabel="play time bg view">
@@ -142,10 +142,10 @@
         <namedColor name="muteForeground">
             <color red="0.71372549019607845" green="0.71372549019607845" blue="0.71372549019607845" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="primary">
+        <namedColor name="primaryColor">
             <color red="0.54509803921568623" green="0.36078431372549019" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="secondary">
+        <namedColor name="secondaryColor">
             <color red="1" green="1" blue="1" alpha="0.10000000149011612" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="text-white">

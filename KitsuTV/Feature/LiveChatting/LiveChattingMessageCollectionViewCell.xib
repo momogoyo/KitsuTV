@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="dNt-0y-jUg" customClass="LiveChattingMessageCollectionViewCell" customModule="KitsuTV" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="461" height="54"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="461" height="54"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FTq-Z0-pGm">
+                        <rect key="frame" x="0.0" y="0.0" width="52.333333333333336" height="49"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4V-iv-aGi">
+                                <rect key="frame" x="10" y="4" width="32.333333333333336" height="41"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                <color key="textColor" name="textPrimary"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="ring"/>
+                        <constraints>
+                            <constraint firstItem="W4V-iv-aGi" firstAttribute="leading" secondItem="FTq-Z0-pGm" secondAttribute="leading" constant="10" id="ERv-HS-a1A"/>
+                            <constraint firstAttribute="trailing" secondItem="W4V-iv-aGi" secondAttribute="trailing" constant="10" id="gSy-bS-LgG"/>
+                            <constraint firstAttribute="bottom" secondItem="W4V-iv-aGi" secondAttribute="bottom" constant="4" id="gkn-AU-3mh"/>
+                            <constraint firstItem="W4V-iv-aGi" firstAttribute="top" secondItem="FTq-Z0-pGm" secondAttribute="top" constant="4" id="m9N-bh-VRG"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="fFj-Fy-jVA"/>
+            <constraints>
+                <constraint firstItem="FTq-Z0-pGm" firstAttribute="top" secondItem="dNt-0y-jUg" secondAttribute="top" id="GRd-ce-3rx"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="FTq-Z0-pGm" secondAttribute="trailing" id="M31-V4-I5V"/>
+                <constraint firstItem="FTq-Z0-pGm" firstAttribute="leading" secondItem="dNt-0y-jUg" secondAttribute="leading" id="nJq-rK-j69"/>
+                <constraint firstAttribute="bottom" secondItem="FTq-Z0-pGm" secondAttribute="bottom" constant="5" id="uBd-An-III"/>
+            </constraints>
+            <size key="customSize" width="461" height="54"/>
+            <connections>
+                <outlet property="bgView" destination="FTq-Z0-pGm" id="qhp-x8-I5X"/>
+                <outlet property="textLabel" destination="W4V-iv-aGi" id="J0k-2u-Wkn"/>
+            </connections>
+            <point key="canvasLocation" x="452.67175572519085" y="21.126760563380284"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="ring">
+            <color red="0.5607843137254902" green="0.5607843137254902" blue="0.5607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textPrimary">
+            <color red="0.090196078431372548" green="0.090196078431372548" blue="0.090196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
