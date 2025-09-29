@@ -14,7 +14,7 @@ enum LiveSortOption {
 
 @MainActor
 class LiveViewModel {
-  private(set) var items: [Live.Item] = []
+  private(set) var items: [Live.Item]?
   private(set) var sortOption: LiveSortOption = .popularity
   var dataChanged: (() -> Void)?
   

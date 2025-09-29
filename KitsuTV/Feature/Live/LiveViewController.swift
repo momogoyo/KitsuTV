@@ -19,15 +19,18 @@ class LiveViewController: UIViewController {
   
   private var liveViewModel: LiveViewModel = LiveViewModel()
   
+  // MARK: - View Life cycle
   override func viewDidLoad() {
     super.viewDidLoad()
     
     self.setupUI()
     self.setupCollectionView()
     self.bindViewModel()
+    
     self.liveViewModel.request(sort: .popularity)
   }
   
+  // MARK: - Setup
   private func setupUI() {
     self.containerView.layer.cornerRadius = 12
     self.containerView.layer.borderColor = UIColor(named: "border")?.cgColor
@@ -59,15 +62,17 @@ class LiveViewController: UIViewController {
   }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
 extension LiveViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     CGSize(width: collectionView.frame.width, height: LiveCell.height)
   }
 }
 
+// MARK: - UICollectionViewDataSource
 extension LiveViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    10
+    self.liveViewModel.items?.count ?? 0
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -76,8 +81,12 @@ extension LiveViewController: UICollectionViewDataSource {
       for: indexPath
     )
     
+    if let cell = cell as? LiveCell,
+       let data = self.liveViewModel.items?[indexPath.item] {
+      cell.setData(data)
+    }
+    
+    
     return cell
   }
-  
-  
 }
