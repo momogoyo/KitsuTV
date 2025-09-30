@@ -50,11 +50,12 @@ class VideoViewController: UIViewController {
   
   // Live Chatting
   @IBOutlet weak var liveChattingView: LiveChattingView!
+  @IBOutlet weak var chattingBottomConstraint: NSLayoutConstraint!
   
   // MARK: - Properties
   private var videoViewModel: VideoViewModel = VideoViewModel()
   private var contentSizeObservation: NSKeyValueObservation?
-  
+  private let chattingHiddenBottomConstant: CGFloat = -500
   var isLiveMode: Bool = false
   
   // MARK: - Property Observer
@@ -106,8 +107,15 @@ class VideoViewController: UIViewController {
   override func viewWillTransition(to size: CGSize, with coordinator: any UIViewControllerTransitionCoordinator) {
     super.viewWillTransition(to: size, with: coordinator)
     
+    self.setEditing(false, animated: true)
     self.switchControlPannel(size: size)
     self.playerViewBottomConstraint.isActive = self.isLandscape(size: size)
+    
+    if self.isLandscape(size: size) {
+      self.chattingBottomConstraint.constant = self.chattingHiddenBottomConstant
+    } else {
+      self.chattingBottomConstraint.constant = 0
+    }
   }
   
   // MARK: - Setup Methods
@@ -310,6 +318,7 @@ extension VideoViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: - LiveChattingViewDelegate
 extension VideoViewController: LiveChattingViewDelegate {
   func liveChattingViewCloseDidTap(_ chattingView: LiveChattingView) {
+    self.setEditing(false, animated: true)
     self.liveChattingView.isHidden = true
   }
 }
