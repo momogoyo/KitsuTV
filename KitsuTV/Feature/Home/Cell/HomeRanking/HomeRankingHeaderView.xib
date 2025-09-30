@@ -18,7 +18,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shorts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kjg-mp-FHw">
-                            <rect key="frame" x="20.999999999999996" y="21" width="57.666666666666657" height="21"/>
+                            <rect key="frame" x="0.0" y="21" width="57.666666666666671" height="21"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                             <color key="textColor" name="textWhite"/>
                             <nil key="highlightedColor"/>
@@ -28,7 +28,7 @@
                     <constraints>
                         <constraint firstItem="Kjg-mp-FHw" firstAttribute="top" secondItem="wo5-9S-W2a" secondAttribute="top" constant="21" id="JIL-WW-kFD"/>
                         <constraint firstAttribute="bottom" secondItem="Kjg-mp-FHw" secondAttribute="bottom" constant="21" id="PQi-ze-1ES"/>
-                        <constraint firstItem="Kjg-mp-FHw" firstAttribute="leading" secondItem="wo5-9S-W2a" secondAttribute="leading" constant="21" id="fgf-X6-fSt"/>
+                        <constraint firstItem="Kjg-mp-FHw" firstAttribute="leading" secondItem="wo5-9S-W2a" secondAttribute="leading" id="fgf-X6-fSt"/>
                     </constraints>
                 </view>
             </subviews>

@@ -4,61 +4,61 @@
       "title": "열한번째 라이브 진행중",
       "channel": "채널11",
       "videoId": 11,
-      "thumbnailUrl": "http:\/\/localhost:8080\/image\/livethumb1.jpg"
+      "thumbnailUrl": "http:\/\/localhost:8080\/image\/livethumb11.jpg"
     },
     {
       "title": "열번째 라이브 진행중",
       "channel": "채널10",
       "videoId": 10,
-      "thumbnailUrl": "http:\/\/localhost:8080\/image\/livethumb1.jpg"
+      "thumbnailUrl": "http:\/\/localhost:8080\/image\/livethumb10.jpg"
     },
     {
       "title": "아홉번째 라이브 진행중",
       "channel": "채널9",
       "videoId": 9,
-      "thumbnailUrl": "http:\/\/localhost:8080\/image\/livethumb1.jpg"
+      "thumbnailUrl": "http:\/\/localhost:8080\/image\/livethumb9.jpg"
     },
     {
       "title": "여덟번째 라이브 진행중",
       "channel": "채널8",
       "videoId": 8,
-      "thumbnailUrl": "http:\/\/localhost:8080\/image\/livethumb1.jpg"
+      "thumbnailUrl": "http:\/\/localhost:8080\/image\/livethumb8.jpg"
     },
     {
       "title": "일곱번째 라이브 진행중",
       "channel": "채널7",
       "videoId": 7,
-      "thumbnailUrl": "http:\/\/localhost:8080\/image\/livethumb1.jpg"
+      "thumbnailUrl": "http:\/\/localhost:8080\/image\/livethumb7.jpg"
     },
     {
       "title": "여섯번째 라이브 진행중",
       "channel": "채널6",
       "videoId": 6,
-      "thumbnailUrl": "http:\/\/localhost:8080\/image\/livethumb1.jpg"
+      "thumbnailUrl": "http:\/\/localhost:8080\/image\/livethumb6.jpg"
     },
     {
       "title": "다섯번째 라이브 진행중",
       "channel": "채널5",
       "videoId": 5,
-      "thumbnailUrl": "http:\/\/localhost:8080\/image\/livethumb1.jpg"
+      "thumbnailUrl": "http:\/\/localhost:8080\/image\/livethumb5.jpg"
     },
     {
       "title": "네번째 라이브 진행중",
       "channel": "채널4",
       "videoId": 4,
-      "thumbnailUrl": "http:\/\/localhost:8080\/image\/livethumb1.jpg"
+      "thumbnailUrl": "http:\/\/localhost:8080\/image\/livethumb4.jpg"
     },
     {
       "title": "세번째 라이브 진행중",
       "channel": "채널3",
       "videoId": 3,
-      "thumbnailUrl": "http:\/\/localhost:8080\/image\/livethumb1.jpg"
+      "thumbnailUrl": "http:\/\/localhost:8080\/image\/livethumb3.jpg"
     },
     {
       "title": "두번째 라이브 진행중",
       "channel": "채널2",
       "videoId": 2,
-      "thumbnailUrl": "http:\/\/localhost:8080\/image\/livethumb1.jpg"
+      "thumbnailUrl": "http:\/\/localhost:8080\/image\/livethumb2.jpg"
     },
     {
       "title": "첫번째 라이브 진행중",
