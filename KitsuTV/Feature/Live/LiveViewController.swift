@@ -94,7 +94,12 @@ extension LiveViewController: UICollectionViewDataSource {
       cell.setData(data)
     }
     
-    
     return cell
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let videoViewController = VideoViewController()
+    videoViewController.isLiveMode = true
+    self.present(videoViewController, animated: true)
   }
 }

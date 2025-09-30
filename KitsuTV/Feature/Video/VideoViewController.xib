@@ -6,7 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -378,7 +377,7 @@
                                             <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="-10" maxY="0.0"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal" title="0" image="my_like">
-                                                <color key="titleColor" name="text-white"/>
+                                                <color key="titleColor" name="textWhite"/>
                                             </state>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdB-gM-wsR">
@@ -388,7 +387,7 @@
                                             <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="-10" maxY="0.0"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal" title="comment" image="video_comment">
-                                                <color key="titleColor" name="text-white"/>
+                                                <color key="titleColor" name="textWhite"/>
                                             </state>
                                             <connections>
                                                 <action selector="commentDidTap:" destination="-1" eventType="touchUpInside" id="a7B-2c-vtl"/>
@@ -401,7 +400,7 @@
                                             <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="-10" maxY="0.0"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal" title="share" image="video_share">
-                                                <color key="titleColor" name="text-white"/>
+                                                <color key="titleColor" name="textWhite"/>
                                             </state>
                                         </button>
                                     </subviews>
@@ -520,7 +519,7 @@
                     <viewLayoutGuide key="frameLayoutGuide" id="a9Q-OX-caN"/>
                 </scrollView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="snD-Qu-Wpr" customClass="LiveChattingView" customModule="KitsuTV">
-                    <rect key="frame" x="0.0" y="339" width="393" height="445"/>
+                    <rect key="frame" x="0.0" y="339" width="393" height="513"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZFI-qr-8te">
                             <rect key="frame" x="0.0" y="0.0" width="393" height="67"/>
@@ -560,10 +559,10 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eqT-2e-tz9">
-                            <rect key="frame" x="0.0" y="365" width="393" height="80"/>
+                            <rect key="frame" x="0.0" y="413" width="393" height="80"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Join the chat!" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TaT-j7-yCk">
-                                    <rect key="frame" x="24" y="7" width="345" height="36"/>
+                                    <rect key="frame" x="24" y="14" width="345" height="36"/>
                                     <color key="backgroundColor" name="secondaryColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="36" id="2Y2-fg-Zv5"/>
@@ -576,28 +575,40 @@
                             <color key="backgroundColor" name="background"/>
                             <constraints>
                                 <constraint firstItem="TaT-j7-yCk" firstAttribute="leading" secondItem="eqT-2e-tz9" secondAttribute="leading" constant="24" id="0zZ-WG-z13"/>
-                                <constraint firstItem="TaT-j7-yCk" firstAttribute="top" secondItem="eqT-2e-tz9" secondAttribute="top" constant="7" id="mn1-G1-2WL"/>
+                                <constraint firstItem="TaT-j7-yCk" firstAttribute="top" secondItem="eqT-2e-tz9" secondAttribute="top" constant="14" id="mn1-G1-2WL"/>
                                 <constraint firstAttribute="height" constant="80" id="rHs-j4-wIE"/>
                                 <constraint firstAttribute="trailing" secondItem="TaT-j7-yCk" secondAttribute="trailing" constant="24" id="wwk-Dh-un6"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QE2-0u-M5F">
-                            <rect key="frame" x="0.0" y="364" width="393" height="1"/>
+                            <rect key="frame" x="0.0" y="412" width="393" height="1"/>
                             <color key="backgroundColor" name="textPrimary"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="wwY-Ey-YDb"/>
                             </constraints>
                         </view>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="dDF-cu-dpG">
-                            <rect key="frame" x="0.0" y="68" width="393" height="296"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="UNv-mA-QZC">
-                                <size key="itemSize" width="128" height="128"/>
-                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            </collectionViewFlowLayout>
-                        </collectionView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s1y-g8-2C0">
+                            <rect key="frame" x="0.0" y="68" width="393" height="344"/>
+                            <subviews>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="dDF-cu-dpG">
+                                    <rect key="frame" x="0.0" y="12" width="393" height="320"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="UNv-mA-QZC">
+                                        <size key="itemSize" width="128" height="128"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </collectionViewFlowLayout>
+                                </collectionView>
+                            </subviews>
+                            <color key="backgroundColor" name="textPrimary"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="dDF-cu-dpG" secondAttribute="bottom" constant="12" id="5Ry-J4-XR9"/>
+                                <constraint firstItem="dDF-cu-dpG" firstAttribute="top" secondItem="s1y-g8-2C0" secondAttribute="top" constant="12" id="c3E-02-JlB"/>
+                                <constraint firstItem="dDF-cu-dpG" firstAttribute="leading" secondItem="s1y-g8-2C0" secondAttribute="leading" id="lW8-Bx-a19"/>
+                                <constraint firstAttribute="trailing" secondItem="dDF-cu-dpG" secondAttribute="trailing" id="w3u-jr-bhf"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" name="background"/>
                     <constraints>
@@ -606,15 +617,15 @@
                         <constraint firstItem="eqT-2e-tz9" firstAttribute="top" secondItem="QE2-0u-M5F" secondAttribute="bottom" id="6tV-UA-7Jr"/>
                         <constraint firstAttribute="trailing" secondItem="ZFI-qr-8te" secondAttribute="trailing" id="Aum-EE-104"/>
                         <constraint firstAttribute="trailing" secondItem="QE2-0u-M5F" secondAttribute="trailing" id="CBU-9u-SEr"/>
-                        <constraint firstItem="dDF-cu-dpG" firstAttribute="top" secondItem="2Bz-mH-crE" secondAttribute="bottom" id="UXc-QO-ATi"/>
-                        <constraint firstAttribute="trailing" secondItem="dDF-cu-dpG" secondAttribute="trailing" id="W36-Ph-bi6"/>
+                        <constraint firstAttribute="trailing" secondItem="s1y-g8-2C0" secondAttribute="trailing" id="OVz-gP-h7c"/>
+                        <constraint firstItem="s1y-g8-2C0" firstAttribute="leading" secondItem="snD-Qu-Wpr" secondAttribute="leading" id="Oa5-Lw-wOa"/>
+                        <constraint firstItem="s1y-g8-2C0" firstAttribute="top" secondItem="2Bz-mH-crE" secondAttribute="bottom" id="V6F-yH-0O4"/>
                         <constraint firstItem="ZFI-qr-8te" firstAttribute="leading" secondItem="snD-Qu-Wpr" secondAttribute="leading" id="Ysf-Ge-63v"/>
                         <constraint firstAttribute="trailing" secondItem="2Bz-mH-crE" secondAttribute="trailing" id="ZYj-y9-fnn"/>
                         <constraint firstItem="ZFI-qr-8te" firstAttribute="top" secondItem="snD-Qu-Wpr" secondAttribute="top" id="dgM-88-fD1"/>
                         <constraint firstItem="QE2-0u-M5F" firstAttribute="leading" secondItem="snD-Qu-Wpr" secondAttribute="leading" id="gId-VU-u0G"/>
-                        <constraint firstItem="QE2-0u-M5F" firstAttribute="top" secondItem="dDF-cu-dpG" secondAttribute="bottom" id="iP1-qv-9pi"/>
-                        <constraint firstItem="dDF-cu-dpG" firstAttribute="leading" secondItem="snD-Qu-Wpr" secondAttribute="leading" id="knO-mv-7j2"/>
-                        <constraint firstAttribute="bottom" secondItem="eqT-2e-tz9" secondAttribute="bottom" id="nFX-cn-DaE"/>
+                        <constraint firstItem="QE2-0u-M5F" firstAttribute="top" secondItem="s1y-g8-2C0" secondAttribute="bottom" id="j63-u3-ZRX"/>
+                        <constraint firstAttribute="bottom" secondItem="eqT-2e-tz9" secondAttribute="bottom" constant="20" id="nFX-cn-DaE"/>
                         <constraint firstAttribute="trailing" secondItem="eqT-2e-tz9" secondAttribute="trailing" id="qe6-O2-eft"/>
                         <constraint firstItem="eqT-2e-tz9" firstAttribute="leading" secondItem="snD-Qu-Wpr" secondAttribute="leading" id="z97-et-8yD"/>
                     </constraints>
@@ -630,7 +641,7 @@
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="9w2-B9-d5g" secondAttribute="bottom" id="9jc-Iq-oT0"/>
                 <constraint firstItem="7jc-wG-o2p" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="LYD-6X-18N"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="snD-Qu-Wpr" secondAttribute="bottom" id="ME4-me-klw"/>
+                <constraint firstAttribute="bottom" secondItem="snD-Qu-Wpr" secondAttribute="bottom" id="ME4-me-klw"/>
                 <constraint firstItem="snD-Qu-Wpr" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="RJS-R2-hz8"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9w2-B9-d5g" secondAttribute="trailing" id="WQd-Ra-jEW"/>
                 <constraint firstItem="7jc-wG-o2p" firstAttribute="top" secondItem="9w2-B9-d5g" secondAttribute="bottom" id="WoE-Vn-KSP"/>
@@ -639,7 +650,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="snD-Qu-Wpr" secondAttribute="trailing" id="fAV-7Q-vtu"/>
                 <constraint firstItem="9w2-B9-d5g" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="jLg-eL-AG4"/>
                 <constraint firstItem="snD-Qu-Wpr" firstAttribute="top" secondItem="9w2-B9-d5g" secondAttribute="bottom" id="uaW-dO-Rvu"/>
-                <constraint firstAttribute="bottom" secondItem="7jc-wG-o2p" secondAttribute="bottom" id="y9q-0X-jeM"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="7jc-wG-o2p" secondAttribute="bottom" constant="-68" id="y9q-0X-jeM"/>
             </constraints>
             <variation key="default">
                 <mask key="constraints">
@@ -710,8 +721,5 @@
         <namedColor name="textWhite">
             <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

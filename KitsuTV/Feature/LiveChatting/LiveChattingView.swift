@@ -54,7 +54,7 @@ class LiveChattingView: UIView {
     self.textField.attributedPlaceholder = NSAttributedString(
       string: "Join the chat!",
       attributes: [
-        .foregroundColor: UIColor(named: "secondary") ?? .clear,
+        .foregroundColor: UIColor(named: "placeholder") ?? .clear,
         .font: UIFont.systemFont(ofSize: 12, weight: .medium)
       ]
     )
@@ -71,6 +71,20 @@ class LiveChattingView: UIView {
   private func bindViewModel() {
     self.liveChattingViewModel.chattingReceived = { [weak self] in
       self?.collectionView.reloadData()
+      self?.scrollToLatestIfNeeded()
+    }
+  }
+  
+  private func scrollToLatestIfNeeded() {
+    let isBottomOffset = self.collectionView.bounds.maxY >= self.collectionView.contentSize.height - 200
+    let isLastMessageMine = self.liveChattingViewModel.messages.last?.isMine == true
+    
+    if isBottomOffset || isLastMessageMine {
+      self.collectionView.scrollToItem(
+        at: IndexPath(item: self.liveChattingViewModel.messages.count - 1, section: 0),
+        at: .bottom,
+        animated: true
+      )
     }
   }
   

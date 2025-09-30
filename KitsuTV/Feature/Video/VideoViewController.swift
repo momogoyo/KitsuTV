@@ -55,6 +55,8 @@ class VideoViewController: UIViewController {
   private var videoViewModel: VideoViewModel = VideoViewModel()
   private var contentSizeObservation: NSKeyValueObservation?
   
+  var isLiveMode: Bool = false
+  
   // MARK: - Property Observer
   private var isControlPanelHidden: Bool = true {
     didSet {
@@ -98,7 +100,7 @@ class VideoViewController: UIViewController {
     self.seekbarView.delegate = self
     
     self.liveChattingView.delegate = self
-    self.liveChattingView.isHidden = false
+    self.liveChattingView.isHidden = !self.isLiveMode
   }
   
   override func viewWillTransition(to size: CGSize, with coordinator: any UIViewControllerTransitionCoordinator) {
@@ -236,7 +238,13 @@ class VideoViewController: UIViewController {
   }
   
   @IBAction func commentDidTap(_ sender: UIButton) {
-    // TODO: Implement expand functionality
+    self.isLiveMode.toggle()
+    
+    if self.isLiveMode {
+      self.liveChattingView.isHidden = false
+    } else {
+      self.liveChattingView.isHidden = true
+    }
   }
 }
 
